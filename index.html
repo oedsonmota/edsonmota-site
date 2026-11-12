@@ -11,12 +11,12 @@
 <link rel="stylesheet" href="css/site.css">
 <style>
 /* HERO: a área inteira solta as imagens dos projetos */
-.titulo-trilha{display:inline-block;max-width:1220px;margin-top:26px}
+.titulo-trilha{display:inline-block;max-width:none;margin-top:0}
 .hero{position:relative;overflow:hidden;padding:clamp(140px,15vw,200px) 0 0}
 .hero .label{color:var(--laranja)}
 .hero h1{font-size:clamp(42px,7vw,118px);letter-spacing:-0.045em;line-height:1;position:relative;z-index:2}
 .hero .base{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);padding-bottom:clamp(56px,7vw,90px)}
-.hero .base p{max-width:560px;font-size:clamp(17px,1.5vw,20px);color:var(--txt-escuro)}
+.hero .base p{max-width:var(--desc);font-size:19px;color:var(--txt-escuro)}
 .hero .base p b{color:var(--branco)}
 .hero .acoes{display:flex;gap:12px;flex-wrap:wrap}
 .hero .faixa{position:relative;z-index:2;border-top:1px solid #222;padding:26px 0 70px}
@@ -24,16 +24,20 @@
 .hero .faixa .label{color:var(--txt-escuro)}
 
 /* VERSÃO B: título menor e showreel logo abaixo, sem texto por cima */
-.hero-b{padding-top:clamp(120px,13vw,170px);overflow:visible;overflow-x:clip}
+.hero-b{--respiro:clamp(56px,6vw,96px);padding-top:calc(var(--nav-fim,62px) + var(--respiro));overflow:visible;overflow-x:clip}
 .hero-b h1{font-size:clamp(34px,4.25vw,70px);max-width:none;line-height:1.04}
 .hero-b h1 .l1,.hero-b h1 .l2{display:block}
 @media (min-width:900px){.hero-b h1 .l1,.hero-b h1 .l2{white-space:nowrap}}
-.hero-b .base{padding-bottom:clamp(40px,5vw,64px)}
+.hero-b .base{margin-top:clamp(20px,2vw,30px);padding-bottom:var(--respiro);align-items:center}
 .reel{position:relative;z-index:2;padding-bottom:clamp(56px,7vw,90px)}
 .reel .moldura{position:relative;margin:0 auto;width:calc(min(100vw, var(--max)) - 2 * var(--gutter));aspect-ratio:16/9;border-radius:clamp(14px,2vw,28px);overflow:hidden;background:#141414;will-change:width,border-radius}
 .reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .reel .ctrl{position:absolute;right:16px;bottom:16px;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(16,16,16,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:8px}
 .reel .ctrl:hover{background:var(--laranja);color:var(--preto);border-color:var(--laranja)}
+
+/* Descrição padrão abaixo dos títulos */
+:root{--desc:600px}
+.desc{max-width:var(--desc);font-size:19px}
 
 /* SINAIS */
 .sinais-tit{font-size:clamp(34px,4.6vw,74px);line-height:1.02;max-width:1100px}
@@ -42,14 +46,14 @@
 .sinal .n{font-size:clamp(44px,4.4vw,72px);font-weight:700;letter-spacing:-0.06em;line-height:.9;color:var(--laranja);font-variant-numeric:tabular-nums}
 .sinal h3{font-size:clamp(21px,1.9vw,28px);letter-spacing:-0.03em;line-height:1.12}
 .sinal:hover{background:var(--preto);color:var(--branco);transform:translateY(-6px)}
-.sinais-rodape{margin-top:clamp(36px,4vw,56px);font-size:clamp(19px,1.7vw,24px);letter-spacing:-0.02em;max-width:760px;color:var(--txt-claro)}
+.sinais-rodape{margin-top:clamp(36px,4vw,56px);font-size:19px;max-width:var(--desc);color:var(--txt-claro)}
 @media (max-width:1060px){.sinais{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.sinais{grid-template-columns:1fr}.sinal{min-height:0}}
 
 /* LARANJA: a frase central */
 .tese h2{font-size:clamp(44px,9vw,150px);text-transform:uppercase;letter-spacing:-0.048em;line-height:.95}
 .tese h2 .branca{color:var(--branco)}
-.tese .intro{margin-top:clamp(20px,2.4vw,32px);max-width:640px}
+.tese .intro{margin-top:26px;max-width:var(--desc)}
 .tese .intro p{font-size:19px}
 .tres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(64px,8vw,110px);border-top:1.5px solid var(--preto)}
 .tres div{padding:28px 28px 0 0;display:flex;flex-direction:column;gap:12px}
@@ -76,13 +80,13 @@
 
 /* O QUE VOCÊ COMPRA */
 .compra h2{font-size:clamp(34px,5.6vw,90px);line-height:1.02;max-width:1100px}
-.compra .sub{max-width:640px;font-size:19px;color:var(--txt-claro);margin-top:26px}
+.compra .sub{max-width:var(--desc);font-size:19px;color:var(--txt-claro);margin-top:26px}
 .entregas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(56px,7vw,90px)}
-.ent{background:var(--branco);border-radius:var(--r-card);padding:34px;display:flex;flex-direction:column;gap:18px;min-height:480px;transition:background .35s,color .35s}
+.ent{background:var(--branco);border-radius:var(--r-card);padding:34px;display:flex;flex-direction:column;gap:18px;transition:background .35s,color .35s}
 .ent .topo{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
 .ent .topo i{width:10px;height:10px;border-radius:50%;background:var(--laranja)}
-.ent h3{font-size:clamp(32px,3vw,44px);letter-spacing:-0.045em;margin-top:28px}
-.ent .resolve{font-size:17px;color:var(--txt-claro)}
+.ent h3{font-size:clamp(32px,3vw,44px);letter-spacing:-0.045em;margin-top:56px}
+.ent .resolve{font-size:18px;color:var(--txt-claro)}
 .ent ul{list-style:none;margin:auto 0 0;padding:0}
 .ent li{padding:12px 0;border-top:1px solid rgba(10,10,10,.12);font-size:15px;font-weight:700}
 .ent:hover{background:var(--preto);color:var(--branco)}
@@ -96,7 +100,7 @@
 /* CRONOGRAMA */
 .crono-sec h2{font-size:clamp(52px,10.5vw,172px);letter-spacing:-0.05em;text-transform:uppercase;line-height:.92}
 .crono-sec .cab{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-end}
-.crono-sec .cab p{max-width:420px;color:var(--txt-escuro);font-size:18px}
+.crono-sec .cab p{max-width:var(--desc);color:var(--txt-escuro);font-size:19px}
 .crono-caixa{overflow-x:auto;margin-top:56px;padding-bottom:6px;scrollbar-width:thin}
 .crono{position:relative;min-width:760px}
 .pista,.fases{display:grid;grid-template-columns:1fr 1fr 1.25fr 1.6fr 1fr 1fr;gap:8px}
@@ -136,6 +140,41 @@
 @keyframes entra{from{opacity:0;transform:translateY(10px)}}
 @media (max-width:860px){.painel{grid-template-columns:1fr}}
 
+/* PLATAFORMA DO CLIENTE */
+.plat-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(40px,5vw,80px);align-items:center}
+.plat h2{font-size:clamp(36px,4.6vw,72px);line-height:1.02;margin-top:22px}
+.plat h2 .branca{color:var(--branco)}
+.plat .desc{margin-top:26px}
+.plat-lista{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;border-top:1.5px solid var(--preto)}
+.plat-lista li{padding:18px 0;border-bottom:1.5px solid rgba(10,10,10,.25);display:flex;flex-direction:column;gap:4px}
+.plat-lista b{font-size:20px;letter-spacing:-0.025em}
+.plat-lista span{font-size:15px}
+.tela{background:var(--preto);border-radius:var(--r-bloco);overflow:hidden;box-shadow:0 40px 80px -30px rgba(60,10,0,.55);transform:translateZ(0)}
+.tela-barra{display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid #222}
+.tela-barra i{width:10px;height:10px;border-radius:50%;background:#2E2E2E}
+.tela-barra span{margin-left:12px;font-size:12px;color:#7A7A7A;background:#161616;border-radius:999px;padding:5px 12px}
+.tela-corpo{padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;color:var(--branco)}
+.tela small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7A7A7A;margin-bottom:6px}
+.tela-topo{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.tela-topo b{font-size:clamp(22px,2vw,30px);letter-spacing:-0.035em}
+.pill{font-size:12px;font-weight:700;padding:7px 12px;border-radius:999px;background:var(--laranja);color:var(--preto);white-space:nowrap}
+.tela-prog{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.tela-prog span{height:8px;border-radius:99px;background:#262626}
+.tela-prog .ok{background:#5A5A5A}
+.tela-prog .agora{background:var(--laranja);position:relative;overflow:hidden}
+.tela-prog .agora::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);transform:translateX(-100%);animation:brilho 2.4s ease-in-out infinite}
+@keyframes brilho{to{transform:translateX(100%)}}
+.tela-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tc{background:#161616;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.tc:first-child{background:#2A1410}
+.tc b{font-size:16px;letter-spacing:-0.02em;line-height:1.2}
+.tc em{font-style:normal;font-size:13px;color:#8A8A8A}
+.arq{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:11px 0;border-top:1px solid #222;font-size:14px}
+.arq i{font-style:normal;font-size:10px;font-weight:700;background:#262626;color:#BDBDBD;padding:4px 7px;border-radius:6px}
+.arq em{font-style:normal;font-size:12px;color:#7A7A7A}
+@media (max-width:960px){.plat-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.plat-lista{grid-template-columns:1fr}.tela-cards{grid-template-columns:1fr}}
+
 /* DEPOIMENTOS */
 .depo h2{font-size:clamp(38px,6vw,96px);line-height:1}
 .depo .cab{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}
@@ -160,7 +199,7 @@
 .sobre-txt{display:flex;flex-direction:column;gap:22px}
 .sobre-txt .label{color:var(--vermelho)}
 .sobre-txt .sobre-tit{font-size:clamp(34px,3.6vw,56px);letter-spacing:-0.045em;line-height:1}
-.sobre-txt p{color:var(--txt-claro);font-size:18px;max-width:640px}
+.sobre-txt p{color:var(--txt-claro);font-size:19px;max-width:var(--desc)}
 .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 24px;margin-top:14px;padding-top:22px;border-top:1px solid rgba(10,10,10,.14)}
 .nums div{display:grid;grid-template-columns:36px auto;column-gap:12px;align-items:center}
 .nums .ico{grid-row:1/3;width:40px;height:40px;border-radius:50%;background:var(--branco);color:var(--laranja);display:grid;place-items:center}
@@ -210,7 +249,7 @@
 .final h2{font-size:clamp(46px,10.4vw,172px);text-transform:uppercase;letter-spacing:-0.05em;line-height:.93}
 .final h2 .branca{color:var(--branco)}
 .final .linha{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:flex-end;margin-top:44px}
-.final p{max-width:480px;font-size:19px}
+.final p{max-width:var(--desc);font-size:19px}
 .passos{list-style:none;margin:clamp(56px,7vw,90px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--preto)}
 .passos li{padding:24px 24px 0 0;display:flex;flex-direction:column;gap:8px}
 .passos li+li{padding-left:24px;border-left:1.5px solid var(--preto)}
@@ -238,12 +277,11 @@
 <!-- 1. HERO -->
 <header class="hero hero-b escuro">
   <div class="wrap">
-    <span class="label">Para empresas em crescimento</span>
     <div class="titulo-trilha">
-      <h1><span class="dim l1">Consultoria estratégica de</span> <span class="l2">posicionamento e identidade de marca.</span></h1>
+      <h1><span class="l1">Consultoria estratégica de <span class="dim">posicionamento</span></span> <span class="l2">e <span class="dim">identidade</span> de marca.</span></h1>
     </div>
     <div class="base">
-      <p>Eu defino onde a sua empresa compete e por que ela é escolhida, e transformo isso numa identidade que o mercado reconhece. <b>Estratégia e design no mesmo projeto, a partir do seu negócio.</b></p>
+      <p>Estratégia e design no mesmo projeto, <b>para a sua marca valer o&nbsp;que a sua empresa entrega.</b></p>
       <div class="acoes">
         <a class="btn btn-laranja" href="https://edsonmotajunior.typeform.com/to/UylmUkGl">Aplicar para um projeto <span class="seta" aria-hidden="true">→</span></a>
         <a class="btn btn-linha" href="#metodo">Ver como funciona</a>
@@ -287,7 +325,7 @@
     <div class="sinais" data-rev>
       <div class="sinal"><span class="n">01</span><h3>Para fechar a venda, a equipe precisa dar desconto.</h3></div>
       <div class="sinal"><span class="n">02</span><h3>O cliente compara você com quem cobra menos.</h3></div>
-      <div class="sinal"><span class="n">03</span><h3>Cada cliente novo custa mais caro em anúncio.</h3></div>
+      <div class="sinal"><span class="n">03</span><h3>A cada novo cliente, o custo em anúncio fica mais alto.</h3></div>
       <div class="sinal"><span class="n">04</span><h3>A empresa cresceu, mas a marca ainda tem cara de pequena.</h3></div>
     </div>
     <p class="sinais-rodape" data-rev>Os quatro têm a mesma origem: o mercado ainda não entendeu por que a sua empresa vale o que cobra.</p>
@@ -303,9 +341,9 @@
       <p>No começo, quem vende é o dono: a reputação, o relacionamento, a indicação. Para passar desse ponto, o cliente precisa de um motivo claro para escolher, confiar e pagar o seu preço sem nunca ter falado com você. Esse motivo é a marca.</p>
     </div>
     <div class="tres" data-rev>
-      <div><h3>Até aqui, o dono vende</h3><p>Indicação, relacionamento e a sua presença em cada negociação. Funciona até a sua agenda acabar.</p></div>
-      <div><h3>Depois, a empresa trava</h3><p>Mais anúncio, mais equipe, mais promoção. E o faturamento no mesmo lugar.</p></div>
-      <div><h3>Daqui em diante, a marca vende</h3><p>O cliente já chega sabendo quem você é, o que faz de diferente e quanto isso vale.</p></div>
+      <div><h3>Até aqui, o dono vende.</h3><p>Indicação, relacionamento e a sua presença em cada negociação. Funciona até a sua agenda acabar.</p></div>
+      <div><h3>Depois, a empresa trava.</h3><p>Mais anúncio, mais equipe, mais promoção. E o faturamento no mesmo lugar.</p></div>
+      <div><h3>Daqui em diante, a marca vende.</h3><p>O cliente já chega sabendo quem você é, o que faz de diferente e quanto isso vale.</p></div>
     </div>
   </div>
 </section>
@@ -317,12 +355,12 @@
     <h2 id="t-neg" data-rev style="margin-top:22px">A conversa mais importante começa pelo seu negócio. <span class="dim">O posicionamento e o visual nascem dela.</span></h2>
     <div class="tabela" data-rev>
       <div class="cab"><span>#</span><span>Onde está o dinheiro</span><span>O que a marca faz por ele</span></div>
-      <div class="lin"><span class="n">01</span><span class="p">Preço e margem</span><span class="r">Sustenta um preço acima da média sem precisar justificar em cada venda</span></div>
-      <div class="lin"><span class="n">02</span><span class="p">Custo de aquisição</span><span class="r">Faz a empresa ser lembrada e procurada, e cada cliente novo depende menos de mídia paga</span></div>
-      <div class="lin"><span class="n">03</span><span class="p">Ticket médio</span><span class="r">Abre espaço para ofertas de maior valor para o mesmo cliente</span></div>
-      <div class="lin"><span class="n">04</span><span class="p">Recompra e indicação</span><span class="r">Cria vínculo com um público específico, que volta e traz outros parecidos</span></div>
-      <div class="lin"><span class="n">05</span><span class="p">Força de vendas</span><span class="r">Dá à equipe um argumento que qualquer vendedor consegue repetir</span></div>
-      <div class="lin"><span class="n">06</span><span class="p">Expansão</span><span class="r">Define o território antes de investir em público, unidade ou mercado novo</span></div>
+      <div class="lin"><span class="n">01</span><span class="p">Preço e margem</span><span class="r">Sustenta um preço acima da média sem precisar justificar em cada venda.</span></div>
+      <div class="lin"><span class="n">02</span><span class="p">Custo de aquisição</span><span class="r">Faz a empresa ser lembrada e procurada, e cada cliente novo depende menos de mídia paga.</span></div>
+      <div class="lin"><span class="n">03</span><span class="p">Ticket médio</span><span class="r">Abre espaço para ofertas de maior valor para o mesmo cliente.</span></div>
+      <div class="lin"><span class="n">04</span><span class="p">Recompra e indicação</span><span class="r">Cria vínculo com um público específico, que volta e traz outros parecidos.</span></div>
+      <div class="lin"><span class="n">05</span><span class="p">Força de vendas</span><span class="r">Dá à equipe um argumento que qualquer vendedor consegue repetir.</span></div>
+      <div class="lin"><span class="n">06</span><span class="p">Expansão</span><span class="r">Define o território antes de investir em público, unidade ou mercado novo.</span></div>
     </div>
   </div>
 </section>
@@ -331,15 +369,11 @@
 <section class="sec claro compra" aria-labelledby="t-compra">
   <div class="wrap">
     <h2 id="t-compra" data-rev><span class="dim">Sua empresa passa a ocupar</span> um lugar no mercado que é só dela.</h2>
-    <p class="sub" data-rev>Para a marca trabalhar por essas alavancas, o projeto entrega três frentes, nessa ordem. A estratégia define o lugar, a comunicação dá o argumento e a identidade torna tudo isso visível.</p>
+    <p class="sub" data-rev>Para a marca trabalhar por essas alavancas, o projeto trabalha três frentes, nessa ordem. A estratégia define o lugar, a comunicação dá o argumento e a identidade torna tudo isso visível.</p>
     <div class="entregas" data-rev>
-      <article class="ent"><div class="topo"><span>01/03</span><i></i></div><h3>Posicionamento</h3><p class="resolve">Onde a sua empresa joga, contra quem e por que ganha.</p><ul><li>Diagnóstico de mercado e concorrência</li><li>Público prioritário</li><li>Proposta de valor</li><li>Território de marca</li></ul></article>
-      <article class="ent"><div class="topo"><span>02/03</span><i></i></div><h3>Comunicação</h3><p class="resolve">O que a empresa diz, para quem e com qual argumento.</p><ul><li>Narrativa e manifesto</li><li>Mensagens por público</li><li>Tom de voz</li><li>Discurso de venda</li></ul></article>
-      <article class="ent"><div class="topo"><span>03/03</span><i></i></div><h3>Identidade</h3><p class="resolve">Como a marca é vista em cada ponto de contato com o cliente.</p><ul><li>Conceito criativo</li><li>Logo e sistema visual</li><li>Aplicações</li><li>Guia de marca</li></ul></article>
-    </div>
-    <div class="incluso" data-rev>
-      <p><b>Acompanhamento pela plataforma do cliente.</b> Com login e senha, você vê a etapa atual, a próxima entrega e todos os arquivos do projeto.</p>
-      <a class="btn btn-preto" href="https://edsonmotajunior.typeform.com/to/UylmUkGl">Aplicar para um projeto <span class="seta" aria-hidden="true">→</span></a>
+      <article class="ent"><div class="topo"><span>01/03</span><i></i></div><h3>Posicionamento</h3><p class="resolve">Onde a sua empresa compete, contra quem e por que ela é a escolha certa para o cliente que você quer atrair.</p></article>
+      <article class="ent"><div class="topo"><span>02/03</span><i></i></div><h3>Comunicação</h3><p class="resolve">O que a marca diz e como diz, com uma personalidade e um tom de voz que deixam claro o valor do que você vende.</p></article>
+      <article class="ent"><div class="topo"><span>03/03</span><i></i></div><h3>Identidade</h3><p class="resolve">Um sistema visual que traduz a estratégia e faz o cliente reconhecer a sua empresa em cada ponto de contato.</p></article>
     </div>
   </div>
 </section>
@@ -349,17 +383,17 @@
   <div class="wrap">
     <div class="cab" data-rev>
       <h2 id="t-crono">6 etapas.<br><span class="dim">4 a 6 semanas.</span></h2>
-      <p>Primeiro a estratégia, depois a criação. Cada etapa termina numa entrega que você valida antes de seguir. O prazo varia com o escopo, e as semanas abaixo consideram o projeto completo.</p>
+      <p>Primeiro a estratégia, depois a criação. Cada etapa termina numa entrega que você valida antes de seguir. O prazo varia com o escopo do projeto.</p>
     </div>
     <div class="crono-caixa">
       <div class="crono" data-crono>
         <div class="pista">
-        <button type="button" class="etapa" data-num="01" data-nome="Contrato e briefing" data-fase="Estratégia" data-semana="Semana 1" data-entrega="Cronograma do projeto e acesso à plataforma do cliente" data-desc="Com o contrato assinado, você responde a um briefing sobre a empresa, o público, a concorrência e as suas referências. É o material que eu estudo antes da nossa primeira sessão."><span class="en">01</span><span class="et">Contrato e briefing</span><span class="es">Semana 1</span></button>
-        <button type="button" class="etapa" data-num="02" data-nome="Workshop" data-fase="Estratégia" data-semana="Semana 1" data-entrega="Resumo do workshop com os pontos que guiam a estratégia" data-desc="Uma sessão ao vivo com você e com quem decide sobre a marca. O briefing mostra o que está no papel. O workshop traz o que só aparece na conversa: a ambição, os incômodos e o que diferencia a empresa de verdade."><span class="en">02</span><span class="et">Workshop</span><span class="es">Semana 1</span></button>
-        <button type="button" class="etapa" data-num="03" data-nome="Estratégia e look and feel" data-fase="Estratégia" data-semana="Semana 2" data-entrega="Apresentação da estratégia e do look and feel" data-desc="Análise de concorrentes, plataforma de marca e conceito, junto com o look and feel: a direção visual que mostra como a estratégia vai aparecer. Você valida tudo antes de a criação começar."><span class="en">03</span><span class="et">Estratégia e look and feel</span><span class="es">Semana 2</span></button>
-        <button type="button" class="etapa criacao" data-num="04" data-nome="Desenvolvimento da identidade" data-fase="Criação" data-semana="Semanas 3 e 4" data-entrega="Caminhos da identidade para validação" data-desc="Os caminhos da marca: logo, cores, tipografia e as primeiras aplicações. Cada escolha vem com a razão estratégica que está por trás dela."><span class="en">04</span><span class="et">Desenvolvimento da identidade</span><span class="es">Semanas 3 e 4</span></button>
-        <button type="button" class="etapa criacao" data-num="05" data-nome="Apresentação final" data-fase="Criação" data-semana="Semana 5" data-entrega="Apresentação final da marca" data-desc="O caminho escolhido aplicado nos pontos de contato reais da sua empresa, para você ver a marca funcionando antes de ela chegar ao cliente."><span class="en">05</span><span class="et">Apresentação final</span><span class="es">Semana 5</span></button>
-        <button type="button" class="etapa criacao" data-num="06" data-nome="Finalização e entrega" data-fase="Criação" data-semana="Semana 6" data-entrega="Guia de marca e arquivos finais" data-desc="Ajustes finais, guia de marca e todos os arquivos organizados, prontos para a sua equipe, a sua agência e os seus fornecedores."><span class="en">06</span><span class="et">Finalização e entrega</span><span class="es">Semana 6</span></button>
+        <button type="button" class="etapa" data-num="01" data-nome="Contrato e briefing" data-fase="Estratégia" data-semana="Semana 1" data-entrega="Cronograma e acesso à plataforma do cliente." data-desc="Você responde a um briefing sobre a empresa, o público, a concorrência e as suas referências."><span class="en">01</span><span class="et">Contrato e briefing</span><span class="es">Semana 1</span></button>
+        <button type="button" class="etapa" data-num="02" data-nome="Workshop" data-fase="Estratégia" data-semana="Semana 1" data-entrega="Resumo com os pontos que guiam a estratégia." data-desc="Uma sessão ao vivo com quem decide sobre a marca, para aprofundar o que o briefing levantou."><span class="en">02</span><span class="et">Workshop</span><span class="es">Semana 1</span></button>
+        <button type="button" class="etapa" data-num="03" data-nome="Estratégia e look and feel" data-fase="Estratégia" data-semana="Semana 2" data-entrega="Apresentação da estratégia e do look and feel." data-desc="Concorrência, plataforma de marca, conceito e a direção visual que mostra como a estratégia vai aparecer."><span class="en">03</span><span class="et">Estratégia e look and feel</span><span class="es">Semana 2</span></button>
+        <button type="button" class="etapa criacao" data-num="04" data-nome="Desenvolvimento da identidade" data-fase="Criação" data-semana="Semanas 3 e 4" data-entrega="Caminhos da identidade para validação." data-desc="Os caminhos da identidade: logo, cores, tipografia e primeiras aplicações."><span class="en">04</span><span class="et">Desenvolvimento da identidade</span><span class="es">Semanas 3 e 4</span></button>
+        <button type="button" class="etapa criacao" data-num="05" data-nome="Apresentação final" data-fase="Criação" data-semana="Semana 5" data-entrega="Apresentação final da marca." data-desc="A identidade aplicada nos pontos de contato reais da sua empresa."><span class="en">05</span><span class="et">Apresentação final</span><span class="es">Semana 5</span></button>
+        <button type="button" class="etapa criacao" data-num="06" data-nome="Finalização e entrega" data-fase="Criação" data-semana="Semana 6" data-entrega="Guia de marca e arquivos finais." data-desc="Ajustes finais, guia de marca e arquivos prontos para uso."><span class="en">06</span><span class="et">Finalização e entrega</span><span class="es">Semana 6</span></button>
         </div>
         <div class="fases" aria-hidden="true"><span class="f1">Estratégia · semanas 1 e 2</span><span class="f2">Criação · semanas 3 a 6</span></div>
       </div>
@@ -368,6 +402,39 @@
       <div class="pn" data-p-num>01</div>
       <div><h3 data-p-nome>Contrato e briefing</h3><div class="meta"><span data-p-fase>Estratégia</span><span data-p-dias>Semana 1</span></div></div>
       <div style="display:flex;flex-direction:column;gap:18px"><p data-p-desc></p><p><b>Você recebe</b><span data-p-entrega></span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6b. PLATAFORMA DO CLIENTE -->
+<section class="sec laranja plat" aria-labelledby="t-plat">
+  <div class="wrap plat-grid">
+    <div class="plat-txt" data-rev>
+      <span class="label">Plataforma do cliente</span>
+      <h2 id="t-plat">Você acompanha o projeto inteiro <span class="branca">num só lugar.</span></h2>
+      <p class="desc">Cada cliente recebe acesso, com usuário e senha, a uma plataforma feita para o projeto dele. Sem caçar arquivo no e‑mail nem perguntar em que pé está.</p>
+      <ul class="plat-lista">
+        <li><b>Cronograma</b><span>Todas as etapas e datas do projeto.</span></li>
+        <li><b>Etapa atual</b><span>O que está sendo feito agora e o que vem depois.</span></li>
+        <li><b>Arquivos</b><span>Apresentações e entregas sempre à mão.</span></li>
+        <li><b>Acesso exclusivo</b><span>Usuário e senha só seus.</span></li>
+      </ul>
+    </div>
+    <div class="tela" data-rev aria-hidden="true">
+      <div class="tela-barra"><i></i><i></i><i></i><span>plataforma.edsonmota.com</span></div>
+      <div class="tela-corpo">
+        <div class="tela-topo"><div><small>Projeto</small><b>Sua Empresa</b></div><span class="pill">Etapa 03 de 06</span></div>
+        <div class="tela-prog"><span class="ok"></span><span class="ok"></span><span class="agora"></span><span></span><span></span><span></span></div>
+        <div class="tela-cards">
+          <div class="tc"><small>Agora</small><b>Estratégia e look and feel</b><em>Apresentação marcada para quinta</em></div>
+          <div class="tc"><small>Próxima</small><b>Desenvolvimento da identidade</b><em>Semanas 3 e 4</em></div>
+        </div>
+        <div class="tela-arq"><small>Arquivos</small>
+          <div class="arq"><i>PDF</i><span>Briefing respondido</span><em>Etapa 01</em></div>
+          <div class="arq"><i>PDF</i><span>Resumo do workshop</span><em>Etapa 02</em></div>
+          <div class="arq"><i>PDF</i><span>Estratégia e look and feel</span><em>Etapa 03</em></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -395,8 +462,8 @@
     <div class="sobre-grid">
       <img src="img/edson-oculos.jpg" alt="Edson Mota no escritório, de óculos e camiseta preta" data-rev>
       <div class="sobre-txt" data-rev>
-        <span class="label">Diretor criativo e estrategista de marca</span>
-        <h2 id="t-sobre" class="sobre-tit">Um diretor criativo que entende de margem, cliente e concorrência.</h2>
+        <span class="label">Quem conduz o projeto</span>
+        <h2 id="t-sobre" class="sobre-tit"><span class="dim">Minha missão é</span> fazer da marca um ativo do seu negócio.</h2>
         <p>Há 15 anos eu trabalho com empresas que precisavam de mais do que um visual bonito: sair da disputa por preço, ser percebidas como premium num mercado concorrido, lançar uma marca do zero ou parecer do tamanho que já tinham.</p>
         <p>Já conduzi projetos de marca no Brasil, nos Estados Unidos, em Portugal e na Irlanda. Em todos, o trabalho começou pela mesma pergunta: qual problema do negócio essa marca precisa resolver?</p>
         <div class="nums">
@@ -424,13 +491,12 @@
     <div class="faq escura" data-rev>
       <p class="grupo">Antes de decidir</p>
       <details open><summary>É o momento certo para a minha empresa?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Faz mais sentido quando a empresa já vende com consistência e sente que a marca ficou para trás do que ela entrega. E vale fazer antes de investir mais em mídia, equipe ou expansão, porque cada real investido passa a construir a mesma marca. Se você ainda está validando o produto, a primeira conversa ajuda a ver isso com clareza.</p></details>
-      <details><summary>Quanto custa?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Depende do tamanho da empresa e do escopo. Depois da primeira conversa você recebe uma proposta com escopo, prazo e valor definidos, antes de qualquer compromisso.</p></details>
-      <details><summary>Como sei se o investimento vai se pagar?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Ninguém sério promete faturamento, e é bom desconfiar de quem promete. O que a marca muda dá para observar no dia a dia: o preço que você consegue sustentar, a facilidade da equipe para fechar uma venda, quanto custa trazer um cliente novo. O projeto é construído em cima dos pontos que mais pesam no seu negócio.</p></details>
-      <details><summary>Já contratei agência ou designer e não deu certo. O que muda?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Na maioria das vezes, o trabalho começou pelo visual. Aqui o visual vem depois da estratégia: ele só nasce quando o negócio, o público e a concorrência estão claros. Por isso cada cor, letra e forma tem uma razão que você consegue explicar para a sua equipe.</p></details>
+      <details><summary>Quanto custa?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Depende do escopo do projeto. Já na primeira conversa eu falo o valor, para você decidir com clareza.</p></details>
+      <details><summary>Já contratei agência ou designer e não deu certo. O que muda?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Na maioria das vezes, o trabalho começou pelo visual. Aqui o visual vem depois da estratégia: ele só nasce quando o negócio, o público e a concorrência estão claros. Por isso cada elemento do sistema visual tem uma razão ligada à estratégia, e a sua equipe consegue aplicar a marca com consistência.</p></details>
       <p class="grupo">Durante o projeto</p>
       <details><summary>Quanto tempo leva?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Entre 4 e 6 semanas, dependendo do escopo, do briefing aos arquivos finais. Tudo acontece online, então atendo empresas no Brasil e fora dele.</p></details>
-      <details><summary>Quanto do meu tempo o projeto vai tomar?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">A maior dedicação é no começo: o briefing e o workshop, quando eu preciso entender o negócio por dentro. Depois você participa das apresentações e valida cada etapa. O resto do trabalho fica comigo.</p></details>
-      <details><summary>E se eu não gostar do que for apresentado?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Cada etapa termina numa apresentação que você valida antes de seguir, e os ajustes acontecem ali. A identidade só começa depois que a estratégia e o look and feel estão aprovados, então a criação parte de decisões que você já tomou.</p></details>
+      <details><summary>Como eu participo do projeto?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Você participa dos momentos que definem a marca: o briefing, o workshop e a apresentação de cada etapa. É ali que a sua visão do negócio entra no projeto. O resto do trabalho fica comigo.</p></details>
+      <details><summary>E se eu não gostar do que for apresentado?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">O trabalho não é guiado por gosto, e sim pela estratégia que você aprova antes de a criação começar. Mas é importante que você se reconheça na marca. Por isso cada etapa termina numa apresentação que você valida, e os ajustes acontecem ali, antes de seguir.</p></details>
       <details><summary>Quem da minha empresa participa?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Você e quem decide sobre a marca. Quando faz sentido, também ouço quem está perto do cliente, como vendas e atendimento, porque é ali que a marca acontece no dia a dia.</p></details>
       <p class="grupo">Sobre a sua marca</p>
       <details><summary>Vou ter que trocar o meu logo?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Não necessariamente. A estratégia mostra o que está funcionando e o que está atrapalhando. Às vezes a empresa precisa de uma identidade nova, às vezes de um ajuste e de uma direção clara para o que já existe.</p></details>
@@ -446,7 +512,7 @@
   <div class="wrap">
     <span class="label" style="color:var(--vermelho)">Além dos projetos</span>
     <h2 id="t-ens" data-rev style="margin-top:22px">Compartilhar o que eu vivo todo dia <span class="dim">também faz parte da minha missão.</span></h2>
-    <p data-rev style="margin-top:24px;max-width:640px;font-size:19px;color:var(--txt-claro)">Ensinar sempre andou junto com os projetos. Ao longo da carreira, formei e acompanhei muitos profissionais criativos, e sigo fazendo isso hoje.</p>
+    <p class="desc" data-rev style="margin-top:26px;color:var(--txt-claro)">Ensinar sempre andou junto com os projetos. Ao longo da carreira, formei e acompanhei muitos profissionais criativos, e sigo fazendo isso hoje.</p>
     <div class="ensino-grid" data-rev>
       <div><b>Sala de aula</b><span>Professor de comunicação visual e coordenador de ensino, com aulas, workshops e treinamentos.</span></div>
       <div><b>Cursos com a minha assinatura</b><span>Ementas e grades curriculares de formações em design e construção de marca.</span></div>

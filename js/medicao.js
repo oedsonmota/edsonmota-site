@@ -54,33 +54,32 @@
       guardarBotao(local); ga('click_inquietos', params); metaCustom('CliqueInquietos', params);
     }
   }, true);
-  window.emPrepararTypeform = function (idDiv) {
-    var el = document.getElementById(idDiv); if (!el) return;
-    var o = window.emOrigem();
-    try { o.botao = sessionStorage.getItem('em_botao') || 'entrada-direta'; } catch (e) { o.botao = 'entrada-direta'; }
-    var pares = Object.keys(o).map(function (k) {
-      return k + '=' + String(o[k]).replace(/[,=]/g, ' ').slice(0, 200);
-    });
-    el.setAttribute('data-tf-hidden', pares.join(','));
-  };
   function primeiraVez(chave) {
     try { if (localStorage.getItem(chave)) return false; localStorage.setItem(chave, '1'); } catch (e) {}
     return true;
   }
+  var iniciouAplicacao = false;
+  var iniciouInquietos = false;
   window.emIniciouAplicacao = function () {
-    ga('inicio_aplicacao', { form_id: 'UylmUkGl' }); metaCustom('InicioAplicacao', { form_id: 'UylmUkGl' });
+    if (iniciouAplicacao) return;
+    iniciouAplicacao = true;
+    ga('inicio_aplicacao', { form_id: 'aplicacao-site' }); metaCustom('InicioAplicacao', { form_id: 'aplicacao-site' });
   };
   window.emEnviouAplicacao = function (p) {
     var id = (p && p.responseId) || ('semid-' + Date.now());
     if (!primeiraVez('em_env_' + id)) return;
-    if (window.fbq) window.fbq('track', 'Lead', { content_name: 'aplicacao', form_id: 'UylmUkGl' }, { eventID: 'aplicacao_' + id });
-    ga('generate_lead', { form_id: 'UylmUkGl', form_name: 'aplicacao', response_id: id });
+    if (window.fbq) window.fbq('track', 'Lead', { content_name: 'aplicacao', form_id: 'aplicacao-site' }, { eventID: 'aplicacao_' + id });
+    ga('generate_lead', { form_id: 'aplicacao-site', form_name: 'aplicacao', response_id: id });
   };
-  window.emIniciouInquietos = function () { ga('inicio_inquietos', { form_id: 'zVsElhqk' }); };
+  window.emIniciouInquietos = function () {
+    if (iniciouInquietos) return;
+    iniciouInquietos = true;
+    ga('inicio_inquietos', { form_id: 'inquietos-site' });
+  };
   window.emEnviouInquietos = function (p) {
     var id = (p && p.responseId) || ('semid-' + Date.now());
     if (!primeiraVez('em_env_' + id)) return;
-    if (window.fbq) window.fbq('track', 'CompleteRegistration', { content_name: 'inquietos_lista', form_id: 'zVsElhqk' }, { eventID: 'inquietos_' + id });
-    ga('sign_up', { method: 'inquietos_lista', form_id: 'zVsElhqk', response_id: id });
+    if (window.fbq) window.fbq('track', 'CompleteRegistration', { content_name: 'inquietos_lista', form_id: 'inquietos-site' }, { eventID: 'inquietos_' + id });
+    ga('sign_up', { method: 'inquietos_lista', form_id: 'inquietos-site', response_id: id });
   };
 })();

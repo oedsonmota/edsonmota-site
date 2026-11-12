@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aplicar · Edson Mota</title>
-<meta name="description" content="Conte em poucos minutos o momento da sua empresa. Aplicação para um projeto de posicionamento e identidade de marca.">
+<meta name="description" content="O primeiro passo para eu entender o momento da sua empresa e ver se faz sentido trabalharmos juntos.">
 <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
@@ -13,13 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap">
 <link rel="stylesheet" href="/css/site.css">
-<style>
-.form-intro{padding:clamp(130px,15vw,180px) 0 clamp(36px,5vw,64px)}
-.form-intro h1{font-size:clamp(42px,6.2vw,88px);letter-spacing:-0.048em;line-height:.96}
-.form-intro p{max-width:560px;margin-top:20px;font-size:19px;color:var(--txt-escuro)}
-.form-faixa{background:var(--branco)}
-.form-aviso{max-width:var(--max);margin:0 auto;padding:28px var(--gutter);color:var(--txt-claro)}
-</style>
+<link rel="stylesheet" href="/css/formulario.css">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -61,17 +55,143 @@ gtag('config', 'G-XXXXXXXXXX');
   <button class="menu" type="button" aria-label="Abrir menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h14M3 13h14"/></svg></button>
 </nav>
 
-<header class="escuro form-intro">
-  <div class="wrap">
-    <span class="label" style="color:var(--laranja)">Projeto</span>
-    <h1>Aplicar para um projeto.</h1>
-    <p>Conte em poucos minutos o momento da sua empresa. Eu leio cada aplicação antes da primeira conversa.</p>
-  </div>
-</header>
+<main class="form-pagina">
+  <div class="wrap form-caixa">
+    <form data-em-form="aplicacao" data-inicio="Começar" data-fim="Enviar" data-sucesso-titulo="Recebi a sua aplicação." data-sucesso-texto="Vou ler com atenção e retorno em breve pelo WhatsApp." novalidate>
+      <input type="hidden" name="form" value="aplicacao">
+      <input type="hidden" name="response_id" value="">
+      <input type="hidden" name="pagina" value="">
+      <input type="hidden" name="timestamp" value="">
+      <input type="hidden" name="botao" value="">
+      <input type="hidden" name="utm_source" value="">
+      <input type="hidden" name="utm_medium" value="">
+      <input type="hidden" name="utm_campaign" value="">
+      <input type="hidden" name="utm_content" value="">
+      <input type="hidden" name="utm_term" value="">
+      <input type="hidden" name="fbclid" value="">
+      <input type="hidden" name="gclid" value="">
+      <div class="hp" aria-hidden="true">
+        <label for="fax-aplicacao">Fax</label>
+        <input id="fax-aplicacao" type="text" name="fax" tabindex="-1" autocomplete="off">
+      </div>
 
-<main class="form-faixa">
-  <div role="region" id="form-aplicacao" data-tf-widget="UylmUkGl" data-tf-inline-on-mobile data-tf-on-started="emIniciouAplicacao" data-tf-on-submit="emEnviouAplicacao" style="width:100%;height:100vh;min-height:560px" aria-label="Formulário de aplicação para um projeto"></div>
-  <noscript><p class="form-aviso">Ative o JavaScript do navegador para ver o formulário.</p></noscript>
+      <p class="form-passo" data-contador hidden></p>
+      <h1 id="pergunta" tabindex="-1" data-pergunta>Vamos falar da sua marca.</h1>
+      <p class="form-dica" data-dica>O primeiro passo para eu entender o momento da sua empresa e ver se faz sentido trabalharmos juntos. Leva poucos minutos.</p>
+
+      <div class="passos">
+        <div class="passo" data-step data-boas-vindas data-titulo="Vamos falar da sua marca." data-dica="O primeiro passo para eu entender o momento da sua empresa e ver se faz sentido trabalharmos juntos. Leva poucos minutos."></div>
+
+        <div class="passo" data-step data-titulo="Qual é o seu nome?" hidden>
+          <div class="form-campo">
+            <input id="nome" name="nome" type="text" autocomplete="name" required data-erro-vazio="Escreva o seu nome.">
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Qual é o seu e-mail?" hidden>
+          <div class="form-campo">
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required data-tipo="email" data-erro-vazio="Escreva o seu e-mail.">
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Qual é o seu WhatsApp?" hidden>
+          <div class="form-campo">
+            <input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999" required data-tipo="telefone" data-erro-vazio="Informe um WhatsApp com DDD. Ex.: (11) 99999-9999.">
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Qual é a empresa e o mercado?" data-dica="Ex.: nome da empresa, segmento" hidden>
+          <div class="form-campo">
+            <input id="empresa" name="empresa" type="text" autocomplete="organization" required data-erro-vazio="Conte a empresa e o mercado.">
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Qual é o site ou o Instagram?" hidden>
+          <div class="form-campo">
+            <input id="site" name="site" type="text" inputmode="url" placeholder="site.com ou @perfil" required data-erro-vazio="Informe o site ou o Instagram.">
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Qual é o seu papel na decisão?" hidden>
+          <div class="form-opcoes">
+            <label class="form-opcao"><input type="radio" name="papel" value="Eu decido"> <span>Eu decido</span></label>
+            <label class="form-opcao"><input type="radio" name="papel" value="Participo da decisão com outras pessoas da empresa"> <span>Participo da decisão com outras pessoas da empresa</span></label>
+            <label class="form-opcao"><input type="radio" name="papel" value="Eu apenas faço a ponte"> <span>Eu apenas faço a ponte</span></label>
+          </div>
+          <div class="form-sub" data-condicional="papel" data-valor="Eu apenas faço a ponte" hidden>
+            <label for="quem-decide">Quem é a pessoa que decide? (nome e cargo)</label>
+            <input id="quem-decide" name="quem_decide" type="text" required data-erro-vazio="Diga quem decide e o cargo.">
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Qual é o porte da empresa?" hidden>
+          <div class="form-opcoes">
+            <label class="form-opcao"><input type="radio" name="porte" value="MEI"> <span>MEI</span></label>
+            <label class="form-opcao"><input type="radio" name="porte" value="Microempresa"> <span>Microempresa</span></label>
+            <label class="form-opcao"><input type="radio" name="porte" value="Empresa de pequeno porte"> <span>Empresa de pequeno porte</span></label>
+            <label class="form-opcao"><input type="radio" name="porte" value="Empresa de médio porte"> <span>Empresa de médio porte</span></label>
+            <label class="form-opcao"><input type="radio" name="porte" value="Empresa de grande porte"> <span>Empresa de grande porte</span></label>
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Qual é o principal problema da marca hoje?" data-dica="Pense na distância entre o que a empresa entrega e o que a marca transmite." hidden>
+          <div class="form-campo">
+            <textarea id="problema" name="problema" required data-erro-vazio="Conte o principal problema da marca."></textarea>
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Quando você quer começar?" hidden>
+          <div class="form-opcoes">
+            <label class="form-opcao"><input type="radio" name="quando" value="Neste mês"> <span>Neste mês</span></label>
+            <label class="form-opcao"><input type="radio" name="quando" value="Nos próximos 2 meses"> <span>Nos próximos 2 meses</span></label>
+            <label class="form-opcao"><input type="radio" name="quando" value="Em 3 a 6 meses"> <span>Em 3 a 6 meses</span></label>
+            <label class="form-opcao"><input type="radio" name="quando" value="Ainda estou pesquisando"> <span>Ainda estou pesquisando</span></label>
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Qual faixa de investimento faz sentido agora?" hidden>
+          <div class="form-opcoes">
+            <label class="form-opcao"><input type="radio" name="investimento" value="Até R$ 5 mil"> <span>Até R$ 5 mil</span></label>
+            <label class="form-opcao"><input type="radio" name="investimento" value="De R$ 5 a 8 mil"> <span>De R$ 5 a 8 mil</span></label>
+            <label class="form-opcao"><input type="radio" name="investimento" value="De R$ 8 a 12 mil"> <span>De R$ 8 a 12 mil</span></label>
+            <label class="form-opcao"><input type="radio" name="investimento" value="De R$ 12 a 20 mil"> <span>De R$ 12 a 20 mil</span></label>
+            <label class="form-opcao"><input type="radio" name="investimento" value="Acima de R$ 20 mil"> <span>Acima de R$ 20 mil</span></label>
+            <label class="form-opcao"><input type="radio" name="investimento" value="Ainda não defini"> <span>Ainda não defini</span></label>
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Como você chegou até aqui?" hidden>
+          <div class="form-opcoes">
+            <label class="form-opcao"><input type="radio" name="como_chegou" value="Instagram"> <span>Instagram</span></label>
+            <label class="form-opcao"><input type="radio" name="como_chegou" value="Indicação"> <span>Indicação</span></label>
+            <label class="form-opcao"><input type="radio" name="como_chegou" value="Google"> <span>Google</span></label>
+            <label class="form-opcao"><input type="radio" name="como_chegou" value="Site"> <span>Site</span></label>
+            <label class="form-opcao"><input type="radio" name="como_chegou" value="Anúncio"> <span>Anúncio</span></label>
+            <label class="form-opcao"><input type="radio" name="como_chegou" value="LinkedIn"> <span>LinkedIn</span></label>
+            <label class="form-opcao"><input type="radio" name="como_chegou" value="Outro"> <span>Outro</span></label>
+          </div>
+          <div class="form-sub" data-condicional="como_chegou" data-valor="Outro" hidden>
+            <label for="como-outro">Qual?</label>
+            <input id="como-outro" name="como_chegou_outro" type="text" required data-erro-vazio="Escreva qual foi o outro caminho.">
+          </div>
+        </div>
+
+        <div class="passo" data-step data-titulo="Política de privacidade" hidden>
+          <label class="form-check">
+            <input type="checkbox" name="lgpd" required data-erro-vazio="Marque que você leu a política de privacidade.">
+            <span>Li e concordo com a <a href="/privacidade/" target="_blank" rel="noopener">política de privacidade</a></span>
+          </label>
+        </div>
+      </div>
+
+      <p class="form-erro" data-erro role="alert" hidden></p>
+      <div class="form-acoes">
+        <button type="button" class="form-voltar" data-voltar hidden>Voltar</button>
+        <button type="submit" class="btn btn-preto" data-seguir>Começar</button>
+      </div>
+      <noscript><p class="form-aviso">Ative o JavaScript do navegador para enviar a aplicação.</p></noscript>
+    </form>
+  </div>
 </main>
 
 <footer class="rodape">
@@ -92,10 +212,8 @@ gtag('config', 'G-XXXXXXXXXX');
   </div>
 </footer>
 
-<script>
-window.emPrepararTypeform('form-aplicacao');
-</script>
-<script src="https://embed.typeform.com/next/embed.js"></script>
+<script src="/js/form-config.js"></script>
+<script src="/js/formulario.js"></script>
 <script src="/js/site.js"></script>
 </body>
 </html>

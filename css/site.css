@@ -56,7 +56,11 @@ button{font-family:inherit;cursor:pointer}
 .btn-linha{border-color:currentColor;color:inherit;background:transparent}
 .btn-linha:hover{background:var(--preto);color:var(--branco);border-color:var(--preto)}
 .escuro .btn-linha:hover{background:var(--branco);color:var(--preto);border-color:var(--branco)}
-.btn .seta{transition:transform .25s}
+.btn .seta{display:inline-flex;transition:transform .25s}
+.btn .seta svg{display:block}
+.btn-preto .seta{color:var(--laranja)}
+.btn-linha .seta{color:var(--laranja)}
+.btn-preto:hover .seta,.btn-linha:hover .seta{color:inherit}
 .btn:hover .seta{transform:translateX(4px)}
 
 /* Navegação flutuante em vidro */

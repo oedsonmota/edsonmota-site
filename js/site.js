@@ -250,7 +250,7 @@
       ioC.observe(crono);
     }
   }
-  /* Brilho laranja que segue o cursor sobre o nome do rodapé */
+  /* Brilho cinza que segue o cursor sobre o nome do rodapé */
   var gr = document.querySelector('.rodape .grande');
   if (gr && !reduz && window.matchMedia('(hover:hover)').matches) {
     gr.addEventListener('pointermove', function(e){

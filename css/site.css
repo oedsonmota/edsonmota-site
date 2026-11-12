@@ -145,7 +145,7 @@ button{font-family:inherit;cursor:pointer}
 .rodape .col a.destaque{color:var(--branco);font-weight:700}
 .rodape .col a.destaque i{color:var(--laranja)}
 .rodape .base{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:24px 0;font-size:14px;color:var(--txt-escuro)}
-.rodape .grande{font-size:15vw;font-weight:700;letter-spacing:-0.06em;line-height:.82;color:#1A1A1A;background:radial-gradient(circle var(--raio,0px) at var(--gx,50%) var(--gy,50%),#F43217,#5a2a20 45%,#1A1A1A 100%) #1A1A1A;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap;user-select:none;padding:16px 0 clamp(16px,2vw,28px);overflow:hidden}
+.rodape .grande{font-size:15vw;font-weight:700;letter-spacing:-0.06em;line-height:.82;color:#1A1A1A;background:radial-gradient(circle var(--raio,0px) at var(--gx,50%) var(--gy,50%),#7A7A7A,#3A3A3A 50%,#1A1A1A 100%) #1A1A1A;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap;user-select:none;padding:16px 0 clamp(16px,2vw,28px);overflow:hidden}
 @media (max-width:860px){.rodape .topo{grid-template-columns:repeat(2,minmax(0,1fr))}.rodape .marca-r{grid-column:1/-1}}
 
 @media (prefers-reduced-motion:reduce){

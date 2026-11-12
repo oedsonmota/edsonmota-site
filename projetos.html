@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projetos · Edson Mota</title>
+<meta name="description" content="Projetos de estratégia e identidade de marca assinados por Edson Mota.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.p-hero{padding:clamp(130px,15vw,190px) 0 clamp(40px,5vw,70px);overflow:hidden}
+.topo-p{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.p-hero .gigante{font-size:clamp(60px,16vw,270px);letter-spacing:-0.065em;line-height:.86;text-transform:uppercase;user-select:none;padding:24px 0 10px;display:flex;overflow:hidden}
+.p-hero .gigante .lt{display:inline-block;transform:translateY(105%);animation:sobe .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i) * 55ms + 150ms)}
+@keyframes sobe{to{transform:none}}
+.descer{flex:none;width:clamp(56px,6vw,84px);aspect-ratio:1;border-radius:50%;background:var(--laranja);color:var(--preto);display:grid;place-items:center;margin-bottom:clamp(14px,2.4vw,40px);animation:quica 2.2s cubic-bezier(.45,0,.55,1) infinite;transition:background .25s,color .25s}
+.descer:hover{background:var(--branco);animation-play-state:paused}
+@keyframes quica{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+@media (max-width:600px){.descer{display:none}}
+@media (prefers-reduced-motion:reduce){.p-hero .gigante .lt{transform:none}}
+
+.controles .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:40px;padding-bottom:8px}
+.vista{display:flex;gap:8px}
+.vista button{min-height:42px;padding:0 18px;border-radius:999px;border:1.5px solid var(--preto);background:transparent;font-size:14px;font-weight:700;color:var(--preto);transition:background .2s,color .2s}
+.vista button:hover{background:rgba(10,10,10,.06)}
+.vista button[aria-pressed="true"]{background:var(--laranja);border-color:var(--laranja)}
+
+/* Lista */
+.lista{list-style:none;margin:0;padding:24px 0 clamp(80px,9vw,130px)}
+.linha{position:relative;overflow:hidden;width:100%;display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:24px;align-items:center;padding:clamp(18px,2.4vw,30px) 18px clamp(18px,2.4vw,30px) 0;border:0;border-bottom:1px solid rgba(10,10,10,.14);background:none;text-align:left;color:var(--preto);transition:color .35s,padding .45s cubic-bezier(.2,.8,.2,1);isolation:isolate}
+.linha::before{content:"";position:absolute;inset:0;background:var(--cor);transform:scaleY(0);transform-origin:50% 100%;transition:transform .5s cubic-bezier(.2,.8,.2,1);z-index:-1}
+.linha>*{position:relative}
+.lista li:first-child .linha{border-top:1px solid rgba(10,10,10,.14)}
+.linha .num{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.linha .nm{font-size:clamp(34px,5.4vw,84px);font-weight:700;letter-spacing:-0.055em;line-height:.9}
+.linha .seg{font-size:16px;text-align:right}
+.lista:hover .linha{color:#B5B5B5}
+.lista .linha:hover,.lista .linha:focus-visible{color:var(--cor-txt);padding-left:24px}
+.lista .linha:hover::before,.lista .linha:focus-visible::before{transform:scaleY(1)}
+.lista li[data-rev]{transition-delay:var(--d)}
+.lista .linha:hover .num{color:inherit}
+@media (max-width:860px){
+  .linha{grid-template-columns:44px minmax(0,1fr)}
+  .linha .seg{grid-column:2;text-align:left}
+}
+
+/* Pré-visualização que segue o cursor */
+.preview{position:fixed;left:0;top:0;width:clamp(260px,28vw,420px);aspect-ratio:16/10;border-radius:16px;overflow:hidden;pointer-events:none;z-index:30;opacity:0;transform:translate(-50%,-50%) scale(.6);transition:opacity .3s,transform .45s cubic-bezier(.2,.8,.2,1);box-shadow:0 30px 60px rgba(0,0,0,.28)}
+.preview.on{opacity:1}
+.preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
+.preview img.vis{opacity:1}
+.preview .tag{position:absolute;left:12px;bottom:12px;background:var(--laranja);color:var(--preto);font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px}
+@media (hover:none){.preview{display:none}}
+
+/* Grade */
+.grade{display:none;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:36px 22px;padding:36px 0 clamp(80px,9vw,130px)}
+.modo-grade .grade{display:grid}
+.modo-grade .lista{display:none}
+.gcard{border:0;background:none;padding:0;text-align:left;color:inherit;display:flex;flex-direction:column;gap:14px}
+.gcard .foto{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/11;background:#DDD}
+.gcard .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.gcard .foto img+img{opacity:0}
+.gcard:hover .foto img{transform:scale(1.05)}
+.gcard:hover .foto img+img{opacity:1}
+.gcard .foto .abrir{position:absolute;right:14px;bottom:14px;background:var(--branco);color:var(--preto);font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;transform:translateY(10px);opacity:0;transition:.35s}
+.gcard:hover .foto .abrir{transform:none;opacity:1}
+.gcard .meta{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.gcard .meta b{font-size:24px;letter-spacing:-0.035em}
+.gcard .meta span{font-size:14px;color:var(--txt-claro)}
+
+/* Seção que cresce ao rolar */
+.cresce{height:230vh;position:relative;background:var(--preto)}
+.cresce .fixo{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center}
+.cresce .moldura{position:absolute;inset:0;margin:auto;width:100%;height:100%;transform:scale(.42);border-radius:40px;overflow:hidden;will-change:transform}
+.cresce .moldura img{width:100%;height:100%;object-fit:cover}
+.cresce .moldura::after{content:"";position:absolute;inset:0;background:rgba(10,10,10,.45)}
+.cresce .frase{position:relative;z-index:2;color:var(--branco);text-align:center;padding:0 var(--gutter);display:flex;flex-direction:column;align-items:center;gap:22px}
+.cresce .frase span.label{color:var(--laranja)}
+.cresce .frase h2{font-size:clamp(44px,7.6vw,124px);text-transform:uppercase;letter-spacing:-0.055em;line-height:.86;max-width:1200px}
+.cresce .frase h2 .dim{color:#B8B8B8}
+
+/* Case em tela cheia */
+.case{position:fixed;inset:0;z-index:100;background:var(--cinza);overflow-y:auto;transform:translateY(100%);transition:transform .7s cubic-bezier(.7,0,.2,1),visibility 0s linear .7s;visibility:hidden}
+.case.aberto{transform:none;visibility:visible;transition:transform .7s cubic-bezier(.7,0,.2,1),visibility 0s}
+.case-barra{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px var(--gutter);pointer-events:none}
+.case-barra>*{pointer-events:auto}
+.case-barra .cont{background:rgba(10,10,10,.86);color:var(--branco);border-radius:999px;padding:12px 18px;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.case-barra .acoes{display:flex;gap:8px}
+.case-barra button{width:48px;height:48px;border-radius:50%;border:0;background:var(--preto);color:var(--branco);display:grid;place-items:center;transition:background .2s,color .2s}
+.case-barra button:hover{background:var(--laranja);color:var(--preto)}
+.case-capa{margin-top:-76px;padding:clamp(120px,13vw,170px) 0 clamp(50px,6vw,80px);color:var(--cor-txt,#fff);background:var(--cor,#0A0A0A)}
+.case-capa .seg{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+.case-capa h2{font-size:clamp(60px,12vw,200px);letter-spacing:-0.065em;line-height:.82;margin:18px 0 40px}
+.case-hero-img{border-radius:var(--r-bloco);overflow:hidden;margin-top:calc(clamp(40px,5vw,60px) * -1);position:relative;z-index:2}
+.case-hero-img img,.case-hero-img video{width:100%;height:auto;display:block}
+.case-texto{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,80px);padding:clamp(56px,7vw,100px) 0}
+.case-texto h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;color:var(--vermelho)}
+.case-texto .txt{display:flex;flex-direction:column;gap:16px}
+.case-texto .txt p{font-size:clamp(17px,1.4vw,20px);line-height:1.5;letter-spacing:-0.01em;color:var(--txt-claro)}
+.case-texto .txt p:first-child{font-size:clamp(21px,1.9vw,28px);line-height:1.3;letter-spacing:-0.02em;font-weight:700;color:var(--preto)}
+.case-galeria>*{transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.case-galeria>.fora{opacity:0;transform:translateY(40px)}
+.case-galeria{display:flex;flex-direction:column;gap:clamp(8px,1.2vw,16px)}
+.case-galeria img,.case-galeria video{width:100%;height:auto;display:block;border-radius:clamp(10px,1.4vw,20px);background:#DADADA}
+.case-cred{padding:40px 0 0;color:var(--txt-claro);font-size:15px}
+.case-prox{display:block;width:100%;margin-top:clamp(60px,8vw,110px);border:0;background:var(--preto);color:var(--branco);text-align:left;padding:clamp(40px,5vw,70px) var(--gutter);transition:background .35s}
+.case-prox:hover{background:var(--laranja);color:var(--preto)}
+.case-prox span{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;opacity:.7}
+.case-prox b{display:block;font-size:clamp(48px,9vw,150px);letter-spacing:-0.06em;line-height:.85;margin-top:14px}
+@media (max-width:760px){.case-texto{grid-template-columns:1fr}}
+
+.final{padding:clamp(100px,12vw,170px) 0}
+.final h2{font-size:clamp(54px,10vw,168px);text-transform:uppercase;letter-spacing:-0.06em;line-height:.84}
+.final h2 .branca{color:var(--branco)}
+.final .linha2{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:flex-end;margin-top:44px}
+.final p{max-width:460px;font-size:19px}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Principal">
+  <a class="marca" href="index.html" aria-label="Edson Mota, página inicial"><svg class="logo" width="30" height="24" viewBox="0 0 59 47" fill="currentColor" aria-hidden="true"><rect x="19.65" y="2.27" width="38.9" height="8.2"/><rect y="20.73" width="39.1" height="8"/><rect x="8.89" y="39" width="39.1" height="8"/><circle cx="6.71" cy="5.73" r="5.73"/></svg></a>
+  <ul>
+    <li><a href="projetos.html" aria-current="page">Projetos</a></li>
+    <li><a href="index.html#metodo">Método</a></li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="https://guiainquietos.edsonmota.com">Guia gratuito</a></li>
+    <li><a href="https://edsonmotajunior.typeform.com/to/zVsElhqk">Comunidade</a></li>
+  </ul>
+  <a class="btn btn-laranja" href="https://edsonmotajunior.typeform.com/to/UylmUkGl">Aplicar</a>
+  <button class="menu" type="button" aria-label="Abrir menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h14M3 13h14"/></svg></button>
+</nav>
+
+<header class="p-hero escuro">
+  <div class="wrap">
+    <span class="label" style="color:var(--laranja)">Posicionamento e identidade de marca</span>
+    <div class="topo-p">
+      <div class="trilha" data-trilha="img/newgen-4.jpg,img/gabo-2.jpg,img/verdan-2.jpg,img/toast-3.jpg,img/ancoragem-3.jpg,img/anne-2.jpg,img/newgen-5.jpg,img/gabo-5.jpg,img/verdan-5.jpg,img/toast-2.jpg,img/ancoragem-2.jpg,img/anne-4.jpg">
+        <h1 class="gigante" aria-label="Projetos"><span class="lt" style="--i:0">P</span><span class="lt" style="--i:1">r</span><span class="lt" style="--i:2">o</span><span class="lt" style="--i:3">j</span><span class="lt" style="--i:4">e</span><span class="lt" style="--i:5">t</span><span class="lt" style="--i:6">o</span><span class="lt" style="--i:7">s</span></h1>
+      </div>
+      <a class="descer" href="#lista" aria-label="Ir para a lista de projetos"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<div class="controles" id="lista">
+  <div class="wrap">
+    <span class="label" style="color:var(--txt-claro)">Clique num projeto para ver o case</span>
+    <div class="vista" role="group" aria-label="Modo de visualização">
+      <button type="button" aria-pressed="true" data-vista="lista">Lista</button>
+      <button type="button" aria-pressed="false" data-vista="grade">Grade</button>
+    </div>
+  </div>
+</div>
+
+<main class="claro" id="obras">
+  <div class="wrap">
+    <ol class="lista">
+      <li data-rev style="--d:0ms"><button type="button" class="linha" style="--cor:#F25022;--cor-txt:#0A0A0A" data-slug="new-generation"><span class="num">01</span><span class="nm">New Generation</span><span class="seg">Educação</span></button></li>
+      <li data-rev style="--d:70ms"><button type="button" class="linha" style="--cor:#12355B;--cor-txt:#FFFFFF" data-slug="gabo-films"><span class="num">02</span><span class="nm">Gabo Films</span><span class="seg">Produtora audiovisual</span></button></li>
+      <li data-rev style="--d:140ms"><button type="button" class="linha" style="--cor:#12302C;--cor-txt:#FFFFFF" data-slug="verdan"><span class="num">03</span><span class="nm">Verdan Sushi Chef</span><span class="seg">Alta gastronomia japonesa</span></button></li>
+      <li data-rev style="--d:210ms"><button type="button" class="linha" style="--cor:#1A1A1A;--cor-txt:#FFFFFF" data-slug="toast-masters"><span class="num">04</span><span class="nm">Toast Masters</span><span class="seg">Alta coquetelaria</span></button></li>
+      <li data-rev style="--d:280ms"><button type="button" class="linha" style="--cor:#B8553A;--cor-txt:#FFFFFF" data-slug="ancoragem"><span class="num">05</span><span class="nm">Ancoragem</span><span class="seg">Moda masculina</span></button></li>
+      <li data-rev style="--d:350ms"><button type="button" class="linha" style="--cor:#7DB9F5;--cor-txt:#0A0A0A" data-slug="anne-amazing-waist"><span class="num">06</span><span class="nm">Anne Amazing Waist</span><span class="seg">Fitness</span></button></li>
+    </ol>
+    <div class="grade">
+      <button type="button" class="gcard" data-slug="new-generation"><span class="foto"><img src="img/newgen-1.jpg" alt="New Generation" loading="lazy"><img src="img/newgen-4.jpg" alt="" loading="lazy"><span class="abrir">Abrir case</span></span><span class="meta"><b>New Generation</b><span>Educação</span></span></button>
+      <button type="button" class="gcard" data-slug="gabo-films"><span class="foto"><img src="img/gabo-1.jpg" alt="Gabo Films" loading="lazy"><img src="img/gabo-2.jpg" alt="" loading="lazy"><span class="abrir">Abrir case</span></span><span class="meta"><b>Gabo Films</b><span>Audiovisual</span></span></button>
+      <button type="button" class="gcard" data-slug="verdan"><span class="foto"><img src="img/verdan-1.jpg" alt="Verdan Sushi Chef" loading="lazy"><img src="img/verdan-2.jpg" alt="" loading="lazy"><span class="abrir">Abrir case</span></span><span class="meta"><b>Verdan Sushi Chef</b><span>Gastronomia</span></span></button>
+      <button type="button" class="gcard" data-slug="toast-masters"><span class="foto"><img src="img/toast-1.jpg" alt="Toast Masters" loading="lazy"><img src="img/toast-2.jpg" alt="" loading="lazy"><span class="abrir">Abrir case</span></span><span class="meta"><b>Toast Masters</b><span>Coquetelaria</span></span></button>
+      <button type="button" class="gcard" data-slug="ancoragem"><span class="foto"><img src="img/ancoragem-1.jpg" alt="Ancoragem" loading="lazy"><img src="img/ancoragem-2.jpg" alt="" loading="lazy"><span class="abrir">Abrir case</span></span><span class="meta"><b>Ancoragem</b><span>Moda masculina</span></span></button>
+      <button type="button" class="gcard" data-slug="anne-amazing-waist"><span class="foto"><img src="img/anne-1.jpg" alt="Anne Amazing Waist" loading="lazy"><img src="img/anne-2.jpg" alt="" loading="lazy"><span class="abrir">Abrir case</span></span><span class="meta"><b>Anne Amazing Waist</b><span>Fitness</span></span></button>
+    </div>
+  </div>
+</main>
+
+<div class="preview" aria-hidden="true"><span class="tag">Abrir case</span></div>
+
+<section class="cresce" aria-labelledby="t-cresce">
+  <div class="fixo">
+    <div class="moldura"><img src="img/verdan-2.jpg" alt="" loading="lazy"></div>
+    <div class="frase">
+      <span class="label">Por trás de cada identidade</span>
+      <h2 id="t-cresce"><span class="dim">Existe uma decisão</span> de negócio.</h2>
+    </div>
+  </div>
+</section>
+
+<section class="laranja final" aria-labelledby="t-final">
+  <div class="wrap">
+    <h2 id="t-final"><span class="linha-mask"><span>A próxima</span></span><span class="linha-mask"><span class="branca">pode ser a sua.</span></span></h2>
+    <div class="linha2">
+      <p>Conte em poucos minutos o momento da sua empresa. Eu leio cada aplicação antes da primeira conversa.</p>
+      <a class="btn btn-preto" href="https://edsonmotajunior.typeform.com/to/UylmUkGl">Aplicar para um projeto <span class="seta" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="manifesto">
+      <p class="frase">Marca é o ativo que trabalha <span class="dim">mesmo quando você não está na sala.</span></p>
+    </div>
+    <div class="topo">
+      <div class="marca-r">
+        <b aria-label="Edson Mota"><svg class="logo" width="40" height="32" viewBox="0 0 59 47" fill="currentColor" aria-hidden="true"><rect x="19.65" y="2.27" width="38.9" height="8.2"/><rect y="20.73" width="39.1" height="8"/><rect x="8.89" y="39" width="39.1" height="8"/><circle cx="6.71" cy="5.73" r="5.73"/></svg></b>
+        <p>Consultoria estratégica de posicionamento e identidade de marca. Projetos online para empresas no Brasil e no exterior.</p>
+      </div>
+      <nav class="col" aria-label="Site"><span>Navegue</span><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="index.html#metodo">Método</a><a href="index.html#sobre">Sobre</a></nav>
+      <nav class="col" aria-label="INQUIETOS"><span>INQUIETOS</span><a href="https://guiainquietos.edsonmota.com">Guia para Inquietos&nbsp;<i aria-hidden="true">↗</i></a><a href="https://edsonmotajunior.typeform.com/to/zVsElhqk">Lista de espera da comunidade&nbsp;<i aria-hidden="true">↗</i></a></nav>
+      <nav class="col" aria-label="Contato"><span>Contato</span><a class="destaque" href="https://edsonmotajunior.typeform.com/to/UylmUkGl">Aplicar para um projeto&nbsp;<i aria-hidden="true">→</i></a><a href="https://www.instagram.com/edsonmotabranding/">Instagram&nbsp;<i aria-hidden="true">↗</i></a><a href="https://www.linkedin.com/in/oedsonmota/">LinkedIn&nbsp;<i aria-hidden="true">↗</i></a></nav>
+    </div>
+    <div class="base"><span>© 2027 Edson Mota. Todos os direitos reservados.</span><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Voltar ao topo ↑</a></div>
+    <div class="grande" aria-hidden="true">EDSON MOTA</div>
+  </div>
+</footer>
+
+<div class="case" role="dialog" aria-modal="true" aria-labelledby="case-nome" tabindex="-1">
+  <div class="case-barra">
+    <span class="cont" data-c-cont>01 / 06</span>
+    <div class="acoes">
+      <button type="button" data-c-ant aria-label="Projeto anterior"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4l-6 6 6 6"/></svg></button>
+      <button type="button" data-c-prox aria-label="Próximo projeto"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 4l6 6-6 6"/></svg></button>
+      <button type="button" data-c-fechar aria-label="Fechar case"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+    </div>
+  </div>
+  <div class="case-capa"><div class="wrap"><span class="seg" data-c-seg></span><h2 id="case-nome" data-c-nome></h2></div></div>
+  <div class="wrap">
+    <div class="case-hero-img"></div>
+    <div class="case-texto">
+      <div><h3>Desafio</h3><div class="txt" data-c-desafio></div></div>
+      <div><h3>Solução</h3><div class="txt" data-c-resposta></div></div>
+    </div>
+    <div class="case-galeria" data-c-galeria></div>
+    <p class="case-cred" data-c-cred></p>
+  </div>
+  <button type="button" class="case-prox" data-c-seguinte><span>Próximo projeto</span><b data-c-seguinte-nome></b></button>
+</div>
+
+<script src="js/site.js"></script>
+<script>
+(function(){
+  var P = [
+ {
+  "slug": "new-generation",
+  "nome": "New Generation",
+  "seg": "Educação",
+  "cor": "#F25022",
+  "txt": "#0A0A0A",
+  "img": "newgen",
+  "n": 5,
+  "desafio": [
+   "Fazer os pais escolherem uma escola nova no lugar das tradicionais que eles já conhecem.",
+   "Na educação, quem decide a matrícula são os pais, e eles tendem a confiar em quem está há mais tempo no mercado. A New Generation atende do infantil ao superior e precisava parecer inovadora sem parecer arriscada, com uma única marca que fizesse sentido para uma criança pequena e para um universitário."
+  ],
+  "solucao": [
+   "Uma identidade que mostra inovação com a seriedade que os pais exigem para confiar.",
+   "O símbolo nasce dos elementos que acompanham a trajetória do aluno, e as formas triangulares apontando para cima falam de evolução, o argumento de quem pensa numa matrícula de longo prazo. A paleta traz energia sem perder a sobriedade, e o mesmo sistema funciona do infantil ao superior, reforçando a ideia de uma escola para a vida toda e ajudando a manter o aluno na casa por mais anos."
+  ],
+  "cred": "Estratégia e identidade visual: Edson Mota"
+ },
+ {
+  "slug": "gabo-films",
+  "nome": "Gabo Films",
+  "seg": "Produtora audiovisual",
+  "cor": "#12355B",
+  "txt": "#FFFFFF",
+  "img": "gabo",
+  "n": 5,
+  "desafio": [
+   "Lançar do zero uma produtora para um público que quase nunca se vê nas telas.",
+   "A Gabo Films nasceu para contar histórias de pessoas da periferia, um público majoritariamente masculino e de baixa renda. Na análise da concorrência, as produtoras falavam com marcas e celebridades, e ninguém ocupava esse espaço. Para conquistar a confiança dessas pessoas e se diferenciar logo na estreia, a marca precisava gerar identificação desde o primeiro contato."
+  ],
+  "solucao": [
+   "Um nome e uma identidade que colocam as pessoas comuns como protagonistas.",
+   "Nome e identidade foram construídos juntos, para a produtora já nascer com um território claro. A tipografia arredondada deixa a marca próxima e humana, longe do tom frio das grandes produtoras, e o símbolo une a nostalgia das câmeras antigas ao brilho das histórias contadas. As versões animadas foram pensadas para as telas onde a Gabo apresenta o portfólio e vende os próximos projetos."
+  ],
+  "cred": "Estratégia, naming e identidade visual: Edson Mota · Motion design: @jeancarlo.tv"
+ },
+ {
+  "slug": "verdan",
+  "nome": "Verdan Sushi Chef",
+  "seg": "Alta gastronomia japonesa",
+  "cor": "#12302C",
+  "txt": "#FFFFFF",
+  "img": "verdan",
+  "n": 5,
+  "desafio": [
+   "Sustentar o preço da alta gastronomia sem perder a proximidade que fideliza o cliente.",
+   "O Verdan é um chef de culinária japonesa com atendimento intimista. O risco era ficar no meio do caminho: parecer mais um sushi de delivery e disputar preço, ou parecer distante demais para a experiência que o cliente vive à mesa. A marca precisava justificar o ticket alto e, ao mesmo tempo, manter a sensação de estar na casa do chef."
+  ],
+  "solucao": [
+   "Uma tipografia exclusiva que apresenta o Verdan como um chef autoral.",
+   "O sistema é industrial e moderno, construído a partir de elementos da própria cozinha japonesa, e mostra a precisão técnica que sustenta o preço. A inspiração urbana e o tom acolhedor equilibram requinte e proximidade, para o cliente sentir que está pagando por uma experiência assinada."
+  ],
+  "cred": "Identidade visual: Edson Mota"
+ },
+ {
+  "slug": "toast-masters",
+  "nome": "Toast Masters",
+  "seg": "Alta coquetelaria",
+  "cor": "#1A1A1A",
+  "txt": "#FFFFFF",
+  "img": "toast",
+  "n": 5,
+  "desafio": [
+   "Ganhar contratos de eventos de alto padrão, em que a decisão acontece antes do primeiro drink.",
+   "A Toast Masters domina a coquetelaria da origem à composição de cada bebida. Mas, no mercado de eventos sofisticados do Rio de Janeiro, o contratante escolhe pelo que vê na proposta, nas redes e no bar montado. Sem uma marca à altura, o conhecimento técnico não chegava a ser percebido, e a disputa terminava no preço."
+  ],
+  "solucao": [
+   "Uma identidade requintada que comunica maestria no primeiro contato.",
+   "Cada elemento remete à mixologia autoral, e o sistema mistura referências clássicas e contemporâneas, do mesmo jeito que a casa transita entre coquetéis próprios e clássicos do mundo todo. A marca chega ao cerimonialista e ao cliente final com o nível do serviço já evidente, e dá base para a equipe cobrar como especialista."
+  ],
+  "cred": "Identidade visual: Edson Mota"
+ },
+ {
+  "slug": "ancoragem",
+  "nome": "Ancoragem",
+  "seg": "Moda masculina",
+  "cor": "#B8553A",
+  "txt": "#FFFFFF",
+  "img": "ancoragem",
+  "n": 5,
+  "desafio": [
+   "Ser lembrada num mercado de moda masculina lotado de marcas parecidas.",
+   "Na moda masculina, a maioria das marcas usa os mesmos códigos visuais, e o cliente esquece o nome logo depois de passar pelo feed. A Ancoragem precisava prender a atenção, criar proximidade com o público e ter uma imagem capaz de acompanhar as novas coleções sem se reinventar a cada temporada."
+  ],
+  "solucao": [
+   "Uma identidade 100% tipográfica, feita para ser reconhecida em poucos segundos.",
+   "As letras se alongam e se contraem, e esse movimento constante traduz uma marca em evolução, que acompanha cada coleção sem perder a cara. O logotipo exclusivo e irreverente prende o olhar no feed e na etiqueta e, como o nome sugere, ancora a marca na memória de quem vê."
+  ],
+  "cred": "Identidade visual: Edson Mota"
+ },
+ {
+  "slug": "anne-amazing-waist",
+  "nome": "Anne Amazing Waist",
+  "seg": "Fitness",
+  "cor": "#7DB9F5",
+  "txt": "#0A0A0A",
+  "img": "anne",
+  "n": 5,
+  "desafio": [
+   "Ganhar credibilidade num nicho exigente, em que a atleta só compra de quem entende a rotina dela.",
+   "A Anne Amazing Waist atende mulheres que afinam a cintura, principalmente para competições de fisiculturismo. O universo visual do fitness é carregado e cheio de promessas, e a atleta competitiva desconfia de marcas genéricas. A marca precisava ser sofisticada sem perder a conexão com quem vive o esporte de verdade."
+  ],
+  "solucao": [
+   "Um sistema minimalista e de impacto, que se destaca pela firmeza num mercado de excessos.",
+   "O símbolo é o protagonista, e a tipografia transmite força e determinação, os valores que a atleta reconhece em si mesma. A simplicidade separa a marca do ruído visual do setor, passa confiança de especialista e mantém a identidade firme em qualquer aplicação, da embalagem às redes."
+  ],
+  "cred": "Identidade visual: Edson Mota"
+ }
+];
+  var G = {"ancoragem":[{"s":"img/casos/ancoragem-g01.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g02.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g03.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g04.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g05.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g06.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g07.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g08.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g09.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g10.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g11.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g12.jpg","w":1600,"h":900},{"s":"img/casos/ancoragem-g13.jpg","w":1600,"h":900}],"anne":[{"s":"img/casos/anne-g01.jpg","w":1600,"h":900},{"s":"img/casos/anne-g02.jpg","w":1600,"h":900},{"s":"img/casos/anne-g03.jpg","w":1600,"h":900},{"s":"img/casos/anne-g04.jpg","w":1600,"h":900},{"s":"img/casos/anne-g05.jpg","w":1600,"h":900},{"s":"img/casos/anne-g06.jpg","w":1600,"h":900},{"s":"img/casos/anne-g07.jpg","w":1600,"h":900},{"s":"img/casos/anne-g08.jpg","w":1600,"h":900},{"s":"img/casos/anne-g09.jpg","w":1600,"h":900},{"s":"img/casos/anne-g10.jpg","w":1600,"h":900},{"s":"img/casos/anne-g11.jpg","w":1600,"h":900},{"s":"img/casos/anne-g12.jpg","w":1600,"h":900},{"s":"img/casos/anne-g13.jpg","w":1600,"h":900},{"s":"img/casos/anne-g14.jpg","w":1600,"h":900},{"s":"img/casos/anne-g15.jpg","w":1600,"h":900},{"s":"img/casos/anne-g16.jpg","w":1600,"h":900},{"s":"img/casos/anne-g17.jpg","w":1600,"h":900},{"s":"img/casos/anne-g18.jpg","w":1600,"h":900},{"s":"img/casos/anne-g19.jpg","w":1600,"h":900},{"s":"img/casos/anne-g20.jpg","w":1600,"h":900}],"gabo":[{"v":"img/casos/gabo-g01.mp4","p":"img/casos/gabo-g01-poster.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g02.jpg","w":1600,"h":900},{"v":"img/casos/gabo-g03.mp4","p":"img/casos/gabo-g03-poster.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g04.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g05.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g06.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g07.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g08.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g09.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g10.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g11.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g12.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g13.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g14.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g15.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g16.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g17.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g18.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g19.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g20.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g21.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g22.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g23.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g24.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g25.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g26.jpg","w":1600,"h":900},{"s":"img/casos/gabo-g27.jpg","w":1600,"h":900},{"v":"img/casos/gabo-g28.mp4","p":"img/casos/gabo-g28-poster.jpg","w":1600,"h":900},{"v":"img/casos/gabo-g29.mp4","p":"img/casos/gabo-g29-poster.jpg","w":1600,"h":900},{"v":"img/casos/gabo-g30.mp4","p":"img/casos/gabo-g30-poster.jpg","w":1600,"h":500}],"newgen":[{"s":"img/casos/newgen-g01.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g02.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g03.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g04.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g05.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g06.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g07.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g08.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g09.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g10.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g11.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g12.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g13.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g14.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g15.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g16.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g17.jpg","w":1600,"h":900},{"s":"img/casos/newgen-g18.jpg","w":1600,"h":900}],"toast":[{"s":"img/casos/toast-g01.jpg","w":1600,"h":900},{"s":"img/casos/toast-g02.jpg","w":1600,"h":900},{"s":"img/casos/toast-g03.jpg","w":1600,"h":900},{"s":"img/casos/toast-g04.jpg","w":1600,"h":900},{"s":"img/casos/toast-g05.jpg","w":1600,"h":900},{"s":"img/casos/toast-g06.jpg","w":1600,"h":900},{"s":"img/casos/toast-g07.jpg","w":1600,"h":900},{"s":"img/casos/toast-g08.jpg","w":1600,"h":900},{"s":"img/casos/toast-g09.jpg","w":1600,"h":900},{"s":"img/casos/toast-g10.jpg","w":1600,"h":900},{"s":"img/casos/toast-g11.jpg","w":1600,"h":900},{"s":"img/casos/toast-g12.jpg","w":1600,"h":900},{"s":"img/casos/toast-g13.jpg","w":1600,"h":900}],"verdan":[{"s":"img/casos/verdan-g01.jpg","w":1600,"h":900},{"s":"img/casos/verdan-g02.jpg","w":1600,"h":900},{"s":"img/casos/verdan-g03.jpg","w":1600,"h":900},{"s":"img/casos/verdan-g04.jpg","w":1600,"h":900},{"s":"img/casos/verdan-g05.jpg","w":1600,"h":900},{"s":"img/casos/verdan-g06.jpg","w":1600,"h":900},{"s":"img/casos/verdan-g07.jpg","w":1600,"h":900},{"s":"img/casos/verdan-g08.jpg","w":1600,"h":900},{"s":"img/casos/verdan-g09.jpg","w":1600,"h":900}]};
+  var porSlug = {}; P.forEach(function(p,i){ p.i = i; porSlug[p.slug] = p; });
+  function fotos(p){ var a=[]; for (var k=1;k<=p.n;k++) a.push('img/'+p.img+'-'+k+'.jpg'); return a; }
+
+  /* Lista ou grade */
+  var obras = document.getElementById('obras');
+  document.querySelectorAll('[data-vista]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-vista]').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      obras.classList.toggle('modo-grade', b.getAttribute('data-vista') === 'grade');
+    });
+  });
+
+  /* Pré-visualização seguindo o cursor */
+  var prev = document.querySelector('.preview');
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mx = 0, my = 0, px = 0, py = 0, rodando = false, atual = null, troca = null, k = 0, vel = 0;
+  function montar(p){
+    prev.querySelectorAll('img').forEach(function(i){ i.remove(); });
+    fotos(p).forEach(function(src, j){
+      var im = document.createElement('img'); im.src = src; im.alt = '';
+      if (j === 0) im.className = 'vis';
+      prev.insertBefore(im, prev.firstChild);
+    });
+    k = 0;
+    clearInterval(troca);
+    troca = setInterval(function(){
+      var ims = prev.querySelectorAll('img'); if (!ims.length) return;
+      ims[k % ims.length].classList.remove('vis'); k++; ims[k % ims.length].classList.add('vis');
+    }, 650);
+  }
+  function anim(){
+    var dx = mx - px; px += dx * 0.16; py += (my - py) * 0.16;
+    vel += (dx * 0.04 - vel) * 0.2;
+    var rot = Math.max(-12, Math.min(12, vel));
+    prev.style.transform = 'translate(' + (px - prev.offsetWidth / 2) + 'px,' + (py - prev.offsetHeight / 2) + 'px) rotate(' + rot.toFixed(2) + 'deg) scale(' + (atual ? 1 : .6) + ')';
+    if (rodando) requestAnimationFrame(anim);
+  }
+  prev.style.left = '0'; prev.style.top = '0'; prev.style.transition = 'opacity .3s';
+  document.querySelectorAll('.linha').forEach(function(l){
+    l.addEventListener('mouseenter', function(e){
+      var p = porSlug[l.getAttribute('data-slug')];
+      if (atual !== p) montar(p);
+      atual = p; mx = e.clientX; my = e.clientY;
+      if (!prev.classList.contains('on')) { px = mx; py = my; }
+      prev.classList.add('on');
+      if (!rodando && !reduz) { rodando = true; anim(); }
+      if (reduz) prev.style.transform = 'translate(' + (mx - prev.offsetWidth / 2) + 'px,' + (my - prev.offsetHeight / 2) + 'px)';
+    });
+    l.addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; });
+  });
+  document.querySelector('.lista').addEventListener('mouseleave', function(){
+    prev.classList.remove('on'); atual = null; clearInterval(troca);
+    setTimeout(function(){ if (!atual) rodando = false; }, 400);
+  });
+
+  /* Case em tela cheia */
+  var caso = document.querySelector('.case'), ultimoFoco = null, idx = 0;
+  function q(s){ return caso.querySelector(s); }
+  function midia(m, nome, j, prioridade){
+    var el;
+    if (m.v) {
+      el = document.createElement('video');
+      el.src = m.v; el.poster = m.p; el.muted = true; el.loop = true; el.autoplay = true; el.playsInline = true;
+      el.setAttribute('playsinline', ''); el.setAttribute('aria-label', nome + ', animação ' + j);
+    } else {
+      el = document.createElement('img');
+      el.src = m.s; el.alt = nome + ', imagem ' + (j + 1);
+      if (!prioridade) el.loading = 'lazy';
+      el.decoding = 'async';
+    }
+    el.width = m.w; el.height = m.h;
+    return el;
+  }
+  var ioG = ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.remove('fora'); ioG.unobserve(e.target); } });
+  }, {root: document.querySelector('.case'), threshold: 0.12}) : null;
+  function preencher(p){
+    idx = p.i;
+    caso.style.setProperty('--cor', p.cor);
+    caso.style.setProperty('--cor-txt', p.txt);
+    q('[data-c-cont]').textContent = String(p.i + 1).padStart(2,'0') + ' / ' + String(P.length).padStart(2,'0');
+    q('[data-c-seg]').textContent = p.seg;
+    q('[data-c-nome]').textContent = p.nome;
+    var gal = G[p.img] || [];
+    var hero = q('.case-hero-img'); hero.innerHTML = '';
+    if (gal[0]) hero.appendChild(midia(gal[0], p.nome, 0, true));
+    function paragrafos(el, arr){ el.innerHTML = ''; arr.forEach(function(t){ var pp = document.createElement('p'); pp.textContent = t; el.appendChild(pp); }); }
+    paragrafos(q('[data-c-desafio]'), p.desafio);
+    paragrafos(q('[data-c-resposta]'), p.solucao);
+    var g = q('[data-c-galeria]'); g.innerHTML = '';
+    gal.slice(1).forEach(function(m, j){ g.appendChild(midia(m, p.nome, j + 1, false)); });
+    if (ioG) g.querySelectorAll(':scope > *').forEach(function(el){ el.classList.add('fora'); ioG.observe(el); });
+    q('[data-c-cred]').textContent = p.cred;
+    q('[data-c-seguinte-nome]').textContent = P[(p.i + 1) % P.length].nome;
+    caso.scrollTop = 0;
+  }
+  function abrir(slug, semHash){
+    var p = porSlug[slug]; if (!p) return;
+    if (!caso.classList.contains('aberto')) ultimoFoco = document.activeElement;
+    preencher(p);
+    caso.classList.add('aberto');
+    document.body.style.overflow = 'hidden';
+    if (!semHash && location.hash !== '#' + slug) location.hash = slug;
+    setTimeout(function(){ q('[data-c-fechar]').focus({preventScroll:true}); }, 60);
+  }
+  function fechar(){
+    caso.querySelectorAll('video').forEach(function(v){ v.pause(); });
+    caso.classList.remove('aberto');
+    document.body.style.overflow = '';
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    if (ultimoFoco) ultimoFoco.focus({preventScroll:true});
+  }
+  document.querySelectorAll('[data-slug]').forEach(function(b){
+    b.addEventListener('click', function(){ abrir(b.getAttribute('data-slug')); });
+  });
+  q('[data-c-fechar]').addEventListener('click', fechar);
+  q('[data-c-prox]').addEventListener('click', function(){ abrir(P[(idx + 1) % P.length].slug); });
+  q('[data-c-ant]').addEventListener('click', function(){ abrir(P[(idx + P.length - 1) % P.length].slug); });
+  q('[data-c-seguinte]').addEventListener('click', function(){ abrir(P[(idx + 1) % P.length].slug); });
+  document.addEventListener('keydown', function(e){
+    if (!caso.classList.contains('aberto')) return;
+    if (e.key === 'Escape') fechar();
+    if (e.key === 'ArrowRight') abrir(P[(idx + 1) % P.length].slug);
+    if (e.key === 'ArrowLeft') abrir(P[(idx + P.length - 1) % P.length].slug);
+  });
+  function peloHash(){ var h = location.hash.replace('#',''); if (porSlug[h]) abrir(h, true); else if (caso.classList.contains('aberto') && !h) fechar(); }
+  window.addEventListener('hashchange', peloHash);
+  peloHash();
+
+  /* Imagem que cresce ao rolar */
+  var cresce = document.querySelector('.cresce'), mold = cresce.querySelector('.moldura');
+  function rolar(){
+    var r = cresce.getBoundingClientRect();
+    var total = cresce.offsetHeight - window.innerHeight;
+    var p = Math.min(1, Math.max(0, -r.top / total));
+    var e = 1 - Math.pow(1 - p, 2);
+    mold.style.transform = 'scale(' + (0.42 + 0.58 * e).toFixed(4) + ')';
+    mold.style.borderRadius = (40 * (1 - e)).toFixed(1) + 'px';
+  }
+  if (!reduz) { window.addEventListener('scroll', rolar, {passive:true}); rolar(); }
+  else { mold.style.transform = 'none'; mold.style.borderRadius = '0'; }
+})();
+</script>
+</body>
+</html>

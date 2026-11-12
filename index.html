@@ -23,12 +23,17 @@
 .hero .faixa .wrap{display:flex;justify-content:space-between;gap:16px;margin-bottom:22px}
 .hero .faixa .label{color:var(--txt-escuro)}
 
-/* VERSÃO B: título menor e showreel logo abaixo, sem texto por cima */
+/* TOPO: título em 3 linhas à esquerda, descrição e botões alinhados à base, à direita */
 .hero-b{--respiro:clamp(56px,6vw,96px);padding-top:calc(var(--nav-fim,62px) + var(--respiro));overflow:visible;overflow-x:clip}
-.hero-b h1{font-size:clamp(34px,4.25vw,70px);max-width:none;line-height:1.04}
-.hero-b h1 .l1,.hero-b h1 .l2{display:block}
-@media (min-width:900px){.hero-b h1 .l1,.hero-b h1 .l2{white-space:nowrap}}
-.hero-b .base{margin-top:clamp(20px,2vw,30px);padding-bottom:var(--respiro);align-items:center}
+.topo-hero{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:clamp(32px,4vw,72px);align-items:end;padding-bottom:var(--respiro)}
+.hero-b h1{font-size:clamp(36px,5.4vw,84px);line-height:.98;letter-spacing:-0.048em;max-width:none}
+.hero-b h1 .ln{display:block;white-space:nowrap}
+.hero-b .lado{display:flex;flex-direction:column;gap:26px;padding-top:22px;border-top:1px solid #2A2A2A;margin-bottom:.35em}
+.hero-b .lado p{font-size:18px;line-height:1.5;color:var(--txt-escuro);max-width:none}
+.hero-b .lado .acoes{display:flex;flex-direction:column;gap:10px}
+.hero-b .lado .btn{justify-content:space-between;width:100%}
+@media (max-width:1100px){.topo-hero{grid-template-columns:1fr;gap:32px}.hero-b .lado{margin-bottom:0;max-width:460px}}
+@media (max-width:420px){.hero-b h1 .ln{white-space:normal}}
 .reel{position:relative;z-index:2;padding-bottom:clamp(56px,7vw,90px)}
 .reel .moldura{position:relative;margin:0 auto;width:calc(min(100vw, var(--max)) - 2 * var(--gutter));aspect-ratio:16/9;border-radius:clamp(14px,2vw,28px);overflow:hidden;background:#141414;will-change:width,border-radius}
 .reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
@@ -277,14 +282,16 @@
 <!-- 1. HERO -->
 <header class="hero hero-b escuro">
   <div class="wrap">
-    <div class="titulo-trilha">
-      <h1><span class="l1">Consultoria estratégica de <span class="dim">posicionamento</span></span> <span class="l2">e <span class="dim">identidade</span> de marca.</span></h1>
-    </div>
-    <div class="base">
-      <p>Estratégia e design no mesmo projeto, <b>para a sua marca valer o&nbsp;que a sua empresa entrega.</b></p>
-      <div class="acoes">
-        <a class="btn btn-laranja" href="https://edsonmotajunior.typeform.com/to/UylmUkGl">Aplicar para um projeto <span class="seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h10.5M8.5 3.5L13 8l-4.5 4.5"/></svg></span></a>
-        <a class="btn btn-linha" href="#metodo">Ver como funciona</a>
+    <div class="topo-hero">
+      <div class="titulo-trilha">
+        <h1><span class="ln">Consultoria estratégica</span> <span class="ln">de <span class="dim">posicionamento</span></span> <span class="ln">e <span class="dim">identidade</span> de marca.</span></h1>
+      </div>
+      <div class="lado">
+        <p>Estratégia e design no mesmo projeto, para a sua marca valer o&nbsp;que a sua empresa entrega.</p>
+        <div class="acoes">
+          <a class="btn btn-laranja" href="https://edsonmotajunior.typeform.com/to/UylmUkGl">Aplicar para um projeto <span class="seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h10.5M8.5 3.5L13 8l-4.5 4.5"/></svg></span></a>
+          <a class="btn btn-linha" href="#metodo">Ver como funciona</a>
+        </div>
       </div>
     </div>
   </div>

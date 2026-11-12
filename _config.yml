@@ -1,0 +1,5 @@
+# O site é estático. O Jekyll só publica o HTML, o CSS e o JS.
+# A pasta apps-script fica de fora do edsonmota.com: é o código que
+# roda no Google, e não deve ser baixado pelo site.
+exclude:
+  - apps-script

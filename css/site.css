@@ -1,7 +1,6 @@
 /* Edson Mota · site da consultoria
-   Identidade nov/2026: branco, preto e laranja em blocos cheios; títulos só em Helvetica,
-   em dois tons (cinza + preto/branco); grafismos de traço fino explicam o argumento,
-   com um único ponto em laranja. A serifada fica só nas peças do Instagram.
+   Blocos cheios em branco, cinza claro e preto, laranja como ação; títulos só em
+   Helvetica, em dois tons. A serifada e os grafismos ficam só nas peças do Instagram.
    Referência: brandbook "Edson Mota — Brandbook da consultoria". */
 :root{
   --cinza:#F2F2F2;
@@ -10,8 +9,8 @@
   --grafite:#1A1A1A;
   --laranja:#F43217;
   --vermelho:#931302;
-  --dim-claro:#676767;   /* parte serifada do título em fundo claro */
-  --dim-escuro:#7A7A7A;  /* parte serifada do título em fundo preto */
+  --dim-claro:#676767;   /* parte cinza do título em fundo claro */
+  --dim-escuro:#7A7A7A;  /* parte cinza do título em fundo preto */
   --txt-claro:#555555;   /* texto corrido em fundo claro */
   --txt-escuro:#A6A6A6;  /* texto corrido em fundo preto */
   --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -43,7 +42,6 @@ button{font-family:inherit;cursor:pointer}
 .claro{background:var(--cinza)}
 .branco{background:var(--branco)}
 .laranja{background:var(--laranja);color:var(--preto)}
-.laranja .dim{color:var(--vermelho)}
 .sec{padding-block:clamp(88px,11vw,150px)}
 
 /* Botões */
@@ -156,18 +154,3 @@ button{font-family:inherit;cursor:pointer}
   .pre{opacity:1;transform:none}
   .pre .linha-mask>span{transform:none}
 }
-
-/* Grafismo: cota de percepção (traço fino, um ponto em laranja) */
-.cota{position:relative;margin-top:clamp(48px,6vw,80px);height:clamp(150px,16vw,210px)}
-.cota .lin{position:absolute;left:0;right:0;height:0}
-.cota .lin.a{top:28px;border-top:2px solid #555}
-.cota .lin.b{bottom:28px;border-top:2px solid #D6D6D6}
-.cota .rot{position:absolute;left:0;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-.cota .rot.a{top:0;color:#555}
-.cota .rot.b{bottom:0;color:#8F8F8F}
-.cota .med{position:absolute;right:14%;top:28px;bottom:28px;width:2px;background:var(--laranja)}
-.cota .med::before,.cota .med::after{content:"";position:absolute;left:-11px;width:24px;height:2px;background:var(--laranja)}
-.cota .med::before{top:-1px}.cota .med::after{bottom:-1px}
-.cota .nota{position:absolute;right:calc(14% + 22px);top:50%;transform:translateY(-50%);font-size:clamp(20px,2vw,30px);font-weight:700;letter-spacing:-0.035em;color:var(--laranja);white-space:nowrap}
-.sinal p{font-size:16px;line-height:1.45;color:var(--txt-claro);margin-top:12px;transition:color .4s}
-.sinal:hover p{color:var(--txt-escuro)}

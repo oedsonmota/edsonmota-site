@@ -41,7 +41,7 @@
       '<h3>E o momento <span class="dim">de agora.</span></h3>'+
       '<p class="apl-sub">É aqui que eu entendo qual problema a marca precisa resolver.</p>'+
       '<div class="apl-campo"><label for="apl-trava">O que mais está travando o negócio hoje?</label><textarea id="apl-trava" name="desafio" required></textarea><span class="apl-msg">Escreve com as suas palavras, do jeito que vier.</span></div>'+
-      '<div class="apl-campo" data-radio="investimento"><span class="apl-perg">Os projetos começam a partir de R$ 4.500. O valor final depende do escopo e do que o seu negócio precisa. Esse investimento faz sentido para o seu momento?</span>'+opcoes('investimento',['Sim, faz sentido','Faz, mas quero entender o escopo','Agora não cabe'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
+      '<div class="apl-campo" data-radio="investimento"><span class="apl-perg">Pra você já saber antes da conversa: os projetos começam a partir de R$ 4.500. O valor final eu defino depois de entender o escopo do seu negócio. Isso está dentro do que você imaginava investir?</span>'+opcoes('investimento',['Sim, está dentro','Quero entender melhor o escopo','Por enquanto, não'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
       '<div class="apl-campo" data-radio="quando"><span class="apl-perg">Quando você quer começar?</span>'+opcoes('quando',['Agora','Nos próximos 3 meses','Ainda estou pesquisando'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
      '</section>'+
 

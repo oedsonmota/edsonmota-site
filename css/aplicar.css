@@ -39,3 +39,4 @@
 .apl-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 body.apl-trava{overflow:hidden}
 @media (max-width:520px){.apl{padding:0;align-items:flex-end}.apl-caixa{border-radius:28px 28px 0 0;max-height:94dvh}}
+.apl [hidden]{display:none!important}

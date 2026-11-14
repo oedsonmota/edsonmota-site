@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edson Mota · Estratégia de marca</title>
+<meta name="description" content="Consultoria estratégica de posicionamento e identidade de marca para empresas em crescimento. Estratégia e design no mesmo projeto, a partir do seu negócio.">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<style>
+/* HERO: a área inteira solta as imagens dos projetos */
+.titulo-trilha{display:inline-block;max-width:none;margin-top:0}
+.hero{position:relative;overflow:hidden;padding:clamp(140px,15vw,200px) 0 0}
+.hero .label{color:var(--laranja)}
+.hero h1{font-size:clamp(42px,7vw,118px);letter-spacing:-0.045em;line-height:1;position:relative;z-index:2}
+.hero .base{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);padding-bottom:clamp(56px,7vw,90px)}
+.hero .base p{max-width:var(--desc);font-size:19px;color:var(--txt-escuro)}
+.hero .base p b{color:var(--branco)}
+.hero .acoes{display:flex;gap:12px;flex-wrap:wrap}
+.hero .faixa{position:relative;z-index:2;border-top:1px solid #222;padding:26px 0 70px}
+.hero .faixa .wrap{display:flex;justify-content:flex-end;gap:16px;margin-bottom:22px}
+.ver-proj{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;color:var(--branco);text-decoration:none;line-height:1}
+.ver-proj svg{flex:none;display:block}
+.hero .faixa .label{color:var(--txt-escuro)}
+
+/* TOPO: título em 3 linhas à esquerda, descrição e botões alinhados à base, à direita */
+.hero-b{--respiro:clamp(56px,6vw,96px);padding-top:calc(var(--nav-fim,62px) + var(--respiro));overflow:visible;overflow-x:clip}
+.topo-hero{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:clamp(32px,4vw,72px);align-items:end;padding-bottom:var(--respiro)}
+.hero-b h1{font-size:clamp(36px,5.4vw,84px);line-height:.98;letter-spacing:-0.048em;max-width:none}
+.hero-b h1 .ln{display:block;white-space:nowrap}
+.hero-b .lado{display:flex;flex-direction:column;gap:26px;padding-top:22px;border-top:1px solid #2A2A2A;margin-bottom:.35em}
+.hero-b .lado p{font-size:18px;line-height:1.5;color:var(--txt-escuro);max-width:none}
+.hero-b .lado .acoes{display:flex;flex-direction:column;gap:10px}
+.hero-b .lado .btn{justify-content:space-between;width:100%}
+@media (max-width:1100px){.topo-hero{grid-template-columns:1fr;gap:32px}.hero-b .lado{margin-bottom:0;max-width:460px}}
+@media (max-width:420px){.hero-b h1 .ln{white-space:normal}}
+.reel{position:relative;z-index:2;padding-bottom:clamp(56px,7vw,90px)}
+.reel .moldura{position:relative;margin:0 auto;width:calc(min(100vw, var(--max)) - 2 * var(--gutter));aspect-ratio:16/9;border-radius:clamp(14px,2vw,28px);overflow:hidden;background:#141414;will-change:width,border-radius}
+.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.reel .ctrl{position:absolute;right:16px;bottom:16px;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(16,16,16,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.reel .ctrl:hover{background:var(--laranja);color:var(--preto);border-color:var(--laranja)}
+
+/* Descrição padrão abaixo dos títulos */
+:root{--desc:600px}
+.desc{max-width:var(--desc);font-size:19px}
+
+/* SINAIS */
+.sinais-tit{font-size:clamp(34px,4.6vw,74px);line-height:1.02;max-width:1100px}
+.sinais{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:clamp(48px,6vw,80px)}
+.sinal{background:var(--cinza);border-radius:var(--r-card);padding:clamp(24px,2.4vw,34px);min-height:clamp(240px,22vw,320px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;transition:background .4s,color .4s,transform .4s cubic-bezier(.2,.8,.2,1)}
+.sinal .n{font-size:clamp(44px,4.4vw,72px);font-weight:700;letter-spacing:-0.06em;line-height:.9;color:var(--laranja);font-variant-numeric:tabular-nums}
+.sinal h3{font-size:clamp(21px,1.9vw,28px);letter-spacing:-0.03em;line-height:1.12}
+.sinal:hover{background:var(--preto);color:var(--branco);transform:translateY(-6px)}
+.sinais-rodape{margin-top:clamp(36px,4vw,56px);font-size:19px;max-width:var(--desc);color:var(--txt-claro)}
+@media (max-width:1060px){.sinais{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.sinais{grid-template-columns:1fr}.sinal{min-height:0}}
+
+/* LARANJA: a frase central */
+.tese h2{font-size:clamp(44px,9vw,150px);text-transform:uppercase;letter-spacing:-0.048em;line-height:.95}
+.tese h2 .branca{color:var(--branco)}
+.tese .intro{margin-top:26px;max-width:var(--desc)}
+.tese .intro p{font-size:19px}
+.tres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(64px,8vw,110px);border-top:1.5px solid var(--preto)}
+.tres div{padding:28px 28px 0 0;display:flex;flex-direction:column;gap:12px}
+.tres div+div{padding-left:28px;border-left:1.5px solid var(--preto)}
+.tres h3{font-size:clamp(26px,2.5vw,38px);letter-spacing:-0.045em;line-height:1}
+.tres p{font-size:17px}
+@media (max-width:860px){.tese .intro,.tres{grid-template-columns:1fr}.tres div+div{padding-left:0;border-left:0;border-top:1.5px solid var(--preto);margin-top:26px}}
+
+/* NEGÓCIO: problema → o que a marca resolve */
+.negocio h2{font-size:clamp(34px,5.4vw,86px);line-height:1.02;max-width:1150px}
+.tabela{margin-top:clamp(56px,7vw,90px)}
+.tabela .cab,.tabela .lin{display:grid;grid-template-columns:70px minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center}
+.tabela .cab{padding-bottom:16px;border-bottom:1px solid #333;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt-escuro)}
+.tabela .lin{padding:28px 0;border-bottom:1px solid #222;transition:padding .45s cubic-bezier(.2,.8,.2,1),background .35s}
+.tabela .lin .n{font-size:13px;font-weight:700;color:var(--txt-escuro);font-variant-numeric:tabular-nums;transition:color .3s}
+.tabela .lin .p{font-size:clamp(22px,2.2vw,32px);font-weight:700;letter-spacing:-0.035em;line-height:1.1;color:#8F8F8F;transition:color .3s}
+.tabela .lin .r{font-size:17px;color:var(--txt-escuro);display:flex;gap:14px;align-items:baseline;transition:color .3s}
+.tabela .lin .r::before{content:"→";color:var(--laranja);font-weight:700}
+.tabela .lin:hover{padding-left:14px}
+.tabela .lin:hover .p{color:var(--branco)}
+.tabela .lin:hover .r{color:#DADADA}
+.tabela .lin:hover .n{color:var(--laranja)}
+@media (max-width:760px){.tabela .cab{display:none}.tabela .lin{grid-template-columns:40px minmax(0,1fr)}.tabela .lin .r{grid-column:2}}
+
+/* O QUE VOCÊ COMPRA */
+.compra h2{font-size:clamp(34px,5.6vw,90px);line-height:1.02;max-width:1100px}
+.compra .sub{max-width:var(--desc);font-size:19px;color:var(--txt-claro);margin-top:26px}
+.entregas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(56px,7vw,90px)}
+.ent{background:var(--branco);border-radius:var(--r-card);padding:34px;display:flex;flex-direction:column;gap:18px;transition:background .35s,color .35s}
+.ent .topo{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.ent .topo i{width:10px;height:10px;border-radius:50%;background:var(--laranja)}
+.ent h3{font-size:clamp(32px,3vw,44px);letter-spacing:-0.045em;margin-top:56px}
+.ent .resolve{font-size:18px;color:var(--txt-claro)}
+.ent ul{list-style:none;margin:auto 0 0;padding:0}
+.ent li{padding:12px 0;border-top:1px solid rgba(10,10,10,.12);font-size:15px;font-weight:700}
+.ent:hover{background:var(--preto);color:var(--branco)}
+.ent:hover .resolve{color:var(--txt-escuro)}
+.ent:hover li{border-color:#2A2A2A}
+.incluso{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border:1.5px solid rgba(10,10,10,.16);border-radius:var(--r-card);padding:22px 28px}
+.incluso p{color:var(--txt-claro);max-width:720px}
+.incluso p b{color:var(--preto)}
+@media (max-width:960px){.entregas{grid-template-columns:1fr}.ent{min-height:0}}
+
+/* CRONOGRAMA */
+.crono-sec h2{font-size:clamp(52px,10.5vw,172px);letter-spacing:-0.05em;text-transform:uppercase;line-height:.92}
+.crono-sec .cab{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-end}
+.crono-sec .cab p{max-width:var(--desc);color:var(--txt-escuro);font-size:19px}
+.crono-caixa{overflow-x:auto;margin-top:56px;padding-bottom:6px;scrollbar-width:thin}
+.crono{position:relative;min-width:760px}
+.crono{display:grid;grid-template-columns:repeat(6,auto);column-gap:8px}
+.pista,.fases{grid-column:1/-1;display:grid;grid-template-columns:subgrid;gap:8px}
+.fases span{white-space:nowrap}
+.pista{position:relative;height:210px}
+.etapa{position:relative;border:0;border-radius:14px;padding:16px 16px 18px;text-align:left;color:var(--branco);background:#1E1E1E;display:flex;flex-direction:column;gap:6px;transition:background .3s,color .3s}
+.etapa .en{font-size:12px;font-weight:700;color:var(--txt-escuro);margin-bottom:auto}
+.etapa .et{font-size:clamp(14px,0.98vw,16px);font-weight:700;letter-spacing:-0.02em;line-height:1.05;text-wrap:balance}
+@media (min-width:1721px){.etapa .et{font-size:17px}}
+.etapa .es{font-size:12px;color:var(--txt-escuro)}
+.etapa.criacao{background:#2A1410}
+.etapa:hover{background:#2C2C2C}
+.etapa.criacao:hover{background:#3A1A14}
+.etapa[aria-pressed="true"]{background:var(--laranja);color:var(--preto)}
+.etapa[aria-pressed="true"] .en,.etapa[aria-pressed="true"] .es{color:var(--preto)}
+.etapa.criacao[aria-pressed="true"]{background:var(--vermelho);color:var(--branco)}
+.etapa.criacao[aria-pressed="true"] .en,.etapa.criacao[aria-pressed="true"] .es{color:var(--branco)}
+.scan{position:absolute;top:-12px;bottom:-12px;left:0;width:2px;background:var(--laranja);opacity:0;pointer-events:none}
+.rodando .scan{opacity:1;animation:varrer 13.6s linear forwards}
+@keyframes varrer{from{left:0}to{left:100%}}
+.fases{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.fases span{padding-top:10px;border-top:2px solid #555}
+.fases .f1{grid-column:1/4}
+.fases .f2{grid-column:4/7;border-color:var(--vermelho);color:#FF6A4D}
+@media (max-width:1199px){
+  .crono{min-width:0;display:block}
+  .pista{grid-template-columns:repeat(3,minmax(0,1fr));height:auto}
+  .etapa{min-height:120px}
+  .etapa .et{font-size:17px}
+  .fases{display:none}
+}
+@media (max-width:999px){
+  .pista{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .pista{grid-template-columns:1fr}
+  .etapa{min-height:92px}
+}
+.painel{margin-top:36px;display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);gap:20px 48px;align-items:start;background:var(--grafite);border-radius:var(--r-bloco);padding:clamp(26px,3.4vw,44px)}
+.painel .pn{font-size:clamp(70px,8vw,120px);font-weight:700;letter-spacing:-0.06em;line-height:.8;color:var(--laranja);font-variant-numeric:tabular-nums}
+.painel h3{font-size:clamp(30px,3.2vw,48px);letter-spacing:-0.04em}
+.painel .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.painel .meta span{font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;background:#2A2A2A}
+.painel p{color:#CFCFCF;font-size:18px}
+.painel p b{display:block;color:var(--branco);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.painel.troca>*{animation:entra .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}}
+@media (max-width:860px){.painel{grid-template-columns:1fr}}
+
+/* PLATAFORMA DO CLIENTE */
+.plat-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(40px,5vw,80px);align-items:center}
+.plat h2{font-size:clamp(36px,4.6vw,72px);line-height:1.02;margin-top:22px}
+.plat h2 .branca{color:var(--branco)}
+.plat .desc{margin-top:26px}
+.plat-lista{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;border-top:1.5px solid var(--preto)}
+.plat-lista li{padding:18px 0;border-bottom:1.5px solid rgba(10,10,10,.25);display:flex;flex-direction:column;gap:4px}
+.plat-lista b{font-size:20px;letter-spacing:-0.025em}
+.plat-lista span{font-size:15px}
+.tela{background:var(--preto);border-radius:var(--r-bloco);overflow:hidden;box-shadow:0 40px 80px -30px rgba(60,10,0,.55);transform:translateZ(0)}
+.tela-barra{display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid #222}
+.tela-barra i{width:10px;height:10px;border-radius:50%;background:#2E2E2E}
+.tela-barra span{margin-left:12px;font-size:12px;color:#7A7A7A;background:#161616;border-radius:999px;padding:5px 12px}
+.tela-corpo{padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;color:var(--branco)}
+.tela small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7A7A7A;margin-bottom:6px}
+.tela-topo{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.tela-topo b{font-size:clamp(22px,2vw,30px);letter-spacing:-0.035em}
+.pill{font-size:12px;font-weight:700;padding:7px 12px;border-radius:999px;background:var(--laranja);color:var(--preto);white-space:nowrap}
+.tela-prog{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.tela-prog span{height:8px;border-radius:99px;background:#262626}
+.tela-prog .ok{background:#5A5A5A}
+.tela-prog .agora{background:var(--laranja);position:relative;overflow:hidden}
+.tela-prog .agora::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);transform:translateX(-100%);animation:brilho 2.4s ease-in-out infinite}
+@keyframes brilho{to{transform:translateX(100%)}}
+.tela-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tc{background:#161616;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.tc:first-child{background:#2A1410}
+.tc b{font-size:16px;letter-spacing:-0.02em;line-height:1.2}
+.tc em{font-style:normal;font-size:13px;color:#8A8A8A}
+.arq{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:11px 0;border-top:1px solid #222;font-size:14px}
+.arq i{font-style:normal;font-size:10px;font-weight:700;background:#262626;color:#BDBDBD;padding:4px 7px;border-radius:6px}
+.arq em{font-style:normal;font-size:12px;color:#7A7A7A}
+@media (max-width:960px){.plat-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.plat-lista{grid-template-columns:1fr}.tela-cards{grid-template-columns:1fr}}
+
+/* DEPOIMENTOS */
+.depo h2{font-size:clamp(38px,6vw,96px);line-height:1}
+.depo .cab{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}
+.setas{display:flex;gap:10px}
+.setas button{width:56px;height:56px;border-radius:50%;border:0;background:var(--laranja);color:var(--preto);display:grid;place-items:center;transition:background .2s,color .2s,opacity .2s}
+.setas button:hover:not(:disabled){background:var(--preto);color:var(--branco)}
+.setas button:disabled{background:var(--cinza);color:#9A9A9A;cursor:default}
+.trilho{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:56px var(--gutter) 10px;margin-inline:calc(var(--gutter) * -1);scrollbar-width:none;cursor:grab}
+.trilho::-webkit-scrollbar{display:none}
+.trilho.arrastando{cursor:grabbing;scroll-snap-type:none}
+.dcard{flex:0 0 clamp(300px,36vw,500px);scroll-snap-align:start;background:var(--cinza);border-radius:var(--r-card);padding:36px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;user-select:none;margin:0}
+.dcard blockquote{margin:0;font-size:clamp(19px,1.6vw,23px);line-height:1.38;letter-spacing:-0.015em}
+.dcard .quem{display:flex;align-items:center;gap:14px}
+.dcard .ini{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 40%;flex:none;background:#DDD}
+.dcard .quem b{display:block}
+.dcard .quem span{font-size:14px;color:var(--txt-claro)}
+
+/* SOBRE */
+.sobre .nome{font-size:clamp(70px,14vw,230px);letter-spacing:-0.065em;line-height:.8;margin-bottom:clamp(40px,5vw,70px)}
+.sobre-grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(28px,5vw,80px);align-items:center}
+.sobre-grid img{border-radius:var(--r-bloco);aspect-ratio:4/5;object-fit:cover;width:100%;object-position:50% 50%}
+.sobre-txt{display:flex;flex-direction:column;gap:22px}
+.sobre-txt .label{color:var(--vermelho)}
+.sobre-txt .sobre-tit{font-size:clamp(34px,3.6vw,56px);letter-spacing:-0.045em;line-height:1}
+.sobre-txt p{color:var(--txt-claro);font-size:19px;max-width:var(--desc)}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 24px;margin-top:14px;padding-top:22px;border-top:1px solid rgba(10,10,10,.14)}
+.nums div{display:grid;grid-template-columns:36px auto;column-gap:12px;align-items:center}
+.nums .ico{grid-row:1/3;width:40px;height:40px;border-radius:50%;background:var(--branco);color:var(--laranja);display:grid;place-items:center}
+.nums .ico svg{width:20px;height:20px}
+.nums b{font-size:16px;letter-spacing:-0.02em;line-height:1.1}
+.nums div>span:last-child{font-size:13px;color:var(--txt-claro);line-height:1.3}
+@media (max-width:860px){.sobre-grid{grid-template-columns:1fr}.sobre-grid img{max-width:460px}}
+@media (max-width:760px){.nums{grid-template-columns:1fr}}
+
+/* DÚVIDAS (escuro) */
+.duvidas-grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(28px,5vw,80px)}
+.duvidas-grid h2{font-size:clamp(36px,5vw,76px);line-height:1}
+.duvidas-grid .aside{display:flex;flex-direction:column;gap:26px;align-self:start;position:sticky;top:120px}
+.duvidas .cartao{margin-top:8px;background:var(--grafite);border-radius:var(--r-card);padding:26px;display:flex;flex-direction:column;gap:10px;max-width:380px}
+.duvidas .cartao b{font-size:20px;letter-spacing:-0.02em}
+.duvidas .cartao span{color:var(--txt-escuro);font-size:16px}
+.duvidas .cartao .btn{align-self:flex-start;margin-top:10px}
+.duvidas-grid .aside p{color:var(--txt-escuro);font-size:18px;max-width:360px}
+.faq.escura details{border-color:#2A2A2A}
+.faq.escura .mais{background:var(--branco);color:var(--preto)}
+.faq.escura details[open] .mais{background:var(--laranja)}
+.faq.escura .resp{color:#BDBDBD}
+.faq .grupo{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--laranja);padding:34px 0 8px}
+.faq .grupo:first-child{padding-top:0}
+@media (max-width:860px){.duvidas-grid{grid-template-columns:1fr}.duvidas-grid .aside{position:static}}
+
+/* ENSINO + INQUIETOS */
+.ensino h2{font-size:clamp(32px,5.2vw,82px);line-height:1.04;max-width:1100px}
+.ensino-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(48px,6vw,80px);border-top:1.5px solid var(--preto)}
+.ensino-grid div{padding:24px 24px 0 0;display:flex;flex-direction:column;gap:10px}
+.ensino-grid div+div{padding-left:24px;border-left:1px solid rgba(10,10,10,.14)}
+.ensino-grid b{font-size:20px;letter-spacing:-0.025em;line-height:1.15}
+.ensino-grid span{font-size:15px;color:var(--txt-claro)}
+.inq{margin-top:clamp(56px,7vw,90px);background:var(--preto);color:var(--branco);border-radius:var(--r-bloco);padding:clamp(28px,4vw,52px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end}
+.inq .marca-inq{font-size:clamp(48px,7vw,104px);letter-spacing:-0.06em;line-height:.85;font-weight:700}
+.inq .marca-inq .in{font-weight:200;font-style:italic}
+.inq p{color:var(--txt-escuro);max-width:560px;margin-top:18px;font-size:17px}
+.inq p b{color:var(--branco)}
+.inq .botoes{display:flex;flex-direction:column;gap:10px;min-width:360px}
+.inq .botoes .btn{justify-content:space-between;white-space:nowrap}
+@media (max-width:420px){.inq .botoes .btn{font-size:14px;padding:0 20px}}
+.inq .botoes small{color:var(--txt-escuro);font-size:13px;padding-left:4px}
+@media (max-width:960px){.ensino-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ensino-grid div:nth-child(3){padding-left:0;border-left:0}.inq{grid-template-columns:1fr}.inq .botoes{min-width:0}}
+@media (max-width:560px){.ensino-grid{grid-template-columns:1fr}.ensino-grid div+div{padding-left:0;border-left:0;border-top:1px solid rgba(10,10,10,.14);margin-top:20px}}
+
+/* CTA FINAL */
+.final{padding:clamp(100px,12vw,170px) 0}
+.final h2{font-size:clamp(46px,10.4vw,172px);text-transform:uppercase;letter-spacing:-0.05em;line-height:.93}
+.final h2 .branca{color:var(--branco)}
+.final .linha{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:flex-end;margin-top:44px}
+.final p{max-width:var(--desc);font-size:19px}
+.passos{list-style:none;margin:clamp(56px,7vw,90px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--preto)}
+.passos li{padding:24px 24px 0 0;display:flex;flex-direction:column;gap:8px}
+.passos li+li{padding-left:24px;border-left:1.5px solid var(--preto)}
+.passos span{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.passos b{font-size:clamp(22px,2vw,28px);letter-spacing:-0.035em;line-height:1.1}
+.passos small{font-size:16px;max-width:300px}
+@media (max-width:760px){.passos{grid-template-columns:1fr}.passos li+li{padding-left:0;border-left:0;border-top:1.5px solid var(--preto);margin-top:24px}}
+</style>
+<link rel="stylesheet" href="css/aplicar.css">
+<meta name="robots" content="noindex">
+<style>
+/* PRÉVIA · menos preto e laranja, camadas de cinza */
+:root{--cinza2:#E6E6E6;--sobe:clamp(70px,9vw,140px)}
+.cinza2{background:var(--cinza2)}
+/* tese em cinza: laranja só como destaque */
+.tese h2 .branca{color:var(--laranja)}
+.tres{border-top:0;gap:clamp(12px,1.4vw,20px)}
+.tres div,.tres div+div{background:var(--branco);border:0;border-radius:var(--r-card);padding:clamp(24px,2.4vw,34px);margin:0}
+/* negócio em branco, tabela numa placa cinza que invade a seção seguinte */
+.negocio{padding-bottom:0}
+.negocio .tabela{position:relative;z-index:2;background:var(--cinza2);border-radius:var(--r-bloco,28px);padding:clamp(22px,3.4vw,52px);margin-bottom:calc(var(--sobe) * -1)}
+.tabela .cab{border-bottom-color:#CFCFCF;color:var(--txt-claro)}
+.tabela .lin{border-bottom-color:#D6D6D6}
+.tabela .lin:last-child{border-bottom:0}
+.tabela .lin .n,.tabela .lin .r{color:var(--txt-claro)}
+.tabela .lin .p{color:#7A7A7A}
+.tabela .lin:hover .p{color:var(--preto)}
+.tabela .lin:hover .r{color:var(--preto)}
+.compra{padding-top:calc(var(--sobe) + clamp(88px,11vw,150px))}
+/* plataforma em cinza, tela preta descendo sobre os depoimentos */
+.plat{position:relative;z-index:2;padding-bottom:clamp(40px,4vw,60px)}
+.plat h2 .branca{color:var(--laranja)}
+.plat .tela{position:relative;top:var(--sobe)}
+.depo{padding-top:calc(var(--sobe) + clamp(88px,11vw,150px))}
+/* dúvidas em branco */
+.duvidas .cartao{background:var(--cinza)}
+.duvidas .cartao span,.duvidas-grid .aside p{color:var(--txt-claro)}
+@media (max-width:860px){.tres div+div{margin-top:0}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Principal">
+  <a class="marca" href="index.html" aria-label="Edson Mota, página inicial"><svg class="logo" width="30" height="24" viewBox="0 0 59 47" fill="currentColor" aria-hidden="true"><rect x="19.65" y="2.27" width="38.9" height="8.2"/><rect y="20.73" width="39.1" height="8"/><rect x="8.89" y="39" width="39.1" height="8"/><circle cx="6.71" cy="5.73" r="5.73"/></svg></a>
+  <ul>
+    <li><a href="projetos.html">Projetos</a></li>
+    <li><a href="#metodo">Método</a></li>
+    <li><a href="#plataforma">Plataforma</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+  </ul>
+  <a class="btn btn-laranja" href="#aplicar" data-aplicar>Aplicar</a>
+  <button class="menu" type="button" aria-label="Abrir menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h14M3 13h14"/></svg></button>
+</nav>
+
+<!-- 1. HERO -->
+<header class="hero hero-b escuro">
+  <div class="wrap">
+    <div class="topo-hero">
+      <div class="titulo-trilha">
+        <h1><span class="ln">Consultoria estratégica</span> <span class="ln">de <span class="dim">posicionamento</span></span> <span class="ln">e <span class="dim">identidade</span> de marca.</span></h1>
+      </div>
+      <div class="lado">
+        <p>Estratégia e design no mesmo projeto, para a sua marca valer o&nbsp;que a sua empresa entrega.</p>
+        <div class="acoes">
+          <a class="btn btn-laranja" href="#aplicar" data-aplicar>Aplicar para um projeto <span class="seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h10.5M8.5 3.5L13 8l-4.5 4.5"/></svg></span></a>
+          <a class="btn btn-linha" href="#metodo">Ver como funciona</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reel" aria-label="Showreel de projetos">
+    <div class="moldura" data-reel>
+      <video autoplay muted loop playsinline preload="auto" poster="video/reel-poster.jpg" aria-label="Showreel com os principais projetos de marca animados">
+        <source src="video/reel-1280.mp4" type="video/mp4" media="(max-width: 760px)">
+        <source src="video/reel-1920.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="ctrl" data-reel-ctrl aria-pressed="false"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" rx="1"/><rect x="7.4" y="1.5" width="2.6" height="9" rx="1"/></svg><span>Pausar</span></button>
+    </div>
+  </div>
+  <div class="faixa">
+    <div class="wrap"><a class="label ver-proj" href="projetos.html">Ver projetos <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M8.5 3.5L13 8l-4.5 4.5"/></svg></a></div>
+    <div class="marquee" aria-label="Projetos">
+      <div class="marquee-trilho">
+        <a class="mcard" href="projetos.html#new-generation"><div class="foto"><img src="img/newgen-1.jpg" alt="Identidade da New Generation"></div><div class="meta"><b>New Generation</b><span>Educação</span></div></a>
+        <a class="mcard" href="projetos.html#gabo-films"><div class="foto"><img src="img/gabo-1.jpg" alt="Identidade da Gabo Films"></div><div class="meta"><b>Gabo Films</b><span>Audiovisual</span></div></a>
+        <a class="mcard" href="projetos.html#verdan"><div class="foto"><img src="img/verdan-1.jpg" alt="Identidade da Verdan Sushi Chef"></div><div class="meta"><b>Verdan Sushi Chef</b><span>Gastronomia</span></div></a>
+        <a class="mcard" href="projetos.html#toast-masters"><div class="foto"><img src="img/toast-1.jpg" alt="Identidade da Toast Masters"></div><div class="meta"><b>Toast Masters</b><span>Coquetelaria</span></div></a>
+        <a class="mcard" href="projetos.html#ancoragem"><div class="foto"><img src="img/ancoragem-1.jpg" alt="Identidade da Ancoragem"></div><div class="meta"><b>Ancoragem</b><span>Moda masculina</span></div></a>
+        <a class="mcard" href="projetos.html#anne-amazing-waist"><div class="foto"><img src="img/anne-1.jpg" alt="Identidade da Anne Amazing Waist"></div><div class="meta"><b>Anne Amazing Waist</b><span>Fitness</span></div></a>
+        <a class="mcard" href="projetos.html#new-generation" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/newgen-1.jpg" alt=""></div><div class="meta"><b>New Generation</b><span>Educação</span></div></a>
+        <a class="mcard" href="projetos.html#gabo-films" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/gabo-1.jpg" alt=""></div><div class="meta"><b>Gabo Films</b><span>Audiovisual</span></div></a>
+        <a class="mcard" href="projetos.html#verdan" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/verdan-1.jpg" alt=""></div><div class="meta"><b>Verdan Sushi Chef</b><span>Gastronomia</span></div></a>
+        <a class="mcard" href="projetos.html#toast-masters" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/toast-1.jpg" alt=""></div><div class="meta"><b>Toast Masters</b><span>Coquetelaria</span></div></a>
+        <a class="mcard" href="projetos.html#ancoragem" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/ancoragem-1.jpg" alt=""></div><div class="meta"><b>Ancoragem</b><span>Moda masculina</span></div></a>
+        <a class="mcard" href="projetos.html#anne-amazing-waist" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/anne-1.jpg" alt=""></div><div class="meta"><b>Anne Amazing Waist</b><span>Fitness</span></div></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 2. SINAIS -->
+<section class="sec branco" aria-labelledby="t-sinais">
+  <div class="wrap">
+    <h2 id="t-sinais" class="sinais-tit" data-rev><span class="dim">Quatro sinais de que</span> a marca está travando o crescimento da sua empresa.</h2>
+    <div class="sinais" data-rev>
+      <div class="sinal"><span class="n">01</span><h3>Para fechar um cliente, você acaba dando desconto.</h3></div>
+      <div class="sinal"><span class="n">02</span><h3>O cliente compara você com quem cobra menos.</h3></div>
+      <div class="sinal"><span class="n">03</span><h3>Quase todo cliente novo ainda chega por indicação.</h3></div>
+      <div class="sinal"><span class="n">04</span><h3>A empresa cresceu, mas a marca ainda tem cara de pequena.</h3></div>
+    </div>
+    <p class="sinais-rodape" data-rev>Os quatro têm a mesma origem: o mercado ainda não entendeu por que a sua empresa vale o que cobra.</p>
+  </div>
+</section>
+
+<!-- 3. A TESE -->
+<section class="sec claro tese" aria-labelledby="t-tese">
+  <div class="wrap">
+    <h2 id="t-tese" data-rev><span class="linha-mask"><span>A empresa cresce</span></span><span class="linha-mask"><span class="branca">até onde a marca</span></span><span class="linha-mask"><span class="branca">aguenta.</span></span></h2>
+    <div class="intro" data-rev>
+      <p>No começo, quem vende é o dono: a reputação, o relacionamento, a indicação. Para passar desse ponto, o cliente precisa de um motivo claro para escolher, confiar e pagar o seu preço sem nunca ter falado com você. Esse motivo é a marca.</p>
+    </div>
+    <div class="tres" data-rev>
+      <div><h3>Até aqui, o dono vende.</h3><p>Indicação, relacionamento e a sua presença em cada negociação. Funciona até a sua agenda acabar.</p></div>
+      <div><h3>Depois, o crescimento desacelera.</h3><p>Mais esforço, e o faturamento no mesmo lugar.</p></div>
+      <div><h3>Daqui em diante, a marca vende.</h3><p>O cliente já chega sabendo quem você é, o que faz de diferente e quanto isso vale.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. NEGÓCIO -->
+<section class="sec branco negocio" aria-labelledby="t-neg">
+  <div class="wrap">
+    <h2 id="t-neg" data-rev>A conversa mais importante começa pelo seu negócio. <span class="dim">O posicionamento e o visual nascem dela.</span></h2>
+    <div class="tabela" data-rev>
+      <div class="cab"><span>#</span><span>Onde está o dinheiro</span><span>O que a marca faz por ele</span></div>
+      <div class="lin"><span class="n">01</span><span class="p">Preço e margem</span><span class="r">Sustenta um preço acima da média sem precisar justificar em cada venda.</span></div>
+      <div class="lin"><span class="n">02</span><span class="p">Custo de aquisição</span><span class="r">Faz a empresa ser lembrada e procurada, e cada cliente novo depende menos de mídia paga.</span></div>
+      <div class="lin"><span class="n">03</span><span class="p">Ticket médio</span><span class="r">Abre espaço para ofertas de maior valor para o mesmo cliente.</span></div>
+      <div class="lin"><span class="n">04</span><span class="p">Recompra e indicação</span><span class="r">Cria vínculo com um público específico, que volta e traz outros parecidos.</span></div>
+      <div class="lin"><span class="n">05</span><span class="p">Quem trabalha com você</span><span class="r">Todo mundo apresenta o negócio do mesmo jeito, sem depender de você em cada atendimento.</span></div>
+      <div class="lin"><span class="n">06</span><span class="p">Expansão</span><span class="r">Define o território antes de investir em público, unidade ou mercado novo.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. O QUE VOCÊ COMPRA -->
+<section class="sec claro compra" aria-labelledby="t-compra">
+  <div class="wrap">
+    <h2 id="t-compra" data-rev><span class="dim">Sua empresa passa a ocupar</span> um lugar no mercado que é só dela.</h2>
+    <p class="sub" data-rev>Para a marca trabalhar por essas alavancas, o projeto trabalha três frentes, nessa ordem. A estratégia define o lugar, a comunicação dá o argumento e a identidade torna tudo isso visível.</p>
+    <div class="entregas" data-rev>
+      <article class="ent"><div class="topo"><span>01/03</span><i></i></div><h3>Posicionamento</h3><p class="resolve">Onde a sua empresa compete, contra quem e por que ela é a escolha certa para o cliente que você quer atrair.</p></article>
+      <article class="ent"><div class="topo"><span>02/03</span><i></i></div><h3>Comunicação</h3><p class="resolve">O que a marca diz e como diz, com uma personalidade e um tom de voz que deixam claro o valor do que você vende.</p></article>
+      <article class="ent"><div class="topo"><span>03/03</span><i></i></div><h3>Identidade</h3><p class="resolve">Um sistema visual que traduz a estratégia e faz o cliente reconhecer a sua empresa em cada ponto de contato.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 6. MÉTODO -->
+<section class="sec escuro crono-sec" id="metodo" aria-labelledby="t-crono">
+  <div class="wrap">
+    <div class="cab" data-rev>
+      <h2 id="t-crono">6 etapas.<br><span class="dim">4 a 6 semanas.</span></h2>
+      <p>Primeiro a estratégia, depois a criação. Cada etapa termina numa entrega que você valida antes de seguir. O prazo varia com o escopo do projeto.</p>
+    </div>
+    <div class="crono-caixa">
+      <div class="crono" data-crono>
+        <div class="pista">
+        <button type="button" class="etapa" data-num="01" data-nome="Imersão" data-fase="Estratégia" data-semana="Semana 1" data-entrega="Contrato assinado e imersão registrada." data-desc="Depois da nossa conversa e do contrato assinado, a gente faz uma imersão no seu negócio: a empresa, o público, a concorrência e onde você quer chegar."><span class="en">01</span><span class="et">Imersão</span><span class="es">Semana 1</span></button>
+        <button type="button" class="etapa" data-num="02" data-nome="Diagnóstico" data-fase="Estratégia" data-semana="Semana 1" data-entrega="Resumo do diagnóstico." data-desc="Eu analiso o mercado, a concorrência e como a sua marca é percebida hoje, e reúno o que ainda falta saber sobre o negócio."><span class="en">02</span><span class="et">Diagnóstico</span><span class="es">Semana 1</span></button>
+        <button type="button" class="etapa" data-num="03" data-nome="Direção estratégica" data-fase="Estratégia" data-semana="Semana 2" data-entrega="Apresentação da direção estratégica." data-desc="O posicionamento da marca e os caminhos de look and feel em moodboard, para definir para onde a marca vai antes de qualquer desenho."><span class="en">03</span><span class="et">Direção estratégica</span><span class="es">Semana 2</span></button>
+        <button type="button" class="etapa criacao" data-num="04" data-nome="Identidade visual e verbal" data-fase="Criação" data-semana="Semanas 3 e 4" data-entrega="Identidade visual e verbal para validação." data-desc="O jeito de a marca aparecer e de falar em todos os canais: o visual, o tom de voz e as mensagens principais."><span class="en">04</span><span class="et">Identidade visual e verbal</span><span class="es">Semanas 3 e 4</span></button>
+        <button type="button" class="etapa criacao" data-num="05" data-nome="Apresentação final" data-fase="Criação" data-semana="Semana 5" data-entrega="Apresentação final da marca." data-desc="A identidade desdobrada nas aplicações e nos pontos de contato da sua empresa."><span class="en">05</span><span class="et">Apresentação final</span><span class="es">Semana 5</span></button>
+        <button type="button" class="etapa criacao" data-num="06" data-nome="Finalização e entrega" data-fase="Criação" data-semana="Semana 6" data-entrega="Guia de marca e arquivos finais." data-desc="Ajustes finais, guia de marca e todos os arquivos organizados na sua plataforma, prontos para uso."><span class="en">06</span><span class="et">Finalização e entrega</span><span class="es">Semana 6</span></button>
+        </div>
+        <div class="fases" aria-hidden="true"><span class="f1">Estratégia · semanas 1 e 2</span><span class="f2">Criação · semanas 3 a 6</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6b. PLATAFORMA DO CLIENTE -->
+<section class="sec cinza2 plat" id="plataforma" aria-labelledby="t-plat">
+  <div class="wrap plat-grid">
+    <div class="plat-txt" data-rev>
+      <h2 id="t-plat">Você acompanha o projeto inteiro <span class="branca">num só lugar.</span></h2>
+      <p class="desc">Cada cliente recebe acesso, com usuário e senha, a uma plataforma feita para o projeto dele. Sem caçar arquivo no e‑mail nem perguntar em que pé está.</p>
+      <ul class="plat-lista">
+        <li><b>Cronograma</b><span>Todas as etapas e datas do projeto.</span></li>
+        <li><b>Etapa atual</b><span>O que está sendo feito agora e o que vem depois.</span></li>
+        <li><b>Arquivos</b><span>Apresentações e entregas sempre à mão.</span></li>
+        <li><b>Acesso exclusivo</b><span>Usuário e senha só seus.</span></li>
+      </ul>
+    </div>
+    <div class="tela" data-rev aria-hidden="true">
+      <div class="tela-barra"><i></i><i></i><i></i><span>plataforma.edsonmota.com</span></div>
+      <div class="tela-corpo">
+        <div class="tela-topo"><div><small>Projeto</small><b>Sua Empresa</b></div><span class="pill">Etapa 03 de 06</span></div>
+        <div class="tela-prog"><span class="ok"></span><span class="ok"></span><span class="agora"></span><span></span><span></span><span></span></div>
+        <div class="tela-cards">
+          <div class="tc"><small>Agora</small><b>Direção estratégica</b><em>Apresentação marcada para quinta</em></div>
+          <div class="tc"><small>Próxima</small><b>Identidade visual e verbal</b><em>Semanas 3 e 4</em></div>
+        </div>
+        <div class="tela-arq"><small>Arquivos</small>
+          <div class="arq"><i>PDF</i><span>Imersão registrada</span><em>Etapa 01</em></div>
+          <div class="arq"><i>PDF</i><span>Resumo do diagnóstico</span><em>Etapa 02</em></div>
+          <div class="arq"><i>PDF</i><span>Direção estratégica</span><em>Etapa 03</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. DEPOIMENTOS -->
+<section class="sec branco depo" id="depoimentos" aria-labelledby="t-depo">
+  <div class="wrap" data-carrossel>
+    <div class="cab" data-rev>
+      <h2 id="t-depo"><span class="dim">Quem já</span><br>passou por aqui.</h2>
+      <div class="setas"><button type="button" data-ant aria-label="Anterior"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4l-6 6 6 6"/></svg></button><button type="button" data-prox aria-label="Próximo"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 4l6 6-6 6"/></svg></button></div>
+    </div>
+    <div class="trilho">
+      <figure class="dcard"><blockquote>“O Edson me esclareceu muita coisa. Quando ele me trouxe o resultado eu percebi que era exatamente o que eu precisava. Naturalmente o meu serviço subiu de nível, foi para outro patamar.”</blockquote><figcaption class="quem"><img class="ini" src="img/depo-marcilio-carlos.jpg" alt="Foto de Marcílio Carlos" loading="lazy"><span><b>Marcílio Carlos</b><span>Profissional liberal · Brasil</span></span></figcaption></figure>
+      <figure class="dcard"><blockquote>“É uma proposta inovadora com linguagem universal, perfeita para internacionalização. O projeto impressiona em cada detalhe, das cores à composição geral. Quando as pessoas veem, a reação é instantânea: ‘Uau, eu quero!’”</blockquote><figcaption class="quem"><img class="ini" src="img/depo-ricardo-monteiro.jpg" alt="Foto de Ricardo Monteiro" loading="lazy"><span><b>Ricardo Monteiro</b><span>Diretor geral · Brasil</span></span></figcaption></figure>
+      <figure class="dcard"><blockquote>“O profissionalismo do Edson se destacou desde o primeiro contato. Seu processo de briefing é extraordinário. O resultado superou todas as expectativas, captando perfeitamente a essência que eu queria transmitir na minha marca.”</blockquote><figcaption class="quem"><img class="ini" src="img/depo-david-lindemberg.jpg" alt="Foto de David Lindemberg" loading="lazy"><span><b>David Lindemberg</b><span>Empresário · Brasil</span></span></figcaption></figure>
+      <figure class="dcard"><blockquote>“Na apresentação eu fiquei emocionado, o Edson conseguiu desenvolver algo surpreendente. Eu amei o projeto, eu amei o carinho e cada detalhe. O Edson superou as minhas expectativas.”</blockquote><figcaption class="quem"><img class="ini" src="img/depo-ricardo-andrade.jpg" alt="Foto de Ricardo Andrade" loading="lazy"><span><b>Ricardo Andrade</b><span>Empresário · Portugal</span></span></figcaption></figure>
+      <figure class="dcard"><blockquote>“Eu gostaria de ressaltar o momento que recebi o projeto do Edson, ali eu percebi o cuidado que ele teve em buscar interpretar da melhor forma possível as informações que passei.”</blockquote><figcaption class="quem"><img class="ini" src="img/depo-erika-eliziar.jpg" alt="Foto de Érika Eliziar" loading="lazy"><span><b>Érika Eliziar</b><span>Psicopedagoga · Brasil</span></span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 8. SOBRE -->
+<section class="sec claro sobre" id="sobre" aria-labelledby="t-sobre">
+  <div class="wrap">
+    <div class="sobre-grid">
+      <img src="img/edson-oculos.jpg" alt="Edson Mota no escritório, de óculos e camiseta preta" data-rev>
+      <div class="sobre-txt" data-rev>
+        <h2 id="t-sobre" class="sobre-tit"><span class="dim">A marca é</span> um dos ativos mais importantes do seu negócio.</h2>
+        <p>Há 15 anos eu trabalho com empresas que precisavam de mais do que um visual bonito: sair da disputa por preço, ser percebidas como premium num mercado concorrido, lançar uma marca do zero ou parecer do tamanho que já tinham.</p>
+        <p>Já conduzi projetos de marca no Brasil, nos Estados Unidos, em Portugal e na Irlanda. Em todos, o trabalho começou pela mesma pergunta: qual problema do negócio essa marca precisa resolver?</p>
+        <div class="nums">
+          <div><span class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><b>15 anos</b><span>resolvendo problemas de negócio com marca</span></div>
+          <div><span class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><b>4 países</b><span>Brasil, Estados Unidos, Portugal e Irlanda</span></div>
+          <div><span class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.4 1.8 3-.1.9 2.8 2.4 1.8-.9 2.8.9 2.8-2.4 1.8-.9 2.8-3-.1L12 21.5l-2.4-1.8-3 .1-.9-2.8-2.4-1.8.9-2.8-.9-2.8 2.4-1.8.9-2.8 3 .1z"/><path d="M8.5 12l2.3 2.3 4.7-4.6"/></svg></span><b>Processo validado</b><span>6 etapas aplicadas em projetos reais</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. DÚVIDAS E OBJEÇÕES -->
+<section class="sec branco duvidas" aria-labelledby="t-duv">
+  <div class="wrap duvidas-grid">
+    <div class="aside" data-rev>
+      <h2 id="t-duv"><span class="dim">O que pesa</span><br>na decisão.</h2>
+      <p>As perguntas que todo empresário faz antes de fechar um projeto de marca, respondidas sem rodeio.</p>
+      <a class="btn btn-laranja" href="#aplicar" data-aplicar style="align-self:flex-start">Aplicar para um projeto <span class="seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h10.5M8.5 3.5L13 8l-4.5 4.5"/></svg></span></a>
+    </div>
+    <div class="faq" data-rev>
+      <p class="grupo">Antes de decidir</p>
+      <details open><summary>É o momento certo para a minha empresa?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Faz mais sentido quando a empresa já vende com consistência e sente que a marca ficou para trás do que ela entrega. E vale fazer antes de investir mais em mídia, equipe ou expansão, porque cada real investido passa a construir a mesma marca. Se você ainda está validando o produto, a primeira conversa ajuda a ver isso com clareza.</p></details>
+      <details><summary>Ainda sou eu que faço quase tudo. Faz sentido mesmo assim?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Faz, e esse costuma ser o melhor momento. A marca é o que permite que a confiança que hoje está no seu nome passe para o negócio. Com ela definida, cada pessoa que entra para trabalhar com você já sabe como o negócio fala, se apresenta e atende.</p></details>
+      <details><summary>Quanto custa?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Depende do escopo do projeto. Já na primeira conversa eu falo o valor, para você decidir com clareza.</p></details>
+      <details><summary>Já contratei agência ou designer e não deu certo. O que muda?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Na maioria das vezes, o trabalho começou pelo visual. Aqui o visual vem depois da estratégia: ele só nasce quando o negócio, o público e a concorrência estão claros. Por isso cada elemento do sistema visual tem uma razão ligada à estratégia, e a sua equipe consegue aplicar a marca com consistência.</p></details>
+      <p class="grupo">Durante o projeto</p>
+      <details><summary>Quanto tempo leva?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Entre 4 e 6 semanas, dependendo do escopo, da imersão aos arquivos finais. Tudo acontece online, então atendo empresas no Brasil e fora dele.</p></details>
+      <details><summary>Como eu participo do projeto?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Você participa dos momentos que definem a marca: a imersão, o diagnóstico e a apresentação de cada etapa. É ali que a sua visão do negócio entra no projeto. O resto do trabalho fica comigo.</p></details>
+      <details><summary>E se eu não gostar do que for apresentado?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">O trabalho não é guiado por gosto, mas é importante que você termine o projeto satisfeito com a entrega. Cada solução nasce da necessidade do seu negócio e da estratégia que você aprovou. Por isso cada etapa termina numa apresentação que você valida, e os ajustes acontecem ali, antes de seguir.</p></details>
+      <details><summary>Quem da minha empresa participa?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Quem decide sobre a marca, normalmente o dono da empresa. Com poucas pessoas na mesa, as decisões saem rápido e o projeto cabe em poucas semanas.</p></details>
+      <p class="grupo">Sobre a sua marca</p>
+      <details><summary>Vou ter que trocar o meu logo?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Não necessariamente. A estratégia mostra o que está funcionando e o que está atrapalhando. Às vezes a empresa precisa de uma identidade nova, às vezes de um ajuste e de uma direção clara para o que já existe.</p></details>
+      <details><summary>Meu mercado é muito concorrido. Dá para se diferenciar?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Dá, e é nesses mercados que a marca mais faz diferença. Quando os produtos se parecem, o cliente decide pela confiança, pela identificação e pela percepção de valor. É isso que o posicionamento organiza.</p></details>
+      <details><summary>Já trabalho com uma agência. Como fica?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">Fica melhor para os dois lados. A agência ganha um norte claro sobre o que dizer, para quem e com qual argumento, e as campanhas passam a ter mais consistência e a construir a mesma marca.</p></details>
+      <details><summary>O que eu recebo no final?<span class="mais" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></span></summary><p class="resp">O guia de marca e todos os arquivos finais, organizados na plataforma do cliente, para a sua equipe, a sua agência e os seus fornecedores aplicarem a marca do mesmo jeito.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 10. ENSINO + INQUIETOS -->
+<section class="sec claro ensino" aria-labelledby="t-ens">
+  <div class="wrap">
+    <h2 id="t-ens" data-rev><span class="dim">Além da consultoria de marca,</span> compartilhar o que eu vivo todo dia também faz parte da minha missão.</h2>
+    <p class="desc" data-rev style="margin-top:26px;color:var(--txt-claro)">Ao longo da carreira, formei e acompanhei muitos profissionais criativos. Hoje sigo ensinando pelo INQUIETOS.</p>
+    <div class="inq" id="inquietos" data-rev>
+      <div>
+        <div class="marca-inq" aria-label="INQUIETOS"><span class="in">IN</span>QUIETOS</div>
+        <p><b>Para profissionais criativos.</b> Um movimento para quem é bom no que faz e ainda não é reconhecido por isso. Começa com um guia gratuito e vai virar uma comunidade com aulas ao vivo.</p>
+      </div>
+      <div class="botoes">
+        <a class="btn btn-laranja" href="https://guiainquietos.edsonmota.com">Baixar o Guia para Inquietos <span class="seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h10.5M8.5 3.5L13 8l-4.5 4.5"/></svg></span></a>
+        <a class="btn btn-linha" href="https://edsonmotajunior.typeform.com/to/zVsElhqk">Lista de espera da comunidade <span class="seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h10.5M8.5 3.5L13 8l-4.5 4.5"/></svg></span></a>
+        <small>Guia gratuito · PDF de 14 páginas</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. CTA FINAL -->
+<section class="laranja final" aria-labelledby="t-final">
+  <div class="wrap">
+    <h2 id="t-final" data-rev><span class="linha-mask"><span>Vamos falar</span></span><span class="linha-mask"><span class="branca">da sua marca.</span></span></h2>
+    <div class="linha" data-rev>
+      <p>Conte em poucos minutos o momento da sua empresa. Eu leio cada aplicação antes da primeira conversa.</p>
+      <a class="btn btn-preto" href="#aplicar" data-aplicar>Aplicar para um projeto <span class="seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h10.5M8.5 3.5L13 8l-4.5 4.5"/></svg></span></a>
+    </div>
+    <ol class="passos" data-rev>
+      <li><span>01</span><b>Você aplica</b><small>Um formulário curto sobre a empresa e o momento dela.</small></li>
+      <li><span>02</span><b>A gente conversa</b><small>Uma call para entender o negócio e ver se faz sentido.</small></li>
+      <li><span>03</span><b>Você recebe a proposta</b><small>Escopo, prazo e valor definidos antes de começar.</small></li>
+    </ol>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="manifesto">
+      <p class="frase">Marca é o ativo que trabalha <span class="dim">mesmo quando você não está na sala.</span></p>
+    </div>
+    <div class="topo">
+      <div class="marca-r">
+        <b aria-label="Edson Mota"><svg class="logo" width="40" height="32" viewBox="0 0 59 47" fill="currentColor" aria-hidden="true"><rect x="19.65" y="2.27" width="38.9" height="8.2"/><rect y="20.73" width="39.1" height="8"/><rect x="8.89" y="39" width="39.1" height="8"/><circle cx="6.71" cy="5.73" r="5.73"/></svg></b>
+      </div>
+      <nav class="col" aria-label="Site"><span>Navegue</span><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="index.html#metodo">Método</a><a href="index.html#plataforma">Plataforma</a><a href="index.html#depoimentos">Depoimentos</a><a href="index.html#sobre">Sobre</a></nav>
+      <nav class="col" aria-label="INQUIETOS"><span>INQUIETOS</span><a href="https://guiainquietos.edsonmota.com">Guia para Inquietos</a><a href="https://edsonmotajunior.typeform.com/to/zVsElhqk">Lista de espera da comunidade</a></nav>
+      <nav class="col" aria-label="Contato"><span>Contato</span><a class="destaque" href="#aplicar" data-aplicar>Aplicar para um projeto</a><a href="https://www.instagram.com/oedsonmota/">Instagram</a><a href="https://www.linkedin.com/in/oedsonmota/">LinkedIn</a></nav>
+    </div>
+    <div class="base"><span>© 2027 Edson Mota. Todos os direitos reservados.</span><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Voltar ao topo ↑</a></div>
+    <div class="grande" aria-hidden="true">EDSON MOTA</div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+(function(){
+  var m = document.querySelector('[data-reel]'); if (!m) return;
+  var v = m.querySelector('video'), b = document.querySelector('[data-reel-ctrl]');
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduz) { v.removeAttribute('autoplay'); v.pause(); b.setAttribute('aria-pressed','true'); b.querySelector('span').textContent = 'Reproduzir'; }
+  b.addEventListener('click', function(){
+    if (v.paused) { v.play(); b.setAttribute('aria-pressed','false'); b.querySelector('span').textContent = 'Pausar'; }
+    else { v.pause(); b.setAttribute('aria-pressed','true'); b.querySelector('span').textContent = 'Reproduzir'; }
+  });
+  function cresce(){
+    if (reduz) return;
+    var r = m.getBoundingClientRect(), vh = window.innerHeight;
+    var p = Math.min(1, Math.max(0, (vh * 0.95 - r.top) / (vh * 0.75)));
+    var e = 1 - Math.pow(1 - p, 2);
+    var wr = document.querySelector('.hero .wrap'), cs = getComputedStyle(wr);
+    var w0 = wr.getBoundingClientRect().width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    var w1 = document.documentElement.clientWidth;
+    m.style.width = (w0 + (w1 - w0) * e).toFixed(1) + 'px';
+    m.style.borderRadius = (28 * (1 - e)).toFixed(1) + 'px';
+  }
+  window.addEventListener('scroll', cresce, {passive:true});
+  window.addEventListener('resize', cresce);
+  cresce();
+})();
+</script>
+<script src="js/aplicar.js" defer></script>
+</body>
+</html>

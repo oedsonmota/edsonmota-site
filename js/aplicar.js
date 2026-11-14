@@ -14,7 +14,7 @@
   '<div class="apl" id="aplicar" role="dialog" aria-modal="true" aria-labelledby="apl-titulo" hidden>'+
    '<div class="apl-fundo" data-fechar></div>'+
    '<div class="apl-caixa">'+
-    '<button class="apl-fechar" type="button" aria-label="Fechar" data-fechar>×</button>'+
+    '<button class="apl-fechar" type="button" aria-label="Fechar" data-fechar><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg></button>'+
     '<div class="apl-topo"><span class="apl-passo">Etapa <b>1</b> de 3</span><div class="apl-barra"><i></i></div></div>'+
     '<form novalidate>'+
      '<div class="apl-hp" aria-hidden="true"><label>Não preencha<input type="text" name="site_hp" tabindex="-1" autocomplete="off"></label></div>'+

@@ -5,10 +5,11 @@
 .apl-caixa{position:relative;width:min(640px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--branco);color:var(--preto);border-radius:var(--r-bloco);padding:clamp(28px,5vw,48px);box-shadow:0 30px 80px rgba(0,0,0,.35);animation:aplSobe .35s cubic-bezier(.2,.8,.2,1)}
 @keyframes aplFade{from{opacity:0}}
 @keyframes aplSobe{from{opacity:0;transform:translateY(24px)}}
-.apl-fechar{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:0;background:var(--cinza);color:var(--preto);font-size:22px;line-height:1}
+.apl-fechar{position:absolute;top:20px;right:20px;width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:50%;border:0;background:var(--cinza);color:var(--preto);transition:background .2s,color .2s}
+.apl-fechar svg{display:block;pointer-events:none}
 .apl-fechar:hover{background:var(--preto);color:var(--branco)}
-.apl-topo{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-right:52px}
-.apl-passo{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim-claro)}
+.apl-topo{display:flex;align-items:center;gap:14px;min-height:44px;margin:-2px 0 24px;padding-right:60px}
+.apl-passo{line-height:1;white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim-claro)}
 .apl-barra{flex:1;height:4px;border-radius:4px;background:var(--cinza);overflow:hidden}
 .apl-barra i{display:block;height:100%;width:25%;background:var(--laranja);border-radius:4px;transition:width .35s ease}
 .apl h3{font-size:clamp(30px,4.2vw,40px);margin-bottom:10px}
@@ -25,14 +26,15 @@
 .apl-campo .apl-msg{display:none;color:var(--vermelho);font-size:14px}
 .apl-campo.erro .apl-msg{display:block}
 .apl-opcoes{display:flex;flex-wrap:wrap;gap:10px;border:1.5px solid transparent;border-radius:16px}
-.apl-opcoes label{font-weight:500;font-size:16px;display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:999px;border:1.5px solid #DADADA;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.apl-opcoes label{font-weight:500;font-size:16px;line-height:1;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;border:1.5px solid #DADADA;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .apl-opcoes input{position:absolute;opacity:0;pointer-events:none}
 .apl-opcoes input:checked+span{color:var(--branco)}
 .apl-opcoes label:has(input:checked){background:var(--preto);border-color:var(--preto);color:var(--branco)}
 .apl-opcoes label:has(input:focus-visible){outline:2px solid var(--laranja);outline-offset:3px}
 .apl-acoes{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-top:28px}
+.apl-acoes .apl-voltar[hidden]+.apl-seguir,.apl-acoes>.apl-seguir:only-child{margin-left:0}
 .apl-acoes .btn[disabled]{opacity:.5;pointer-events:none}
-.apl-voltar{background:none;border:0;font-weight:700;font-size:16px;color:var(--dim-claro);padding:12px 0}
+.apl-voltar{background:none;border:0;font-weight:700;font-size:16px;line-height:1;color:var(--dim-claro);padding:16px 4px;min-height:52px;display:inline-flex;align-items:center}
 .apl-voltar:hover{color:var(--preto)}
 .apl-fim{text-align:left}
 .apl-fim .apl-ok{width:64px;height:64px;border-radius:50%;background:var(--laranja);display:flex;align-items:center;justify-content:center;margin-bottom:24px}

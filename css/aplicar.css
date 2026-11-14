@@ -1,0 +1,41 @@
+/* Formulário de aplicação (pop-up em etapas) */
+.apl{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
+.apl.aberto{display:flex}
+.apl-fundo{position:absolute;inset:0;background:rgba(10,10,10,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:aplFade .25s ease}
+.apl-caixa{position:relative;width:min(640px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--branco);color:var(--preto);border-radius:var(--r-bloco);padding:clamp(28px,5vw,48px);box-shadow:0 30px 80px rgba(0,0,0,.35);animation:aplSobe .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes aplFade{from{opacity:0}}
+@keyframes aplSobe{from{opacity:0;transform:translateY(24px)}}
+.apl-fechar{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:0;background:var(--cinza);color:var(--preto);font-size:22px;line-height:1}
+.apl-fechar:hover{background:var(--preto);color:var(--branco)}
+.apl-topo{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-right:52px}
+.apl-passo{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim-claro)}
+.apl-barra{flex:1;height:4px;border-radius:4px;background:var(--cinza);overflow:hidden}
+.apl-barra i{display:block;height:100%;width:25%;background:var(--laranja);border-radius:4px;transition:width .35s ease}
+.apl h3{font-size:clamp(30px,4.2vw,40px);margin-bottom:10px}
+.apl h3 .dim{color:var(--dim-claro)}
+.apl .apl-sub{color:var(--txt-claro);margin-bottom:28px}
+.apl-etapa{display:none}
+.apl-etapa.ativa{display:block;animation:aplFade .3s ease}
+.apl-campo{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.apl-campo label,.apl-campo .apl-perg{font-size:15px;font-weight:700}
+.apl-campo input,.apl-campo textarea{font:inherit;font-size:17px;padding:15px 18px;border-radius:16px;border:1.5px solid #DADADA;background:var(--branco);color:var(--preto);width:100%}
+.apl-campo textarea{min-height:120px;resize:vertical}
+.apl-campo input:focus,.apl-campo textarea:focus{outline:none;border-color:var(--preto)}
+.apl-campo.erro input,.apl-campo.erro textarea,.apl-campo.erro .apl-opcoes{border-color:var(--laranja)}
+.apl-campo .apl-msg{display:none;color:var(--vermelho);font-size:14px}
+.apl-campo.erro .apl-msg{display:block}
+.apl-opcoes{display:flex;flex-wrap:wrap;gap:10px;border:1.5px solid transparent;border-radius:16px}
+.apl-opcoes label{font-weight:500;font-size:16px;display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:999px;border:1.5px solid #DADADA;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.apl-opcoes input{position:absolute;opacity:0;pointer-events:none}
+.apl-opcoes input:checked+span{color:var(--branco)}
+.apl-opcoes label:has(input:checked){background:var(--preto);border-color:var(--preto);color:var(--branco)}
+.apl-opcoes label:has(input:focus-visible){outline:2px solid var(--laranja);outline-offset:3px}
+.apl-acoes{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-top:28px}
+.apl-acoes .btn[disabled]{opacity:.5;pointer-events:none}
+.apl-voltar{background:none;border:0;font-weight:700;font-size:16px;color:var(--dim-claro);padding:12px 0}
+.apl-voltar:hover{color:var(--preto)}
+.apl-fim{text-align:left}
+.apl-fim .apl-ok{width:64px;height:64px;border-radius:50%;background:var(--laranja);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.apl-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+body.apl-trava{overflow:hidden}
+@media (max-width:520px){.apl{padding:0;align-items:flex-end}.apl-caixa{border-radius:28px 28px 0 0;max-height:94dvh}}

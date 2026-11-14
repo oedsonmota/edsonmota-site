@@ -34,13 +34,14 @@
       '<div class="apl-campo"><label for="apl-link">Instagram ou site</label><input id="apl-link" name="link" placeholder="@seunegocio"></div>'+
       '<div class="apl-campo"><label for="apl-segmento">O que o negócio faz?</label><input id="apl-segmento" name="segmento" placeholder="Ex.: escritório de arquitetura, clínica, consultoria" required><span class="apl-msg">Me conta em poucas palavras.</span></div>'+
       '<div class="apl-campo" data-radio="equipe"><span class="apl-perg">Quantas pessoas trabalham com você?</span>'+opcoes('equipe',['Só eu','2 a 5','6 a 15','Mais de 15'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
-      '<div class="apl-campo" data-radio="faturamento"><span class="apl-perg">Faturamento anual aproximado</span>'+opcoes('faturamento',['Até R$ 360 mil','R$ 360 mil a R$ 1 mi','Acima de R$ 1 mi','Prefiro não dizer'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
+      
      '</section>'+
 
      '<section class="apl-etapa" data-etapa="3">'+
       '<h3>E o momento <span class="dim">de agora.</span></h3>'+
       '<p class="apl-sub">É aqui que eu entendo qual problema a marca precisa resolver.</p>'+
       '<div class="apl-campo"><label for="apl-trava">O que mais está travando o negócio hoje?</label><textarea id="apl-trava" name="desafio" required></textarea><span class="apl-msg">Escreve com as suas palavras, do jeito que vier.</span></div>'+
+      '<div class="apl-campo" data-radio="investimento"><span class="apl-perg">Os projetos começam a partir de R$ 4.500. O valor final depende do escopo e do que o seu negócio precisa. Esse investimento faz sentido para o seu momento?</span>'+opcoes('investimento',['Sim, faz sentido','Faz, mas quero entender o escopo','Agora não cabe'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
       '<div class="apl-campo" data-radio="quando"><span class="apl-perg">Quando você quer começar?</span>'+opcoes('quando',['Agora','Nos próximos 3 meses','Ainda estou pesquisando'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
      '</section>'+
 

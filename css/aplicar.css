@@ -18,7 +18,7 @@
 .apl-etapa{display:none}
 .apl-etapa.ativa{display:block;animation:aplFade .3s ease}
 .apl-campo{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
-.apl-campo label,.apl-campo .apl-perg{font-size:15px;font-weight:700}
+.apl-campo label,.apl-campo .apl-perg{font-size:15px;font-weight:700;line-height:1.4}
 .apl-campo input,.apl-campo textarea{font:inherit;font-size:17px;padding:15px 18px;border-radius:16px;border:1.5px solid #DADADA;background:var(--branco);color:var(--preto);width:100%}
 .apl-campo textarea{min-height:120px;resize:vertical}
 .apl-campo input:focus,.apl-campo textarea:focus{outline:none;border-color:var(--preto)}

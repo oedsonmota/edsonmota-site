@@ -122,7 +122,7 @@
   (function(){
     if (reduz || toque) return;
     function rgb(h){ h = h.replace('#',''); return [parseInt(h.substr(0,2),16), parseInt(h.substr(2,2),16), parseInt(h.substr(4,2),16)]; }
-    var TEMAS = { escuro: [rgb('6F6F6F'), rgb('FFFFFF')], claro: [rgb('8A8A8A'), rgb('0A0A0A')] };
+    var TEMAS = { escuro: [rgb('7A7A7A'), rgb('FFFFFF')], claro: [rgb('676767'), rgb('0A0A0A')] };
     document.querySelectorAll('h1, h2').forEach(function(h){
       var dims = h.querySelectorAll('.dim'); if (!dims.length) return;
       var tema = h.closest('.escuro') ? TEMAS.escuro : TEMAS.claro;

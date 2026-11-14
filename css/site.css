@@ -1,16 +1,18 @@
-/* Edson Mota · site
-   Ideia: cinza claro e preto se alternando em blocos cheios, laranja como ação,
-   vermelho do Guia sobreposto ao laranja, títulos em dois tons. */
+/* Edson Mota · site da consultoria
+   Identidade nov/2026: branco, preto e laranja em blocos cheios; títulos misturam
+   a serifada delicada (Newsreader, sem itálico) com a grotesca pesada (Helvetica Bold);
+   grafismos de traço fino explicam o argumento, com um único ponto em laranja.
+   Referência: brandbook "Edson Mota — Brandbook da consultoria". */
 :root{
-  --cinza:#ECECEC;
+  --cinza:#F2F2F2;
   --branco:#FFFFFF;
   --preto:#0A0A0A;
   --grafite:#1A1A1A;
   --laranja:#F43217;
-  --vermelho:#C11E00;
-  --dim-claro:#8A8A8A;   /* parte cinza do título em fundo claro */
-  --dim-escuro:#6F6F6F;  /* parte cinza do título em fundo preto */
-  --txt-claro:#4D4D4D;   /* texto corrido em fundo claro */
+  --vermelho:#931302;
+  --dim-claro:#676767;   /* parte serifada do título em fundo claro */
+  --dim-escuro:#7A7A7A;  /* parte serifada do título em fundo preto */
+  --txt-claro:#555555;   /* texto corrido em fundo claro */
   --txt-escuro:#A6A6A6;  /* texto corrido em fundo preto */
   --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
   --serif:"Newsreader",Georgia,serif;
@@ -31,7 +33,7 @@ p{margin:0;text-wrap:pretty}
 button{font-family:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--laranja);outline-offset:3px;border-radius:6px}
 .wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
-.dim{color:var(--dim-claro)}
+.dim{color:var(--dim-claro);font-family:var(--serif);font-weight:400;font-style:normal;font-variation-settings:"opsz" 36;letter-spacing:-0.03em;word-spacing:0}
 .luz{transition:color .35s ease}
 .escuro .dim{color:var(--dim-escuro)}
 .up{text-transform:uppercase}
@@ -41,6 +43,7 @@ button{font-family:inherit;cursor:pointer}
 .claro{background:var(--cinza)}
 .branco{background:var(--branco)}
 .laranja{background:var(--laranja);color:var(--preto)}
+.laranja .dim{color:var(--vermelho)}
 .sec{padding-block:clamp(88px,11vw,150px)}
 
 /* Botões */
@@ -130,7 +133,7 @@ button{font-family:inherit;cursor:pointer}
 .rodape{background:var(--preto);color:var(--branco);padding:clamp(64px,8vw,100px) 0 0;overflow:hidden}
 .rodape .manifesto{padding-bottom:clamp(48px,6vw,80px);margin-bottom:clamp(40px,5vw,64px);border-bottom:1px solid #222}
 .rodape .frase{font-size:clamp(30px,4.4vw,68px);font-weight:700;letter-spacing:-0.045em;line-height:1.02;max-width:1050px}
-.rodape .frase .dim{color:#5A5A5A}
+.rodape .frase .dim{color:#7A7A7A}
 .rodape .topo{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:40px;padding-bottom:56px;border-bottom:1px solid #222}
 .rodape .marca-r{display:flex;flex-direction:column;gap:16px;max-width:360px}
 .rodape .marca-r b{display:block;color:var(--branco)}
@@ -153,3 +156,18 @@ button{font-family:inherit;cursor:pointer}
   .pre{opacity:1;transform:none}
   .pre .linha-mask>span{transform:none}
 }
+
+/* Grafismo: cota de percepção (traço fino, um ponto em laranja) */
+.cota{position:relative;margin-top:clamp(48px,6vw,80px);height:clamp(150px,16vw,210px)}
+.cota .lin{position:absolute;left:0;right:0;height:0}
+.cota .lin.a{top:28px;border-top:2px solid #555}
+.cota .lin.b{bottom:28px;border-top:2px solid #D6D6D6}
+.cota .rot{position:absolute;left:0;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.cota .rot.a{top:0;color:#555}
+.cota .rot.b{bottom:0;color:#8F8F8F}
+.cota .med{position:absolute;right:14%;top:28px;bottom:28px;width:2px;background:var(--laranja)}
+.cota .med::before,.cota .med::after{content:"";position:absolute;left:-11px;width:24px;height:2px;background:var(--laranja)}
+.cota .med::before{top:-1px}.cota .med::after{bottom:-1px}
+.cota .nota{position:absolute;right:calc(14% + 22px);top:50%;transform:translateY(-50%);font-family:var(--serif);font-variation-settings:"opsz" 36;font-size:clamp(24px,2.6vw,40px);letter-spacing:-0.03em;color:var(--laranja);white-space:nowrap}
+.sinal p{font-size:16px;line-height:1.45;color:var(--txt-claro);margin-top:12px;transition:color .4s}
+.sinal:hover p{color:var(--txt-escuro)}

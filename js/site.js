@@ -222,6 +222,7 @@
     var parado = false, timer = null;
     function mostrar(b){
       blocos.forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      if (!painel) return;
       painel.querySelector('[data-p-num]').textContent = b.getAttribute('data-num');
       painel.querySelector('[data-p-nome]').textContent = b.getAttribute('data-nome');
       painel.querySelector('[data-p-fase]').textContent = b.getAttribute('data-fase');

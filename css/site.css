@@ -1,7 +1,7 @@
 /* Edson Mota · site da consultoria
-   Identidade nov/2026: branco, preto e laranja em blocos cheios; títulos misturam
-   a serifada delicada (Newsreader, sem itálico) com a grotesca pesada (Helvetica Bold);
-   grafismos de traço fino explicam o argumento, com um único ponto em laranja.
+   Identidade nov/2026: branco, preto e laranja em blocos cheios; títulos só em Helvetica,
+   em dois tons (cinza + preto/branco); grafismos de traço fino explicam o argumento,
+   com um único ponto em laranja. A serifada fica só nas peças do Instagram.
    Referência: brandbook "Edson Mota — Brandbook da consultoria". */
 :root{
   --cinza:#F2F2F2;
@@ -33,7 +33,7 @@ p{margin:0;text-wrap:pretty}
 button{font-family:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--laranja);outline-offset:3px;border-radius:6px}
 .wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
-.dim{color:var(--dim-claro);font-family:var(--serif);font-weight:400;font-style:normal;font-variation-settings:"opsz" 36;letter-spacing:-0.03em;word-spacing:0}
+.dim{color:var(--dim-claro)}
 .luz{transition:color .35s ease}
 .escuro .dim{color:var(--dim-escuro)}
 .up{text-transform:uppercase}
@@ -168,6 +168,6 @@ button{font-family:inherit;cursor:pointer}
 .cota .med{position:absolute;right:14%;top:28px;bottom:28px;width:2px;background:var(--laranja)}
 .cota .med::before,.cota .med::after{content:"";position:absolute;left:-11px;width:24px;height:2px;background:var(--laranja)}
 .cota .med::before{top:-1px}.cota .med::after{bottom:-1px}
-.cota .nota{position:absolute;right:calc(14% + 22px);top:50%;transform:translateY(-50%);font-family:var(--serif);font-variation-settings:"opsz" 36;font-size:clamp(24px,2.6vw,40px);letter-spacing:-0.03em;color:var(--laranja);white-space:nowrap}
+.cota .nota{position:absolute;right:calc(14% + 22px);top:50%;transform:translateY(-50%);font-size:clamp(20px,2vw,30px);font-weight:700;letter-spacing:-0.035em;color:var(--laranja);white-space:nowrap}
 .sinal p{font-size:16px;line-height:1.45;color:var(--txt-claro);margin-top:12px;transition:color .4s}
 .sinal:hover p{color:var(--txt-escuro)}

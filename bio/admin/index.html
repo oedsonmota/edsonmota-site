@@ -572,7 +572,7 @@ function drawHeat(w){
     out.append(el(`<div class="kpis k4">
       <div class="kpi"><small>Visitas analisadas</small><b>${d.visits.toLocaleString('pt-BR')}</b><em>${hmDev==='mobile'?'no celular':'no computador'}</em></div>
       <div class="kpi"><small>Tempo na página</small><b>${d.visits?dur(d.median_ms):'—'}</b><em>metade fica mais que isso · média ${d.visits?dur(d.avg_ms):'—'}</em></div>
-      <div class="kpi"><small>Rolaram até o fim</small><b>${d.visits?Math.round(100*(d.reached.rodape||0)/d.visits)+'%':'—'}</b><em>${d.reached.rodape||0} de ${d.visits} viram o rodapé</em></div>
+      <div class="kpi"><small>Rolaram até o fim</small><b id="kHalf">${d.visits?'…':'—'}</b><em id="kHalfE">quem passou da metade da página</em></div>
       <div class="kpi"><small>Cliques sem efeito</small><b>${dead}</b><em>em lugar que não é link${rage?` · ${rage} repetidos com pressa`:''}</em></div></div>`));
     out.prepend(el(`<p class="hmnote" style="color:var(--muted);margin:0 0 10px">${d.visits?`Tudo aqui vem de <b>${d.visits} ${d.visits===1?'visita real':'visitas reais'}</b> e ${cl.length} ${cl.length===1?'clique':'cliques'} registrados na página, sem estimativa.${d.visits<30?' Ainda é pouca gente: os números vão mudar bastante até passar de 30 visitas.':''}`:''}</p>`));
     if(!d.visits){ out.append(el(`<p class="empty">Ainda não há visitas registradas ${hmDev==='mobile'?'no celular':'no computador'} nesse período. O registro começou agora: os dados aparecem conforme as pessoas abrem edsonmota.com/bio.</p>`)); paintHeat(); return; }
@@ -609,6 +609,11 @@ function paintHeat(){
       ctx.fillStyle='rgba(0,0,0,.85)'; ctx.beginPath(); ctx.roundRect(vw/2-tw/2,y,tw,62,16); ctx.fill(); ctx.fillStyle='#fff'; ctx.fillText(t1,vw/2,y+26); ctx.font='500 13px '+F; ctx.fillStyle='#ccc'; ctx.fillText(t2,vw/2,y+46); ctx.textAlign='start'; } return; }
   const box=k=>{ const n=k==='pagina'?doc.getElementById('app'):doc.querySelector(`[data-hm="${CSS.escape(k)}"]`); if(!n) return null; const r=n.getBoundingClientRect(); if(!r.width) return null; return {x:r.left+sx,y:r.top+sy,w:r.width,h:r.height}; };
   const RED=[255,45,85];
+  // quem passou da metade: o bloco mais fundo que cada visita viu, medido na própria página
+  const half=H/2; let past=0;
+  (d.deep||[]).forEach(ks=>{ let mb=0; ks.forEach(k=>{ const b=box(k); if(b) mb=Math.max(mb,b.y+b.h); }); if(mb>=half) past++; });
+  const kh=document.getElementById('kHalf'), ke=document.getElementById('kHalfE');
+  if(kh){ kh.textContent=Math.round(100*past/d.visits)+'%'; ke.textContent=`${past} de ${d.visits} passaram da metade da página`; }
   if(hmMode==='cliques'){
     const cl=d.clicks||[];
     const pts=cl.map(c=>{ const b=box(c.k); return b?{x:b.x+c.x*b.w,y:b.y+c.y*b.h,d:c.d,r:c.r}:null; }).filter(Boolean);
@@ -636,6 +641,8 @@ function paintHeat(){
       ctx.lineWidth=2; ctx.strokeStyle=`rgba(${RED},${(.25+t*.75).toFixed(3)})`; ctx.stroke();
       const n=d.reached[k]||0;
       pill(b.x+b.w-6,b.y+6, hmMode==='atencao' ? `${secs(v)} em média` : `${n} de ${d.visits} · ${Math.round(v)}%`); });
+    if(hmMode==='rolagem'){ ctx.save(); ctx.setLineDash([8,6]); ctx.lineWidth=2; ctx.strokeStyle='#fff'; ctx.beginPath(); ctx.moveTo(0,half); ctx.lineTo(W,half); ctx.stroke(); ctx.restore();
+      pill(12,half-30,`metade da página · ${past} de ${d.visits} passaram daqui`,'left'); }
   }
 }
 

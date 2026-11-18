@@ -37,14 +37,18 @@
   var geoReady=GEO?Promise.resolve(GEO):(noTrack?Promise.resolve(null):new Promise(function(res){
     var done=false; setTimeout(function(){if(!done){done=true;res(null)}},2500);
     fetch('https://get.geojs.io/v1/ip/geo.json').then(function(r){return r.json()}).then(function(g){
-      GEO={country:(g.country||'').slice(0,60)||null,region:(g.region||'').slice(0,80)||null,city:(g.city||'').slice(0,80)||null};
+      GEO={country:(g.country||'').slice(0,60)||null,region:(g.region||'').slice(0,80)||null,city:(g.city||'').slice(0,80)||null,dc:/amazon|google llc|microsoft|digitalocean|ovh|hetzner|linode|oracle|alibaba|tencent|facebook|meta platforms|vultr|choopa|scaleway|leaseweb|contabo|m247|datacamp|cdn77|hostinger|godaddy|ionos|hostgator|locaweb|equinix|zenlayer|tor exit/i.test(g.organization_name||g.organization||'')};
       try{sessionStorage.setItem('em-bio-geo',JSON.stringify(GEO))}catch(e){}
       if(!done){done=true;res(GEO)}
     }).catch(function(){if(!done){done=true;res(null)}});
   }));
+  /* só conta gente de verdade: a visita entra depois do primeiro toque, rolagem ou movimento de mouse */
+  var human=false, humanWait=[];
+  function onHuman(fn){if(human)fn();else humanWait.push(fn)}
+  ['touchstart','pointerdown','keydown','wheel','scroll','mousemove'].forEach(function(ev){addEventListener(ev,function(){if(human)return;human=true;humanWait.splice(0).forEach(function(f){f()})},{passive:true,capture:true})});
   function geoFields(o){o.device=DEVICE;if(GEO){o.country=GEO.country;o.region=GEO.region;o.city=GEO.city}return o}
   function track(type,id,label){
-    if(noTrack||!CFG.supabaseUrl)return;
+    if(noTrack||!CFG.supabaseUrl||(GEO&&GEO.dc))return;
     var ref=refOf();
     try{
       fetch(CFG.supabaseUrl+'/rest/v1/bio_events',{method:'POST',keepalive:true,
@@ -140,7 +144,7 @@
     if(data){try{localStorage.setItem(CACHE,JSON.stringify(data))}catch(e){}}
     if(!isPreview||!lastJson)render(merge(DEF,data||cached||{}));
   });
-  if(!noTrack){try{if(!sessionStorage.getItem('em-bio-v')){sessionStorage.setItem('em-bio-v','1');geoReady.then(function(){track('view')})}}catch(e){track('view')}}
+  if(!noTrack){try{if(!sessionStorage.getItem('em-bio-v')){sessionStorage.setItem('em-bio-v','1');geoReady.then(function(){onHuman(function(){track('view')})})}}catch(e){onHuman(function(){track('view')})}}
 
   /* ---------- comportamento: cliques com posição, tempo por bloco e rolagem (anônimo) ---------- */
   if(!noTrack&&CFG.supabaseUrl&&window.fetch){
@@ -174,6 +178,7 @@
     },true);
     function flush(){
       tick();
+      if(!human||(GEO&&GEO.dc))return;
       if(B.ms<400&&!B.clicks.length)return;
       var dw={};Object.keys(B.dwell).forEach(function(k){dw[k]=B.dwell[k]});
       var body=JSON.stringify({id:vid,part:part,site_id:CFG.siteId,device:device,vw:innerWidth,dur_ms:Math.min(B.ms,3600000),max_pct:B.max,

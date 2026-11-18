@@ -44,7 +44,7 @@ textarea.inp{min-height:70px;resize:vertical}
 .top{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}
 .top .sp{flex:1}
 .top small{color:var(--dim);font-size:12px;font-weight:500;letter-spacing:0;text-transform:none}
-.tabs{display:flex;flex-wrap:wrap;gap:4px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.tabs{display:flex;align-items:center;gap:4px;padding:10px 12px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.area{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:10px 12px 0;padding:4px;border-radius:999px;border:1px solid var(--line);background:var(--card)}.area button{border:0;background:transparent;padding:9px 12px;border-radius:999px;cursor:pointer;font-weight:700;font-size:13px;color:var(--muted)}.area button.on{background:var(--fg);color:#fff}
 .tab{padding:8px 14px;border-radius:999px;border:0;background:transparent;color:var(--muted);cursor:pointer;font-weight:600;white-space:nowrap}
 .tab:hover{background:var(--card)}
 .tab.on{background:var(--fg);color:#fff}
@@ -147,7 +147,7 @@ textarea.inp{min-height:70px;resize:vertical}
 .kpis.k4{grid-template-columns:repeat(2,1fr)}
 .kpi em{display:block;font-style:normal;font-size:11.5px;color:var(--dim);margin-top:2px}
 .legend{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted);margin:2px 0 14px}
-.legend i{flex:none;width:120px;height:8px;border-radius:4px;background:linear-gradient(90deg,#3b528b,#21918c,#5ec962,#fde725)}
+.legend{flex-wrap:wrap}.legend i{flex:none;width:120px;height:8px;border-radius:4px;background:linear-gradient(90deg,rgba(255,45,85,.15),#FF2D55)}.legend .dotf,.legend .doto{flex:none;width:12px;height:12px;border-radius:50%;background:#FF2D55;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.25)}.legend .doto{background:transparent;border-color:#999;margin-left:8px}
 .hmnote{font-size:12px;color:var(--dim);margin:0 0 12px}
 .ptop .hmlbl{font-size:12px;color:var(--o);font-weight:700}
 @media (max-width:1000px){
@@ -194,6 +194,7 @@ textarea.inp{min-height:70px;resize:vertical}
       <a class="b s ghost" href="../" target="_blank" rel="noopener">Ver página ↗</a>
       <button class="b s ghost" id="logout">Sair</button>
     </div>
+    <div class="area" id="area"><button data-a="editar">Editar página</button><button data-a="dados">Resultados</button></div>
     <div class="tabs" id="tabs"></div>
     <div class="form" id="form"></div>
     <div class="foot">
@@ -560,7 +561,7 @@ function drawHeat(w){
       <div class="periods" data-g="d">${[['mobile','Celular'],['desktop','Computador']].map(([v,l])=>`<button data-v="${v}" class="${v===hmDev?'on':''}">${l}</button>`).join('')}</div>
     </div>
     <div class="periods" data-g="m" style="margin-bottom:10px">${[['cliques','Cliques'],['atencao','Atenção'],['rolagem','Rolagem']].map(([v,l])=>`<button data-v="${v}" class="${v===hmMode?'on':''}">${l}</button>`).join('')}</div>
-    <div class="legend"><span>menos</span><i></i><span>mais</span></div>
+    ${hmMode==='cliques'?`<div class="legend"><span class="dotf"></span>clique em link, cupom ou produto <span class="doto"></span>clique em lugar que não é link</div>`:`<div class="legend"><span>menos</span><i></i><span>mais</span></div>`}
     <div class="out"><p class="empty">Carregando…</p></div></div>`);
   s.querySelectorAll('.periods').forEach(g=>g.onclick=e=>{ const v=e.target.dataset.v; if(!v) return;
     if(g.dataset.g==='p') period=Number(v); if(g.dataset.g==='d') hmDev=v; if(g.dataset.g==='m') hmMode=v; drawForm(); });
@@ -571,8 +572,9 @@ function drawHeat(w){
     out.append(el(`<div class="kpis k4">
       <div class="kpi"><small>Visitas analisadas</small><b>${d.visits.toLocaleString('pt-BR')}</b><em>${hmDev==='mobile'?'no celular':'no computador'}</em></div>
       <div class="kpi"><small>Tempo na página</small><b>${d.visits?dur(d.median_ms):'—'}</b><em>metade fica mais que isso · média ${d.visits?dur(d.avg_ms):'—'}</em></div>
-      <div class="kpi"><small>Rolaram até o fim</small><b>${d.visits?d.end_pct+'%':'—'}</b><em>chegaram no rodapé</em></div>
+      <div class="kpi"><small>Rolaram até o fim</small><b>${d.visits?Math.round(100*(d.reached.rodape||0)/d.visits)+'%':'—'}</b><em>${d.reached.rodape||0} de ${d.visits} viram o rodapé</em></div>
       <div class="kpi"><small>Cliques sem efeito</small><b>${dead}</b><em>em lugar que não é link${rage?` · ${rage} repetidos com pressa`:''}</em></div></div>`));
+    out.prepend(el(`<p class="hmnote" style="color:var(--muted);margin:0 0 10px">${d.visits?`Tudo aqui vem de <b>${d.visits} ${d.visits===1?'visita real':'visitas reais'}</b> e ${cl.length} ${cl.length===1?'clique':'cliques'} registrados na página, sem estimativa.${d.visits<30?' Ainda é pouca gente: os números vão mudar bastante até passar de 30 visitas.':''}`:''}</p>`));
     if(!d.visits){ out.append(el(`<p class="empty">Ainda não há visitas registradas ${hmDev==='mobile'?'no celular':'no computador'} nesse período. O registro começou agora: os dados aparecem conforme as pessoas abrem edsonmota.com/bio.</p>`)); paintHeat(); return; }
     const keys=[...new Set([...Object.keys(d.dwell||{}),...Object.keys(d.reached||{})])];
     const rows=keys.map(k=>({k,ms:(d.dwell[k]||0)/d.visits,reach:Math.round(100*(d.reached[k]||0)/d.visits),c:cl.filter(c=>c.k===k&&!c.d).length}));
@@ -580,7 +582,7 @@ function drawHeat(w){
     const sorted = hmMode==='rolagem' ? rows.sort((a,b)=>b.reach-a.reach) : rows.sort((a,b)=>b.ms-a.ms);
     const mx=Math.max(1,...sorted.map(r=>hmMode==='rolagem'?r.reach:r.ms));
     sorted.slice(0,12).forEach(r=>{ const v=hmMode==='rolagem'?r.reach:r.ms;
-      g.append(el(`<div class="lrow"><span class="nm">${esc(blockName(r.k))}<small>${r.reach}% chegaram · ${secs(r.ms)} em média${r.c?` · ${r.c} cliques`:''}</small></span><span class="track"><i style="width:${v/mx*100}%"></i></span><span class="n">${hmMode==='rolagem'?r.reach+'%':secs(r.ms)}</span></div>`)); });
+      g.append(el(`<div class="lrow"><span class="nm">${esc(blockName(r.k))}<small>${d.reached[r.k]||0} de ${d.visits} viram (${r.reach}%) · ${secs(r.ms)} em média${r.c?` · ${r.c} cliques`:''}</small></span><span class="track"><i style="width:${v/mx*100}%"></i></span><span class="n">${hmMode==='rolagem'?r.reach+'%':secs(r.ms)}</span></div>`)); });
     out.append(g);
     out.append(el(`<p class="hmnote">Um bloco conta como "visto" quando metade dele aparece na tela. Suas visitas pelo navegador em que você usa o painel não entram na conta.</p>`));
     paintHeat();
@@ -590,47 +592,61 @@ function paintHeat(){
   const fr=$('#frame'); let doc; try{ doc=fr.contentDocument; }catch(e){ return; }
   if(!doc||!doc.body||tab!=='calor') return;
   doc.getElementById('hm-layer')?.remove();
-  const d=hmData; const W=doc.documentElement.scrollWidth, H=doc.documentElement.scrollHeight;
+  const d=hmData, W=doc.documentElement.scrollWidth, H=doc.documentElement.scrollHeight;
   const cv=doc.createElement('canvas'); cv.id='hm-layer';
   const dpr=Math.min(2,fr.contentWindow.devicePixelRatio||1);
   cv.width=W*dpr; cv.height=H*dpr;
-  cv.style.cssText=`position:absolute;left:0;top:0;width:${W}px;height:${H}px;pointer-events:none;z-index:50`;
+  cv.style.cssText=`position:absolute;left:0;top:0;width:${W}px;height:${H}px;pointer-events:none;z-index:9999`;
   doc.body.style.position='relative'; doc.body.append(cv);
   const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
-  ctx.fillStyle='rgba(10,10,10,.42)'; ctx.fillRect(0,0,W,H);
-  if(!d||!d.visits){ if(d){ const vw=fr.contentWindow.innerWidth, y=(fr.contentWindow.scrollY||0)+120; ctx.font='700 15px "Helvetica Neue",Helvetica,Arial,sans-serif'; ctx.textAlign='center';
+  ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(0,0,W,H);
+  const vw=fr.contentWindow.innerWidth, sy=fr.contentWindow.scrollY||0, sx=fr.contentWindow.scrollX||0;
+  const F='"Helvetica Neue",Helvetica,Arial,sans-serif';
+  const pill=(x,y,txt,align)=>{ ctx.font='700 12px '+F; const tw=ctx.measureText(txt).width+16; const px=align==='left'?x:x-tw;
+    ctx.fillStyle='#fff'; ctx.beginPath(); ctx.roundRect(px,y,tw,24,12); ctx.fill(); ctx.fillStyle='#111'; ctx.fillText(txt,px+8,y+16); };
+  if(!d||!d.visits){ if(d){ const y=sy+120; ctx.font='700 15px '+F; ctx.textAlign='center';
       const t1='Ainda sem visitas registradas', t2=(hmDev==='mobile'?'no celular':'no computador')+' nesse período'; const tw=Math.max(ctx.measureText(t1).width,ctx.measureText(t2).width)+36;
-      ctx.fillStyle='rgba(0,0,0,.85)'; ctx.beginPath(); ctx.roundRect(vw/2-tw/2,y,tw,62,16); ctx.fill(); ctx.fillStyle='#fff'; ctx.fillText(t1,vw/2,y+26); ctx.font='500 13px "Helvetica Neue",Helvetica,Arial,sans-serif'; ctx.fillStyle='#ccc'; ctx.fillText(t2,vw/2,y+46); ctx.textAlign='start'; } return; }
-  const sx=fr.contentWindow.scrollX, sy=fr.contentWindow.scrollY;
-  const box=k=>{ const n=k==='pagina'?doc.getElementById('app'):doc.querySelector(`[data-hm="${CSS.escape(k)}"]`); if(!n) return null; const r=n.getBoundingClientRect(); return {x:r.left+sx,y:r.top+sy,w:r.width,h:r.height}; };
-  const label=(b,txt)=>{ ctx.font='700 12px "Helvetica Neue",Helvetica,Arial,sans-serif'; const tw=ctx.measureText(txt).width+14; const x=b.x+b.w-tw-6, y=b.y+6;
-    ctx.fillStyle='rgba(10,10,10,.85)'; ctx.beginPath(); ctx.roundRect(x,y,tw,22,11); ctx.fill(); ctx.fillStyle='#fff'; ctx.fillText(txt,x+7,y+15); };
+      ctx.fillStyle='rgba(0,0,0,.85)'; ctx.beginPath(); ctx.roundRect(vw/2-tw/2,y,tw,62,16); ctx.fill(); ctx.fillStyle='#fff'; ctx.fillText(t1,vw/2,y+26); ctx.font='500 13px '+F; ctx.fillStyle='#ccc'; ctx.fillText(t2,vw/2,y+46); ctx.textAlign='start'; } return; }
+  const box=k=>{ const n=k==='pagina'?doc.getElementById('app'):doc.querySelector(`[data-hm="${CSS.escape(k)}"]`); if(!n) return null; const r=n.getBoundingClientRect(); if(!r.width) return null; return {x:r.left+sx,y:r.top+sy,w:r.width,h:r.height}; };
+  const RED=[255,45,85];
   if(hmMode==='cliques'){
-    const pts=(d.clicks||[]).map(c=>{ const b=box(c.k); return b?{x:b.x+c.x*b.w,y:b.y+c.y*b.h,d:c.d}:null; }).filter(Boolean);
-    const a=doc.createElement('canvas'); a.width=W; a.height=H; const ac=a.getContext('2d');
-    const R=Math.max(18,Math.min(34,W/14)), alpha=Math.min(.6,Math.max(.12,6/Math.sqrt(pts.length+1)));
-    pts.forEach(p=>{ const g=ac.createRadialGradient(p.x,p.y,0,p.x,p.y,R); g.addColorStop(0,`rgba(0,0,0,${alpha})`); g.addColorStop(1,'rgba(0,0,0,0)'); ac.fillStyle=g; ac.fillRect(p.x-R,p.y-R,R*2,R*2); });
-    const img=ac.getImageData(0,0,W,H), px=img.data;
-    for(let i=0;i<px.length;i+=4){ const v=px[i+3]/255; if(v<.02){ px[i+3]=0; continue; } const [r,g,b]=vir(v); px[i]=r;px[i+1]=g;px[i+2]=b;px[i+3]=Math.round(Math.min(1,.35+v*.75)*235); }
-    ac.putImageData(img,0,0);
-    ctx.drawImage(a,0,0,W,H);
-    // total por bloco
-    const per={}; (d.clicks||[]).forEach(c=>{ if(!c.d) per[c.k]=(per[c.k]||0)+1; });
-    Object.entries(per).forEach(([k,n])=>{ const b=box(k); if(b) label(b, n+(n===1?' clique':' cliques')); });
+    const cl=d.clicks||[];
+    const pts=cl.map(c=>{ const b=box(c.k); return b?{x:b.x+c.x*b.w,y:b.y+c.y*b.h,d:c.d,r:c.r}:null; }).filter(Boolean);
+    // mancha de calor só quando há cliques suficientes para formar padrão
+    if(pts.length>=25){
+      const a=doc.createElement('canvas'); a.width=W; a.height=H; const ac=a.getContext('2d'); const R=34;
+      pts.forEach(p=>{ const g=ac.createRadialGradient(p.x,p.y,0,p.x,p.y,R); g.addColorStop(0,'rgba(0,0,0,.18)'); g.addColorStop(1,'rgba(0,0,0,0)'); ac.fillStyle=g; ac.fillRect(p.x-R,p.y-R,R*2,R*2); });
+      const img=ac.getImageData(0,0,W,H), px=img.data;
+      for(let i=0;i<px.length;i+=4){ const v=px[i+3]/255; if(v<.03){ px[i+3]=0; continue; } px[i]=RED[0];px[i+1]=RED[1];px[i+2]=RED[2];px[i+3]=Math.round(Math.min(1,v*1.6)*170); }
+      ac.putImageData(img,0,0); ctx.drawImage(a,0,0,W,H);
+    }
+    // cada clique real é um ponto
+    pts.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,p.r?10:7,0,Math.PI*2);
+      if(p.d){ ctx.lineWidth=2.5; ctx.strokeStyle='#fff'; ctx.stroke(); }
+      else { ctx.fillStyle=`rgb(${RED})`; ctx.fill(); ctx.lineWidth=2; ctx.strokeStyle='#fff'; ctx.stroke(); } });
+    const per={}; cl.forEach(c=>{ if(!c.d) per[c.k]=(per[c.k]||0)+1; });
+    const tot=Object.values(per).reduce((a,b)=>a+b,0)||1;
+    Object.entries(per).forEach(([k,n])=>{ const b=box(k); if(b) pill(b.x+b.w-6,b.y+6, `${n} ${n===1?'clique':'cliques'} · ${Math.round(n/tot*100)}%`); });
   } else {
-    const keys=[...doc.querySelectorAll('[data-hm]')].map(n=>n.getAttribute('data-hm'));
+    const keys=[...doc.querySelectorAll('[data-hm]')].map(n=>n.getAttribute('data-hm')).filter(k=>!k.startsWith('social:'));
     const val=k=> hmMode==='atencao' ? (d.dwell[k]||0)/d.visits : 100*(d.reached[k]||0)/d.visits;
     const mx=Math.max(1,...keys.map(val));
-    keys.forEach(k=>{ const b=box(k); if(!b) return; const v=val(k), t=hmMode==='rolagem'? v/100 : v/mx; const [r,g,bb]=vir(t);
-      ctx.fillStyle=`rgba(${r},${g},${bb},${.25+t*.45})`; ctx.beginPath(); ctx.roundRect(b.x-4,b.y-4,b.w+8,b.h+8,14); ctx.fill();
-      label(b, hmMode==='atencao' ? secs(v)+' em média' : Math.round(v)+'% chegaram'); });
+    keys.forEach(k=>{ const b=box(k); if(!b) return; const v=val(k), t=hmMode==='rolagem'? v/100 : v/mx;
+      ctx.fillStyle=`rgba(${RED},${(.06+t*.5).toFixed(3)})`; ctx.beginPath(); ctx.roundRect(b.x,b.y,b.w,b.h,14); ctx.fill();
+      ctx.lineWidth=2; ctx.strokeStyle=`rgba(${RED},${(.25+t*.75).toFixed(3)})`; ctx.stroke();
+      const n=d.reached[k]||0;
+      pill(b.x+b.w-6,b.y+6, hmMode==='atencao' ? `${secs(v)} em média` : `${n} de ${d.visits} · ${Math.round(v)}%`); });
   }
 }
 
 /* ---------- telas ---------- */
+const DADOS=['cliques','calor'];
 function drawTabs(){
+  const area=DADOS.includes(tab)?'dados':'editar';
+  const go=k=>{ const was=tab; tab=k; $('#form').scrollTop=0; drawTabs(); if(was==='calor'&&k!=='calor') leaveHeat(); drawForm(); };
+  $('#area').querySelectorAll('button').forEach(b=>{ b.classList.toggle('on',b.dataset.a===area); b.onclick=()=>{ if(b.dataset.a===area) return; go(b.dataset.a==='dados'?'cliques':Object.keys(TABS).find(k=>!DADOS.includes(k))); }; });
   const t=$('#tabs'); t.innerHTML='';
-  Object.entries(TABS).forEach(([k,v])=>{ const b=el(`<button class="tab${k===tab?' on':''}">${esc(v.label)}</button>`); b.onclick=()=>{ const was=tab; tab=k; $('#form').scrollTop=0; drawTabs(); if(was==='calor'&&k!=='calor') leaveHeat(); drawForm(); }; t.append(b); });
+  Object.entries(TABS).filter(([k])=>DADOS.includes(k)===(area==='dados')).forEach(([k,v])=>{ const b=el(`<button class="tab${k===tab?' on':''}">${esc(v.label)}</button>`); b.onclick=()=>go(k); t.append(b); });
 }
 function drawForm(){
   const f=$('#form'), y=f.scrollTop; f.innerHTML='';

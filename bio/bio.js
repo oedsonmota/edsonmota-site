@@ -6,7 +6,8 @@
   var params=new URLSearchParams(location.search);
   var isPreview=params.get('preview')==='1';
   var isAdmin=false; try{isAdmin=localStorage.getItem('em-bio-admin')==='1'}catch(e){}
-  var noTrack=isPreview||isAdmin||params.get('notrack')==='1';
+  var isBot=false; try{isBot=!!navigator.webdriver||/bot|crawl|spider|slurp|facebookexternalhit|meta-externalagent|headless|lighthouse|preview/i.test(navigator.userAgent)}catch(e){}
+  var noTrack=isPreview||isAdmin||isBot||params.get('notrack')==='1';
   var app=document.getElementById('app'), root=document.documentElement;
   var inquieto=false, lastJson='', first=true, dotsOn=true;
 
@@ -153,7 +154,7 @@
       if(document.visibilityState!=='visible')return;
       B.ms+=dt;
       var docH=Math.max(document.documentElement.scrollHeight,1),vh=innerHeight;
-      var pct=Math.min(100,Math.round((scrollY+vh)/docH*100)); if(pct>B.max)B.max=pct;
+      var hasBlocks=app.querySelector('[data-hm]'); if(hasBlocks&&docH>vh*1.1){var pct=Math.min(100,Math.round((scrollY+vh)/docH*100)); if(pct>B.max)B.max=pct}else if(hasBlocks&&B.max<100){B.max=100}
       var els=app.querySelectorAll('[data-hm]');
       for(var i=0;i<els.length;i++){var r=els[i].getBoundingClientRect(),vis=Math.min(r.bottom,vh)-Math.max(r.top,0);
         if(vis<=0)continue; var need=Math.min(r.height,vh)*0.5;

@@ -542,6 +542,7 @@ async function loadHeat(){
   if(error) throw error; hmData=data; hmKey=key; return data;
 }
 function enterHeat(){
+  [900,1800,3200].forEach(t=>setTimeout(paintHeat,t));
   const fr=$('#frame'); const want='frame '+(hmDev==='mobile'?'m':'d');
   $('#pvDev').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===(hmDev==='mobile'?'m':'d')));
   if(fr.className!==want) fr.className=want;

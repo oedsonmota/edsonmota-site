@@ -30,13 +30,25 @@
   function attrs(href){return ' href="'+esc(href)+'"'+(/^https?:/i.test(href)?' target="_blank" rel="noopener"':'')}
 
   /* ---------- registro de visitas e cliques ---------- */
+  var DEVICE=Math.min(innerWidth,screen.width||innerWidth)<700?'mobile':'desktop';
+  var GEO=null; try{GEO=JSON.parse(sessionStorage.getItem('em-bio-geo')||'null')}catch(e){}
+  /* região aproximada (estado e cidade) a partir da conexão; o IP não é guardado */
+  var geoReady=GEO?Promise.resolve(GEO):(noTrack?Promise.resolve(null):new Promise(function(res){
+    var done=false; setTimeout(function(){if(!done){done=true;res(null)}},2500);
+    fetch('https://get.geojs.io/v1/ip/geo.json').then(function(r){return r.json()}).then(function(g){
+      GEO={country:(g.country||'').slice(0,60)||null,region:(g.region||'').slice(0,80)||null,city:(g.city||'').slice(0,80)||null};
+      try{sessionStorage.setItem('em-bio-geo',JSON.stringify(GEO))}catch(e){}
+      if(!done){done=true;res(GEO)}
+    }).catch(function(){if(!done){done=true;res(null)}});
+  }));
+  function geoFields(o){o.device=DEVICE;if(GEO){o.country=GEO.country;o.region=GEO.region;o.city=GEO.city}return o}
   function track(type,id,label){
     if(noTrack||!CFG.supabaseUrl)return;
     var ref=refOf();
     try{
       fetch(CFG.supabaseUrl+'/rest/v1/bio_events',{method:'POST',keepalive:true,
         headers:hdr(),
-        body:JSON.stringify({site_id:CFG.siteId,type:type,link_id:id||null,label:label?String(label).slice(0,120):null,ref:ref||null})}).catch(function(){});
+        body:JSON.stringify(geoFields({site_id:CFG.siteId,type:type,link_id:id||null,label:label?String(label).slice(0,120):null,ref:ref||null}))}).catch(function(){});
     }catch(e){}
   }
   function hdr(){return{apikey:CFG.supabaseKey,Authorization:'Bearer '+CFG.supabaseKey,'Content-Type':'application/json',Prefer:'return=minimal'}}
@@ -127,13 +139,13 @@
     if(data){try{localStorage.setItem(CACHE,JSON.stringify(data))}catch(e){}}
     if(!isPreview||!lastJson)render(merge(DEF,data||cached||{}));
   });
-  if(!noTrack){try{if(!sessionStorage.getItem('em-bio-v')){sessionStorage.setItem('em-bio-v','1');track('view')}}catch(e){track('view')}}
+  if(!noTrack){try{if(!sessionStorage.getItem('em-bio-v')){sessionStorage.setItem('em-bio-v','1');geoReady.then(function(){track('view')})}}catch(e){track('view')}}
 
   /* ---------- comportamento: cliques com posição, tempo por bloco e rolagem (anônimo) ---------- */
   if(!noTrack&&CFG.supabaseUrl&&window.fetch){
     var vid=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-8xxx-xxxxxxxxxxxx'.replace(/x/g,function(){return(Math.random()*16|0).toString(16)});
     var part=0, B=newBucket(), lastTick=Date.now(), recent=[];
-    var device=Math.min(innerWidth,screen.width||innerWidth)<700?'mobile':'desktop';
+    var device=DEVICE;
     function newBucket(){return{t0:Date.now(),ms:0,max:0,seen:{},dwell:{},clicks:[]}}
     function r3(n){return Math.round(n*1000)/1000}
     function tick(){
@@ -164,7 +176,7 @@
       if(B.ms<400&&!B.clicks.length)return;
       var dw={};Object.keys(B.dwell).forEach(function(k){dw[k]=B.dwell[k]});
       var body=JSON.stringify({id:vid,part:part,site_id:CFG.siteId,device:device,vw:innerWidth,dur_ms:Math.min(B.ms,3600000),max_pct:B.max,
-        seen:Object.keys(B.seen).slice(0,60),dwell:dw,clicks:B.clicks,ref:refOf()||null});
+        seen:Object.keys(B.seen).slice(0,60),dwell:dw,clicks:B.clicks,ref:refOf()||null,country:GEO?GEO.country:null,region:GEO?GEO.region:null,city:GEO?GEO.city:null});
       part++; B=newBucket();
       if(part>50)return;
       try{fetch(CFG.supabaseUrl+'/rest/v1/bio_visits',{method:'POST',keepalive:true,headers:hdr(),body:body}).catch(function(){})}catch(e){}

@@ -490,6 +490,23 @@ function drawStats(w){
       b.onmouseenter=e=>{ tip.hidden=false; tip.innerHTML=`<b>${x.dt.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit'})}</b>${x.c} cliques · ${x.v} visitas`; const r=b.getBoundingClientRect(); tip.style.left=(r.left+r.width/2)+'px'; tip.style.top=(r.top+r.height-(b.firstChild.offsetHeight))+'px'; };
       b.onmouseleave=()=>tip.hidden=true; ch.append(b); });
     out.append(g);
+    // aparelhos
+    const devs=d.devices||[], dv=Math.max(1,devs.reduce((a,x)=>a+x.v,0));
+    if(devs.length){
+      const DN={mobile:'Celular',desktop:'Computador','?':'Antes do registro de aparelho'};
+      const dg=el(`<div class="group"><h4>Celular ou computador</h4></div>`);
+      devs.forEach(x=>dg.append(el(`<div class="lrow"><span class="nm">${esc(DN[x.dev]||x.dev)}<small>${x.v} visitas · ${x.c} cliques${x.v?' · '+Math.round(x.c/x.v*100)+'% cliques por visita':''}</small></span><span class="track"><i style="width:${x.v/dv*100}%"></i></span><span class="n">${Math.round(x.v/dv*100)}%</span></div>`)));
+      out.append(dg);
+    }
+    // regiões
+    if((d.regions||[]).length){
+      const tot=Math.max(1,d.geo_known||0), rg=el(`<div class="group"><h4>Estados e regiões</h4></div>`), rmx=Math.max(1,...d.regions.map(x=>x.v));
+      d.regions.forEach(x=>rg.append(el(`<div class="lrow"><span class="nm">${esc(x.region)}<small>${esc(x.country||'')} · ${Math.round(x.v/tot*100)}% das visitas</small></span><span class="track"><i style="width:${x.v/rmx*100}%"></i></span><span class="n">${x.v}</span></div>`)));
+      out.append(rg);
+      const cg=el(`<div class="group"><h4>Cidades</h4><p class="help" style="margin:-6px 0 8px;color:var(--dim);font-size:12px">A cidade vem da conexão de internet da pessoa. No celular, às vezes aparece a cidade da operadora em vez da cidade real.</p></div>`), cmx=Math.max(1,...(d.cities||[]).map(x=>x.v));
+      (d.cities||[]).forEach(x=>cg.append(el(`<div class="lrow"><span class="nm">${esc(x.city)}<small>${esc(x.region||'')}</small></span><span class="track"><i style="width:${x.v/cmx*100}%"></i></span><span class="n">${x.v}</span></div>`)));
+      out.append(cg);
+    }
     const lg=el(`<div class="group"><h4>Por link</h4></div>`);
     if(!d.links.length) lg.append(el('<p class="empty">Nenhum clique nesse período ainda.</p>'));
     const lmax=Math.max(1,...d.links.map(x=>x.c));

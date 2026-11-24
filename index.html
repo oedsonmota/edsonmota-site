@@ -286,6 +286,8 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 }
 </style>
 <link rel="stylesheet" href="css/aplicar.css?v=2">
+<script>window.emEvento=function(){(window.__emq=window.__emq||[]).push([].slice.call(arguments))};window.emPessoa=function(){};</script>
+<script src="js/rastreio.js?v=1" defer></script>
 </head>
 <body>
 
@@ -303,7 +305,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 </nav>
 
 <!-- 1. Topo -->
-<header id="topo" class="hero">
+<header id="topo" class="hero" data-secao="Topo">
   <div class="wrap">
     <h1 data-palavras>Consultoria estratégica de <span class="dim">posicionamento</span> e <span class="dim">identidade</span> de&nbsp;marca.</h1>
     <div class="base" data-rev>
@@ -335,7 +337,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 </header>
 
 <!-- 2. Sinais -->
-<section class="sec">
+<section class="sec" data-secao="Sinais">
   <div class="wrap duas">
     <div data-rev>
       <h2 data-palavras>Quatro sinais de que a marca está <span class="dim">travando o crescimento</span> da sua&nbsp;empresa.</h2>
@@ -352,7 +354,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 
 <!-- 3. Cresce (gráfico animado) -->
 <div class="bloco-wrap">
-<section class="bloco escuro sec cresce">
+<section class="bloco escuro sec cresce" data-secao="Crescimento">
   <div class="wrap">
     <h2 data-palavras>A empresa cresce até onde <span class="dim">a marca&nbsp;aguenta.</span></h2>
     <p class="desc" data-rev style="margin-top:24px">No começo, quem vende é o dono: a reputação, o relacionamento, a indicação. Para passar desse ponto, o cliente precisa de um motivo claro para escolher, confiar e pagar o seu preço sem nunca ter falado com você. Esse motivo é a&nbsp;marca.</p>
@@ -389,7 +391,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 
 
 <!-- 3b. Três frentes -->
-<section class="sec frentes">
+<section class="sec frentes" data-secao="Três frentes">
   <div class="wrap">
     <div class="duas" data-rev>
       <h2 data-palavras>Sua empresa passa a ocupar um lugar no mercado <span class="dim">que é só&nbsp;dela.</span></h2>
@@ -404,7 +406,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 </section>
 
 <!-- 4. Projetos -->
-<section id="projetos" class="sec">
+<section id="projetos" class="sec" data-secao="Cases">
   <div class="wrap">
     <div class="topo-sec" data-rev>
       <h2 data-palavras>Projetos selecionados.</h2>
@@ -423,7 +425,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 
 <!-- 5. Método -->
 <div class="bloco-wrap">
-<section id="metodo" class="bloco sec">
+<section id="metodo" class="bloco sec" data-secao="Método">
   <div class="wrap">
     <div class="duas" data-rev>
       <h2 data-palavras>6 etapas.<br><span class="dim">4&nbsp;a&nbsp;6&nbsp;semanas.</span></h2>
@@ -443,7 +445,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 
 <!-- 6. Plataforma -->
 <div class="bloco-wrap" style="margin-top:clamp(10px,1.4vw,20px)">
-<section id="plataforma" class="bloco escuro sec">
+<section id="plataforma" class="bloco escuro sec" data-secao="Plataforma">
   <div class="wrap duas" style="align-items:center">
     <div data-rev>
       <h2 data-palavras>Você acompanha o projeto inteiro <span class="dim">num só&nbsp;lugar.</span></h2>
@@ -472,7 +474,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 </div>
 
 <!-- 7. Depoimentos -->
-<section id="depoimentos" class="sec">
+<section id="depoimentos" class="sec" data-secao="Depoimentos">
   <div class="wrap">
     <div class="topo-sec" data-rev>
       <h2 data-palavras>Quem já passou por&nbsp;aqui.</h2>
@@ -490,7 +492,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 
 <!-- 8. Sobre -->
 <div class="bloco-wrap">
-<section id="sobre" class="bloco sec">
+<section id="sobre" class="bloco sec" data-secao="Sobre">
   <div class="wrap sobre-grid">
     <div data-rev>
       <h2 data-palavras>A marca é um dos ativos <span class="dim">mais importantes do seu&nbsp;negócio.</span></h2>
@@ -508,7 +510,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 </div>
 
 <!-- 9. Dúvidas -->
-<section id="duvidas" class="sec">
+<section id="duvidas" class="sec" data-secao="Dúvidas">
   <div class="wrap duas">
     <div data-rev class="faq-lado"><h2 data-palavras>O que pesa <span class="dim">na&nbsp;decisão.</span></h2><p class="desc" style="margin-top:24px;max-width:420px">As perguntas que todo empresário faz antes de fechar um projeto de marca, respondidas sem&nbsp;rodeio.</p></div>
     <div class="faq">
@@ -533,7 +535,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 
 <!-- 10. Aplicar -->
 <div class="bloco-wrap">
-<section id="contato" class="cta sec">
+<section id="contato" class="cta sec" data-secao="Aplicação">
   <div class="wrap">
     <h2 data-palavras>Vamos falar <span class="dim">da sua&nbsp;marca.</span></h2>
     <p data-rev style="margin-top:24px;max-width:520px;font-size:19px">Conte em poucos minutos o momento da sua empresa. Eu leio cada aplicação antes da primeira&nbsp;conversa.</p>
@@ -547,14 +549,14 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 </section>
 </div>
 
-<footer class="rodape">
+<footer class="rodape" data-secao="Rodapé">
   <div class="wrap">
     <p class="frase" data-palavras>Marca é o ativo que trabalha <span class="dim">mesmo quando você não está na&nbsp;sala.</span></p>
     <div class="topo">
       <div class="assina"><svg width="40" height="32" viewBox="0 0 59 47" fill="currentColor" aria-hidden="true"><rect x="19.65" y="2.27" width="38.9" height="8.2"/><rect y="20.73" width="39.1" height="8"/><rect x="8.89" y="39" width="39.1" height="8"/><circle cx="6.71" cy="5.73" r="5.73"/></svg><p>Consultoria estratégica de posicionamento e identidade de&nbsp;marca.</p></div>
       <div class="links"><a href="projetos.html">Projetos</a><a href="https://www.instagram.com/oedsonmota/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/oedsonmota/" target="_blank" rel="noopener">LinkedIn</a><a href="#aplicar" data-aplicar>Aplicar para um projeto</a></div>
     </div>
-    <div class="base"><span>© 2027 Edson Mota. Todos os direitos reservados. · <a href="privacidade.html">Privacidade</a> · <a href="#" data-cookies>Cookies</a></span><a href="#topo">Voltar ao topo ↑</a></div>
+    <div class="base"><span>© 2027 Edson Mota. Todos os direitos reservados. · Este site usa ferramentas da Meta para medir visitas e anúncios. <a href="privacidade.html">Política de privacidade</a></span><a href="#topo">Voltar ao topo ↑</a></div>
     <div class="grande" aria-hidden="true">EDSON MOTA</div>
   </div>
 </footer>
@@ -710,7 +712,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
   ajusta(); addEventListener('resize', ajusta);
 })();
 </script>
-<script src="js/aplicar.js?v=2" defer></script>
-<script src="js/consentimento.js?v=2" defer></script>
+<script src="js/aplicar.js?v=3" defer></script>
+
 </body>
 </html>

@@ -119,6 +119,8 @@
 .final p{max-width:460px;font-size:19px}
 </style>
 <link rel="stylesheet" href="css/aplicar.css?v=2">
+<script>window.emEvento=function(){(window.__emq=window.__emq||[]).push([].slice.call(arguments))};window.emPessoa=function(){};</script>
+<script src="js/rastreio.js?v=1" defer></script>
 </head>
 <body>
 
@@ -135,7 +137,7 @@
   <button class="menu" type="button" aria-label="Abrir menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h14M3 13h14"/></svg></button>
 </nav>
 
-<header class="p-hero escuro">
+<header class="p-hero escuro" data-secao="Topo projetos">
   <div class="wrap">
     <div class="topo-p">
       <div class="trilha" data-trilha="img/newgen-4.webp,img/gabo-2.webp,img/verdan-2.webp,img/toast-3.webp,img/ancoragem-3.webp,img/anne-2.webp,img/newgen-5.webp,img/gabo-5.webp,img/verdan-5.webp,img/toast-2.webp,img/ancoragem-2.webp,img/anne-4.webp">
@@ -146,7 +148,7 @@
   </div>
 </header>
 
-<div class="controles" id="lista">
+<div class="controles" id="lista" data-secao="Lista de cases">
   <div class="wrap">
     <span class="label" style="color:var(--txt-claro)">Clique num projeto para ver o case</span>
     <div class="vista" role="group" aria-label="Modo de visualização">
@@ -179,7 +181,7 @@
 
 <div class="preview" aria-hidden="true"><span class="tag">Abrir case</span></div>
 
-<section class="cresce" aria-labelledby="t-cresce">
+<section class="cresce" aria-labelledby="t-cresce" data-secao="Decisão de negócio">
   <div class="fixo">
     <div class="moldura"><img src="img/verdan-2.webp" alt="" loading="lazy"></div>
     <div class="frase">
@@ -188,7 +190,7 @@
   </div>
 </section>
 
-<section class="laranja final" aria-labelledby="t-final">
+<section class="laranja final" aria-labelledby="t-final" data-secao="Aplicação">
   <div class="wrap">
     <h2 id="t-final"><span class="linha-mask"><span>A próxima</span></span><span class="linha-mask"><span class="branca">pode ser a sua.</span></span></h2>
     <div class="linha2">
@@ -198,7 +200,7 @@
   </div>
 </section>
 
-<footer class="rodape">
+<footer class="rodape" data-secao="Rodapé">
   <div class="wrap">
     <div class="manifesto">
       <p class="frase">Marca é o ativo que trabalha <span class="dim">mesmo quando você não está na sala.</span></p>
@@ -210,7 +212,7 @@
       <nav class="col" aria-label="Site"><span>Navegue</span><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="index.html#metodo">Método</a><a href="index.html#plataforma">Plataforma</a><a href="index.html#depoimentos">Depoimentos</a><a href="index.html#sobre">Sobre</a></nav>
       <nav class="col" aria-label="Contato"><span>Contato</span><a class="destaque" href="#aplicar" data-aplicar>Aplicar para um projeto</a><a href="https://www.instagram.com/oedsonmota/">Instagram</a><a href="https://www.linkedin.com/in/oedsonmota/">LinkedIn</a></nav>
     </div>
-    <div class="base"><span>© 2027 Edson Mota. Todos os direitos reservados. · <a href="privacidade.html">Privacidade</a> · <a href="#" data-cookies>Cookies</a></span><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Voltar ao topo ↑</a></div>
+    <div class="base"><span>© 2027 Edson Mota. Todos os direitos reservados. · Este site usa ferramentas da Meta para medir visitas e anúncios. <a href="privacidade.html">Política de privacidade</a></span><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Voltar ao topo ↑</a></div>
     <div class="grande" aria-hidden="true">EDSON MOTA</div>
   </div>
 </footer>
@@ -507,7 +509,6 @@
   else { mold.style.transform = 'none'; mold.style.borderRadius = '0'; }
 })();
 </script>
-<script src="js/aplicar.js?v=2" defer></script>
-<script src="js/consentimento.js?v=2" defer></script>
+<script src="js/aplicar.js?v=3" defer></script>
 </body>
 </html>

@@ -10,6 +10,8 @@
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/aplicar.css?v=2">
+<script>window.emEvento=function(){(window.__emq=window.__emq||[]).push([].slice.call(arguments))};window.emPessoa=function(){};</script>
+<script src="js/rastreio.js?v=1" defer></script>
 <style>
 .priv{padding:clamp(140px,15vw,190px) 0 clamp(80px,9vw,120px)}
 .priv h1{font-size:clamp(40px,6vw,88px);letter-spacing:-0.05em;line-height:.98;max-width:900px}
@@ -48,33 +50,35 @@
     <div class="blocos">
       <section>
         <h2>O que eu coleto</h2>
-        <p>Só o que você me manda no formulário de aplicação: nome, e-mail, WhatsApp, o nome e o site do seu negócio e as respostas sobre o momento da empresa.</p>
-        <p>Se você aceitar os cookies, o Pixel da Meta registra as páginas que você visitou aqui, os cases que abriu e se enviou a aplicação. Se recusar, nada disso é coletado.</p>
+        <p>Quando você navega pelo site, o Pixel da Meta registra as páginas visitadas, quanto tempo você fica, até onde rola a página, as seções que aparecem na tela, os botões que clica, os cases que abre e se começou ou enviou a aplicação. Junto com isso vão informações técnicas, como o endereço IP, o navegador e os cookies da Meta (_fbp e _fbc).</p>
+        <p>No formulário de aplicação, você me manda nome, e-mail, WhatsApp, o nome e o site do seu negócio e as respostas sobre o momento da&nbsp;empresa.</p>
       </section>
       <section>
         <h2>Para que eu uso</h2>
         <ul>
           <li>Responder à sua aplicação e preparar a primeira conversa.</li>
-          <li>Com o seu aceite, medir quais anúncios trazem visitas e mostrar anúncios no Instagram e no Facebook para quem já conhece o meu trabalho.</li>
+          <li>Medir quais anúncios trazem visitas e aplicações, e mostrar anúncios no Instagram e no Facebook para quem já conhece o meu&nbsp;trabalho.</li>
         </ul>
-        <p>Eu não vendo nem repasso os seus dados para ninguém.</p>
+        <p>Eu não vendo os seus&nbsp;dados.</p>
+      </section>
+      <section>
+        <h2>Pixel e API de Conversões da Meta</h2>
+        <p>Uso duas ferramentas da Meta: o Pixel, que roda no seu navegador, e a API de Conversões, que envia os mesmos eventos a partir do meu servidor, para a medição não se perder quando o navegador bloqueia o&nbsp;Pixel.</p>
+        <p>Quando você envia a aplicação, seu nome, e-mail e telefone seguem para a Meta criptografados (em hash SHA-256), só para ela reconhecer se você veio de um anúncio. A Meta trata esses dados de acordo com a política de privacidade&nbsp;dela.</p>
       </section>
       <section>
         <h2>Onde os dados ficam</h2>
-        <p>As respostas do formulário ficam numa planilha privada no Google, que só eu acesso. Os dados do Pixel ficam na Meta, de acordo com a política de privacidade dela.</p>
-        <p>Guardo as aplicações pelo tempo necessário para o contato comercial e apago quando não fazem mais sentido, ou antes, se você pedir.</p>
+        <p>As respostas do formulário ficam numa planilha privada no Google, que só eu acesso. Os eventos de navegação ficam na Meta. Guardo as aplicações pelo tempo necessário para o contato comercial e apago quando não fazem mais sentido, ou antes, se você&nbsp;pedir.</p>
       </section>
       <section>
-        <h2>Seus direitos</h2>
-        <p>Pela Lei Geral de Proteção de Dados (LGPD), você pode pedir para ver, corrigir ou apagar os seus dados a qualquer momento. É só me mandar uma mensagem no Instagram <a href="https://www.instagram.com/oedsonmota/">@oedsonmota</a> ou no <a href="https://www.linkedin.com/in/oedsonmota/">LinkedIn</a>.</p>
-      </section>
-      <section>
-        <h2>Mudar a sua escolha de cookies</h2>
-        <p>Você pode aceitar ou recusar de novo quando quiser. Se recusar depois de ter aceitado, o Pixel para de coletar a partir da próxima página que você abrir.</p>
-        <div class="acoes"><a class="btn btn-preto" href="#" data-cookies>Rever cookies</a></div>
+        <h2>Seus direitos e como pedir exclusão</h2>
+        <p>Pela Lei Geral de Proteção de Dados (LGPD), você pode pedir para ver, corrigir ou apagar os seus dados a qualquer momento, inclusive os enviados à Meta. É só me mandar uma mensagem no Instagram <a href="https://www.instagram.com/oedsonmota/">@oedsonmota</a> ou no <a href="https://www.linkedin.com/in/oedsonmota/">LinkedIn</a>.</p>
+        <p>Se não quiser ser medido neste navegador, é só desligar aqui. A escolha vale a partir da próxima página que você&nbsp;abrir.</p>
+        <div class="acoes"><button class="btn btn-preto" type="button" data-desliga>Desligar a medição</button></div>
+        <p class="aviso-desliga" hidden>Medição desligada neste navegador.</p>
       </section>
     </div>
-    <p class="data">Atualizado em novembro de 2026.</p>
+    <p class="data">Atualizado em 24 de novembro de 2026.</p>
   </div>
 </main>
 
@@ -85,7 +89,14 @@
 </footer>
 
 <script src="js/site.js"></script>
-<script src="js/aplicar.js?v=2" defer></script>
-<script src="js/consentimento.js?v=2" defer></script>
+<script src="js/aplicar.js?v=3" defer></script>
+<script>
+(function(){
+  var b = document.querySelector('[data-desliga]'), a = document.querySelector('.aviso-desliga');
+  function marca(){ b.hidden = true; a.hidden = false; }
+  try { if (localStorage.getItem('em_rastreio') === 'nao' || localStorage.getItem('em_cookies') === 'nao') marca(); } catch (e) {}
+  b.addEventListener('click', function(){ try { localStorage.setItem('em_rastreio', 'nao'); } catch (e) {} if (window.fbq) window.fbq('consent', 'revoke'); marca(); });
+})();
+</script>
 </body>
 </html>

@@ -43,7 +43,7 @@
       '<div class="apl-campo"><label for="apl-trava">O que mais está travando o negócio hoje?</label><textarea id="apl-trava" name="desafio" required></textarea><span class="apl-msg">Escreve com as suas palavras, do jeito que vier.</span></div>'+
       '<div class="apl-campo" data-radio="investimento"><span class="apl-perg">Os projetos começam a partir de R$&nbsp;4.500. O&nbsp;valor do seu é definido com calma, depois que eu entender o escopo na nossa conversa. Esse investimento faz sentido para o momento da&nbsp;empresa?</span>'+opcoes('investimento',['Faz sentido','Quero entender melhor','Ainda não é o momento'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
       '<div class="apl-campo" data-radio="quando"><span class="apl-perg">Quando você quer começar?</span>'+opcoes('quando',['Agora','Nos próximos 3 meses','Ainda estou pesquisando'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
-      '<div class="apl-campo apl-aceite"><label class="apl-check"><input type="checkbox" name="consentimento" value="Sim" required><span>Concordo que o Edson use estes dados só para responder à minha aplicação. Eles não são compartilhados e posso pedir para apagar a qualquer&nbsp;momento.</span></label><span class="apl-msg">Preciso do seu ok para usar os dados.</span></div>'+
+      '<div class="apl-campo apl-aceite"><label class="apl-check"><input type="checkbox" name="consentimento" value="Sim" required><span>Concordo que o Edson use estes dados para responder à minha aplicação e, de forma criptografada, para medir os anúncios na Meta. Posso pedir para apagar a qualquer&nbsp;momento.</span></label><span class="apl-msg">Preciso do seu ok para usar os dados.</span></div>'+
      '</section>'+
 
      '<section class="apl-etapa apl-fim" data-etapa="4">'+
@@ -122,13 +122,14 @@
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if (!valida(atual)) return;
+    if (window.emEvento) window.emEvento('EtapaFormulario', {etapa: atual + ' de 3'}, true);
     if (atual < 3) return mostra(atual + 1);
     if (form.site_hp.value) return mostra(4);
     var dados = new FormData(form); dados.delete('site_hp');
     dados.append('origem', location.pathname.indexOf('projetos') > -1 ? 'Página de projetos' : 'Home');
     seguir.disabled = true; seguir.innerHTML = 'Enviando…';
     fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(dados) })
-      .then(function(){ seguir.disabled = false; mostra(4); if (window.emEvento) window.emEvento('Lead', {content_name: 'Aplicação para projeto'}); })
+      .then(function(){ seguir.disabled = false; mostra(4); if (window.emPessoa) window.emPessoa({nome: form.nome.value, email: form.email.value, whatsapp: form.whatsapp.value}); if (window.emEvento) window.emEvento('Lead', {content_name: 'Aplicação para projeto'}); })
       .catch(function(){ seguir.disabled = false; seguir.innerHTML = 'Tentar de novo ' + SETA; });
   });
 })();

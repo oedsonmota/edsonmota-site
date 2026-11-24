@@ -44,7 +44,7 @@
     }
     var box = document.createElement('div');
     box.className = 'ck'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-live', 'polite'); box.setAttribute('aria-label', 'Aviso de cookies');
-    box.innerHTML = '<b>Cookies, só com o seu ok.</b><p>Uso cookies para entender as visitas e mostrar anúncios para quem já conhece o meu trabalho. Nada é coletado se você recusar. <a href="privacidade.html">Saiba mais</a></p>'+
+    box.innerHTML = '<b>Este site usa cookies.</b><p>Só com o seu ok. <a href="privacidade.html">Saiba mais</a></p>'+
       '<div class="ck-acoes"><button type="button" class="ck-nao">Recusar</button><button type="button" class="ck-sim">Aceitar</button></div>';
     document.body.appendChild(box);
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ box.classList.add('on'); }); });

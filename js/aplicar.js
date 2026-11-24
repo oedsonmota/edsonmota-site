@@ -43,6 +43,7 @@
       '<div class="apl-campo"><label for="apl-trava">O que mais está travando o negócio hoje?</label><textarea id="apl-trava" name="desafio" required></textarea><span class="apl-msg">Escreve com as suas palavras, do jeito que vier.</span></div>'+
       '<div class="apl-campo" data-radio="investimento"><span class="apl-perg">Pra você já saber antes da conversa: os projetos começam a partir de R$ 4.500. O valor final eu defino depois de entender o escopo do seu negócio. Isso está dentro do que você imaginava investir?</span>'+opcoes('investimento',['Sim, está dentro','Quero entender melhor o escopo','Por enquanto, não'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
       '<div class="apl-campo" data-radio="quando"><span class="apl-perg">Quando você quer começar?</span>'+opcoes('quando',['Agora','Nos próximos 3 meses','Ainda estou pesquisando'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
+      '<div class="apl-campo apl-aceite"><label class="apl-check"><input type="checkbox" name="consentimento" value="Sim" required><span>Concordo que o Edson use estes dados só para responder à minha aplicação. Eles não são compartilhados com ninguém e você pode pedir para apagar quando quiser.</span></label><span class="apl-msg">Preciso do seu ok para usar os dados.</span></div>'+
      '</section>'+
 
      '<section class="apl-etapa apl-fim" data-etapa="4">'+
@@ -85,6 +86,7 @@
     sec.querySelectorAll('.apl-campo').forEach(function(c){
       var bom = true, inp = c.querySelector('input:not([type=radio]), textarea');
       if (c.dataset.radio) bom = !!sec.querySelector('input[name="'+c.dataset.radio+'"]:checked');
+      else if (inp && inp.type === 'checkbox') bom = inp.checked;
       else if (inp && inp.required) {
         var v = inp.value.trim();
         bom = v.length > 1 && (inp.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) && (inp.type !== 'tel' || v.replace(/\D/g,'').length >= 10);

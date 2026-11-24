@@ -42,3 +42,7 @@
 body.apl-trava{overflow:hidden}
 @media (max-width:520px){.apl{padding:0;align-items:flex-end}.apl-caixa{border-radius:28px 28px 0 0;max-height:94dvh}}
 .apl [hidden]{display:none!important}
+
+.apl-check{display:flex!important;gap:12px;align-items:flex-start;font-weight:400!important;font-size:14px!important;line-height:1.45!important;color:var(--txt-claro);cursor:pointer}
+.apl-check input{flex:none;width:22px;height:22px;margin:0;padding:0;border-radius:6px;accent-color:var(--preto);cursor:pointer}
+.apl-campo.erro .apl-check{color:var(--vermelho)}

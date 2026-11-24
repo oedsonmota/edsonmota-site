@@ -243,6 +243,8 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 .nums>div>span{display:block;font-size:14px;color:var(--txt-claro);margin-top:10px;line-height:1.35}
 
 /* FAQ */
+.faq-lado{align-self:start}
+@media (min-width:1000px){.faq-lado{position:sticky;top:110px}}
 .faq .grupo{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C42410;padding:36px 0 10px}
 .faq .grupo:first-child{padding-top:0}
 .faq details{border-top:1px solid rgba(10,10,10,.14)}
@@ -508,7 +510,7 @@ h2{font-size:clamp(36px,4.6vw,72px)}
 <!-- 9. Dúvidas -->
 <section id="duvidas" class="sec">
   <div class="wrap duas">
-    <div data-rev style="align-self:start;position:sticky;top:110px"><h2 data-palavras>O que pesa <span class="dim">na&nbsp;decisão.</span></h2><p class="desc" style="margin-top:24px;max-width:420px">As perguntas que todo empresário faz antes de fechar um projeto de marca, respondidas sem&nbsp;rodeio.</p></div>
+    <div data-rev class="faq-lado"><h2 data-palavras>O que pesa <span class="dim">na&nbsp;decisão.</span></h2><p class="desc" style="margin-top:24px;max-width:420px">As perguntas que todo empresário faz antes de fechar um projeto de marca, respondidas sem&nbsp;rodeio.</p></div>
     <div class="faq">
       <div class="grupo">Antes de decidir</div>
       <details data-rev style="--d:0ms"><summary>É o momento certo para a minha empresa?<span class="mais" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span></summary><p class="resp">Faz mais sentido quando a empresa já vende com consistência e sente que a marca ficou para trás do que ela entrega. E vale fazer antes de investir mais em mídia, equipe ou expansão, porque cada real investido passa a construir a mesma marca. Se você ainda está validando o produto, a primeira conversa ajuda a ver isso com&nbsp;clareza.</p></details>

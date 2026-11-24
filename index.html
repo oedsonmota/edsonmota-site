@@ -9,9 +9,7 @@
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="theme-color" content="#0A0A0A">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap">
+<link rel="preload" as="image" href="video/reel-poster-1920.webp" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="css/site.css">
 <style>
 /* HERO: a área inteira solta as imagens dos projetos */
@@ -314,31 +312,28 @@
       </div>
     </div>
   </div>
-  <div class="reel" aria-label="Showreel de projetos">
+  <div class="reel" role="region" aria-label="Showreel de projetos">
     <div class="moldura" data-reel>
-      <video autoplay muted loop playsinline preload="auto" poster="video/reel-poster.jpg" aria-label="Showreel com os principais projetos de marca animados">
-        <source src="video/reel-1280.mp4" type="video/mp4" media="(max-width: 760px)">
-        <source src="video/reel-1920.mp4" type="video/mp4">
-      </video>
+      <video muted loop playsinline preload="none" poster="video/reel-poster-1920.webp" width="1920" height="1080" data-src-celular="video/reel-960.mp4" data-src="video/reel-1920.mp4" aria-label="Showreel com os principais projetos de marca animados"></video>
       <button type="button" class="ctrl" data-reel-ctrl aria-pressed="false"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" rx="1"/><rect x="7.4" y="1.5" width="2.6" height="9" rx="1"/></svg><span>Pausar</span></button>
     </div>
   </div>
   <div class="faixa">
     <div class="wrap"><a class="label ver-proj" href="projetos.html">Ver projetos <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h10.5M8.5 3.5L13 8l-4.5 4.5"/></svg></a></div>
-    <div class="marquee" aria-label="Projetos">
+    <div class="marquee" role="group" aria-label="Projetos">
       <div class="marquee-trilho">
-        <a class="mcard" href="projetos.html#new-generation"><div class="foto"><img src="img/newgen-1.jpg" alt="Identidade da New Generation"></div><div class="meta"><b>New Generation</b><span>Educação</span></div></a>
-        <a class="mcard" href="projetos.html#gabo-films"><div class="foto"><img src="img/gabo-1.jpg" alt="Identidade da Gabo Films"></div><div class="meta"><b>Gabo Films</b><span>Audiovisual</span></div></a>
-        <a class="mcard" href="projetos.html#verdan"><div class="foto"><img src="img/verdan-1.jpg" alt="Identidade da Verdan Sushi Chef"></div><div class="meta"><b>Verdan Sushi Chef</b><span>Gastronomia</span></div></a>
-        <a class="mcard" href="projetos.html#toast-masters"><div class="foto"><img src="img/toast-1.jpg" alt="Identidade da Toast Masters"></div><div class="meta"><b>Toast Masters</b><span>Coquetelaria</span></div></a>
-        <a class="mcard" href="projetos.html#ancoragem"><div class="foto"><img src="img/ancoragem-1.jpg" alt="Identidade da Ancoragem"></div><div class="meta"><b>Ancoragem</b><span>Moda masculina</span></div></a>
-        <a class="mcard" href="projetos.html#anne-amazing-waist"><div class="foto"><img src="img/anne-1.jpg" alt="Identidade da Anne Amazing Waist"></div><div class="meta"><b>Anne Amazing Waist</b><span>Fitness</span></div></a>
-        <a class="mcard" href="projetos.html#new-generation" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/newgen-1.jpg" alt=""></div><div class="meta"><b>New Generation</b><span>Educação</span></div></a>
-        <a class="mcard" href="projetos.html#gabo-films" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/gabo-1.jpg" alt=""></div><div class="meta"><b>Gabo Films</b><span>Audiovisual</span></div></a>
-        <a class="mcard" href="projetos.html#verdan" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/verdan-1.jpg" alt=""></div><div class="meta"><b>Verdan Sushi Chef</b><span>Gastronomia</span></div></a>
-        <a class="mcard" href="projetos.html#toast-masters" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/toast-1.jpg" alt=""></div><div class="meta"><b>Toast Masters</b><span>Coquetelaria</span></div></a>
-        <a class="mcard" href="projetos.html#ancoragem" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/ancoragem-1.jpg" alt=""></div><div class="meta"><b>Ancoragem</b><span>Moda masculina</span></div></a>
-        <a class="mcard" href="projetos.html#anne-amazing-waist" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/anne-1.jpg" alt=""></div><div class="meta"><b>Anne Amazing Waist</b><span>Fitness</span></div></a>
+        <a class="mcard" href="projetos.html#new-generation"><div class="foto"><img src="img/newgen-1.webp" alt="Identidade da New Generation" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>New Generation</b><span>Educação</span></div></a>
+        <a class="mcard" href="projetos.html#gabo-films"><div class="foto"><img src="img/gabo-1.webp" alt="Identidade da Gabo Films" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>Gabo Films</b><span>Audiovisual</span></div></a>
+        <a class="mcard" href="projetos.html#verdan"><div class="foto"><img src="img/verdan-1.webp" alt="Identidade da Verdan Sushi Chef" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>Verdan Sushi Chef</b><span>Gastronomia</span></div></a>
+        <a class="mcard" href="projetos.html#toast-masters"><div class="foto"><img src="img/toast-1.webp" alt="Identidade da Toast Masters" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>Toast Masters</b><span>Coquetelaria</span></div></a>
+        <a class="mcard" href="projetos.html#ancoragem"><div class="foto"><img src="img/ancoragem-1.webp" alt="Identidade da Ancoragem" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>Ancoragem</b><span>Moda masculina</span></div></a>
+        <a class="mcard" href="projetos.html#anne-amazing-waist"><div class="foto"><img src="img/anne-1.webp" alt="Identidade da Anne Amazing Waist" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>Anne Amazing Waist</b><span>Fitness</span></div></a>
+        <a class="mcard" href="projetos.html#new-generation" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/newgen-1.webp" alt="" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>New Generation</b><span>Educação</span></div></a>
+        <a class="mcard" href="projetos.html#gabo-films" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/gabo-1.webp" alt="" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>Gabo Films</b><span>Audiovisual</span></div></a>
+        <a class="mcard" href="projetos.html#verdan" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/verdan-1.webp" alt="" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>Verdan Sushi Chef</b><span>Gastronomia</span></div></a>
+        <a class="mcard" href="projetos.html#toast-masters" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/toast-1.webp" alt="" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>Toast Masters</b><span>Coquetelaria</span></div></a>
+        <a class="mcard" href="projetos.html#ancoragem" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/ancoragem-1.webp" alt="" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>Ancoragem</b><span>Moda masculina</span></div></a>
+        <a class="mcard" href="projetos.html#anne-amazing-waist" tabindex="-1" aria-hidden="true"><div class="foto"><img src="img/anne-1.webp" alt="" width="760" height="594" loading="lazy" decoding="async"></div><div class="meta"><b>Anne Amazing Waist</b><span>Fitness</span></div></a>
       </div>
     </div>
   </div>
@@ -478,7 +473,7 @@
 <section class="sec claro sobre" id="sobre" aria-labelledby="t-sobre">
   <div class="wrap">
     <div class="sobre-grid">
-      <img src="img/edson-oculos.jpg" alt="Edson Mota no escritório, de óculos e camiseta preta" data-rev>
+      <img src="img/edson-oculos.webp" alt="Edson Mota no escritório, de óculos e camiseta preta" width="768" height="960" loading="lazy" decoding="async" data-rev>
       <div class="sobre-txt" data-rev>
         <h2 id="t-sobre" class="sobre-tit"><span class="dim">A marca é</span> um dos ativos mais importantes do seu negócio.</h2>
         <p>Há 15 anos eu trabalho com empresas que precisavam de mais do que um visual bonito: sair da disputa por preço, ser percebidas como premium num mercado concorrido, lançar uma marca do zero ou parecer do tamanho que já tinham.</p>
@@ -528,7 +523,7 @@
     <p class="desc" data-rev style="margin-top:26px;color:var(--txt-claro)">Ao longo da carreira, formei e acompanhei muitos profissionais criativos. Hoje sigo ensinando pelo INQUIETOS.</p>
     <div class="inq" id="inquietos" data-rev>
       <div>
-        <div class="marca-inq" aria-label="INQUIETOS"><span class="in">IN</span>QUIETOS</div>
+        <div class="marca-inq"><span class="in">IN</span>QUIETOS</div>
         <p><b>Para profissionais criativos.</b> Um movimento para quem é bom no que faz e ainda não é reconhecido por isso. Começa com um guia gratuito e vai virar uma comunidade com aulas ao vivo.</p>
       </div>
       <div class="botoes">
@@ -563,7 +558,7 @@
     </div>
     <div class="topo">
       <div class="marca-r">
-        <b aria-label="Edson Mota"><svg class="logo" width="40" height="32" viewBox="0 0 59 47" fill="currentColor" aria-hidden="true"><rect x="19.65" y="2.27" width="38.9" height="8.2"/><rect y="20.73" width="39.1" height="8"/><rect x="8.89" y="39" width="39.1" height="8"/><circle cx="6.71" cy="5.73" r="5.73"/></svg></b>
+        <b role="img" aria-label="Edson Mota"><svg class="logo" width="40" height="32" viewBox="0 0 59 47" fill="currentColor" aria-hidden="true"><rect x="19.65" y="2.27" width="38.9" height="8.2"/><rect y="20.73" width="39.1" height="8"/><rect x="8.89" y="39" width="39.1" height="8"/><circle cx="6.71" cy="5.73" r="5.73"/></svg></b>
       </div>
       <nav class="col" aria-label="Site"><span>Navegue</span><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="index.html#metodo">Método</a><a href="index.html#plataforma">Plataforma</a><a href="index.html#depoimentos">Depoimentos</a><a href="index.html#sobre">Sobre</a></nav>
       <nav class="col" aria-label="INQUIETOS"><span>INQUIETOS</span><a href="https://guiainquietos.edsonmota.com">Guia para Inquietos</a><a href="https://edsonmotajunior.typeform.com/to/zVsElhqk">Lista de espera da comunidade</a></nav>
@@ -580,9 +575,18 @@
   var m = document.querySelector('[data-reel]'); if (!m) return;
   var v = m.querySelector('video'), b = document.querySelector('[data-reel-ctrl]');
   var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduz) { v.removeAttribute('autoplay'); v.pause(); b.setAttribute('aria-pressed','true'); b.querySelector('span').textContent = 'Reproduzir'; }
+  /* O vídeo só começa a baixar depois que a página carregou: a capa aparece na hora e o celular baixa a versão leve */
+  function carrega(){
+    if (v.getAttribute('src')) return;
+    v.src = window.matchMedia('(max-width: 760px)').matches ? v.dataset.srcCelular : v.dataset.src;
+    v.preload = 'auto';
+  }
+  function toca(){ carrega(); var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+  if (reduz) { b.setAttribute('aria-pressed','true'); b.querySelector('span').textContent = 'Reproduzir'; }
+  else if (document.readyState === 'complete') toca();
+  else window.addEventListener('load', toca);
   b.addEventListener('click', function(){
-    if (v.paused) { v.play(); b.setAttribute('aria-pressed','false'); b.querySelector('span').textContent = 'Pausar'; }
+    if (v.paused) { toca(); b.setAttribute('aria-pressed','false'); b.querySelector('span').textContent = 'Pausar'; }
     else { v.pause(); b.setAttribute('aria-pressed','true'); b.querySelector('span').textContent = 'Reproduzir'; }
   });
   function cresce(){

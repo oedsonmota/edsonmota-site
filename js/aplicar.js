@@ -41,9 +41,9 @@
       '<h3>E o momento <span class="dim">de agora.</span></h3>'+
       '<p class="apl-sub">É aqui que eu entendo qual problema a marca precisa resolver.</p>'+
       '<div class="apl-campo"><label for="apl-trava">O que mais está travando o negócio hoje?</label><textarea id="apl-trava" name="desafio" required></textarea><span class="apl-msg">Escreve com as suas palavras, do jeito que vier.</span></div>'+
-      '<div class="apl-campo" data-radio="investimento"><span class="apl-perg">Pra você já saber antes da conversa: os projetos começam a partir de R$ 4.500. O valor final eu defino depois de entender o escopo do seu negócio. Isso está dentro do que você imaginava investir?</span>'+opcoes('investimento',['Sim, está dentro','Quero entender melhor o escopo','Por enquanto, não'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
+      '<div class="apl-campo" data-radio="investimento"><span class="apl-perg">Os projetos começam a partir de R$&nbsp;4.500. O&nbsp;valor do seu é definido com calma, depois que eu entender o escopo na nossa conversa. Esse investimento faz sentido para o momento da&nbsp;empresa?</span>'+opcoes('investimento',['Faz sentido','Quero entender melhor','Ainda não é o momento'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
       '<div class="apl-campo" data-radio="quando"><span class="apl-perg">Quando você quer começar?</span>'+opcoes('quando',['Agora','Nos próximos 3 meses','Ainda estou pesquisando'])+'<span class="apl-msg">Escolhe uma opção.</span></div>'+
-      '<div class="apl-campo apl-aceite"><label class="apl-check"><input type="checkbox" name="consentimento" value="Sim" required><span>Concordo que o Edson use estes dados só para responder à minha aplicação. Eles não são compartilhados com ninguém e você pode pedir para apagar quando quiser.</span></label><span class="apl-msg">Preciso do seu ok para usar os dados.</span></div>'+
+      '<div class="apl-campo apl-aceite"><label class="apl-check"><input type="checkbox" name="consentimento" value="Sim" required><span>Concordo que o Edson use estes dados só para responder à minha aplicação. Eles não são compartilhados e posso pedir para apagar a qualquer&nbsp;momento.</span></label><span class="apl-msg">Preciso do seu ok para usar os dados.</span></div>'+
      '</section>'+
 
      '<section class="apl-etapa apl-fim" data-etapa="4">'+
@@ -53,7 +53,7 @@
       '<button class="btn btn-preto" type="button" data-fechar>Voltar ao site</button>'+
      '</section>'+
 
-     '<div class="apl-acoes"><button class="apl-voltar" type="button" hidden>← Voltar</button><button class="btn btn-laranja apl-seguir" type="submit">Continuar '+SETA+'</button></div>'+
+     '<div class="apl-acoes"><button class="apl-voltar" type="button" hidden>Voltar</button><button class="btn btn-laranja apl-seguir" type="submit">Continuar '+SETA+'</button></div>'+
     '</form>'+
    '</div>'+
   '</div>';

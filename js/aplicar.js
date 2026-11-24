@@ -100,6 +100,7 @@
     if (e) e.preventDefault();
     ultimoFoco = document.activeElement;
     box.hidden = false; box.classList.add('aberto'); document.body.classList.add('apl-trava');
+    if (window.emEvento) window.emEvento('AbriuAplicacao', {}, true);
     if (atual === 4) { form.reset(); mostra(1); } else mostra(atual);
   }
   function fecha(){
@@ -127,7 +128,7 @@
     dados.append('origem', location.pathname.indexOf('projetos') > -1 ? 'Página de projetos' : 'Home');
     seguir.disabled = true; seguir.innerHTML = 'Enviando…';
     fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(dados) })
-      .then(function(){ seguir.disabled = false; mostra(4); })
+      .then(function(){ seguir.disabled = false; mostra(4); if (window.emEvento) window.emEvento('Lead', {content_name: 'Aplicação para projeto'}); })
       .catch(function(){ seguir.disabled = false; seguir.innerHTML = 'Tentar de novo ' + SETA; });
   });
 })();

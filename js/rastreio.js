@@ -6,7 +6,7 @@
      event_id do Pixel para a Meta descartar a duplicata. */
 (function(){
   var PIXEL = '2402324527192610';
-  var CAPI = 'https://SEU-PROJETO.supabase.co/functions/v1/meta-capi'; /* definido na publicação */
+  var CAPI = 'https://cwqitqccfdowjzhtmkmy.supabase.co/functions/v1/meta-capi';
   var PELO_SERVIDOR = { PageView: 1, ViewContent: 1, AbriuAplicacao: 1, Lead: 1 };
 
   function guardado(chave){ try { return localStorage.getItem(chave); } catch (e) { return null; } }
